@@ -15,6 +15,7 @@
             4.0 stars
           </div>
         </div>
-        
+		@includeWhen($relatedbool, 'partials.relatedproducts', ['relatedproducts' => $relatedProductsv])
+        @include('partials.discountsproducts')
 </div>
 @endsection
