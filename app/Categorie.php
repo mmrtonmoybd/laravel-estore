@@ -9,4 +9,5 @@ class Categorie extends Model
     protected $guarded = [
 	'products'
 	];
+	//public $timestamps = true;
 }

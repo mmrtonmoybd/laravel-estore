@@ -9,4 +9,5 @@ class Product extends Model
 	protected $guarded = [
 	'views'
 	];
+	//public $timestamps = true;
 }
