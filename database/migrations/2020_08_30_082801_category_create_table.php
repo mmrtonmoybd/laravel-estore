@@ -17,8 +17,8 @@ class CategoryCreateTable extends Migration
             $table->id();
 			$table->string('name');
 			$table->string('description');
-			$table->string('image');
-			$table->integer('products');
+			$table->string('image')->nullable();
+			$table->integer('products')->default(0);
             $table->timestamps();
         });
     }
