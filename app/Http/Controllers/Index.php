@@ -13,6 +13,11 @@ class Index extends Controller
    All post are index in index method.
    */
     public function index() {
-       return view('index');
+       $products = Product::orderBy('id', 'desc')->limit(8)->get();
+       return view('index', [
+       'products' => $products,
+       'categories' => $this->getCategories(),
+       'discounds' => $this->getDiscoundProducts()
+       ]);
     }
 }

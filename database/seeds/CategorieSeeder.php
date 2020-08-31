@@ -15,6 +15,7 @@ class CategorieSeeder extends Seeder
         $category = new Categorie();
         $category->name = "T-Shirt";
         $category->description = "Men's T-Shirt. Only for Men."; 
+        $category->products = 7;
         $category->save();
     }
 }

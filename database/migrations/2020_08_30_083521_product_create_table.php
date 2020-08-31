@@ -18,7 +18,7 @@ class ProductCreateTable extends Migration
             $table->string('title');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->double('price');
-			$table->integer('discounds')->default(1);
+			$table->integer('discounds')->default(0);
 			$table->text('description');
             $table->integer('views')->default(0);
             $table->integer('quantity');

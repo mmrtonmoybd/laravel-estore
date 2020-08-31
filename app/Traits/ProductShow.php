@@ -1,6 +1,7 @@
 <?php
 namespace App\Traits;
 use App\Product as ProductModel;
+use App\Categorie as Category;
 
 trait ProductShow {
    
@@ -19,9 +20,14 @@ trait ProductShow {
 	   return $product;
     }
 	
+	/*
 	private function getProducts(int $limit) {
 		$product = ProductModel::orderBy('id', 'desc')->limit($limit)->get();
 		return $product;
+	}
+	*/
+	private function getCategories() {
+	   return Category::where('products', '>=', 1)->get();
 	}
 }
 ?>
