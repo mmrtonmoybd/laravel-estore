@@ -6,7 +6,7 @@
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">{{ $discound->title }}</a>
+                  <a href='{{ url("product/{$discound->id}") }}'>{{ $discound->title }}</a>
                 </h4>
            @php
               $calculation = $discound->price * $discound->discounds / 100;
