@@ -26,11 +26,11 @@
         @include('partials.navbar')
   <!-- Page Content -->
 
+        <div class="container">
         <main class="py-4">
-		<div class="container">
             @yield('content')
-			</div>
         </main>
+        </div>
     </div>
     <footer class="py-5 bg-dark">
     <div class="container">
