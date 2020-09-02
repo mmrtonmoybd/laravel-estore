@@ -14,6 +14,7 @@ class CategoryProducts extends Controller
      */
     public function index(Categorie $id)
     {
-        
+        //$product = Categorie::find(1);
+        dd($id->product()->get());
     }
 }

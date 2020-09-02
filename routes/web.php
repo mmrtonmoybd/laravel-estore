@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Index@index');
 Route::get('/product/{id}', 'ProductSingle@index');
+Route::get('category/{id}', 'CategoryProducts@index');
 
 //Route::get('/')
 
