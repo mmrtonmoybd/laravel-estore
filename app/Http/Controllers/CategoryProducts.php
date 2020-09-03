@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Categorie;
 use Illuminate\Http\Request;
+use App\Traits\ProductShow;
 
 class CategoryProducts extends Controller
 {
+   use ProductShow;
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,12 @@ class CategoryProducts extends Controller
      */
     public function index(Categorie $id)
     {
-        //$product = Categorie::find(1);
-        dd($id->product()->get());
+        return view('products.category', [
+        'products' => $id->product()->orderBy('id', 'desc')->paginate(env('MAX_PRODUCTS_PER_PAGE')),
+        'category' => $id,
+        'categories' => $this->getCategories()
+        ]);
+        //echo env('MAX_PRODUCTS_PER_PAGE');
+         //dd($id->product()->get());
     }
 }

@@ -9,5 +9,8 @@ class Product extends Model
 	protected $guarded = [
 	'views'
 	];
-	//public $timestamps = true;
+
+	public function category() {
+	   return $this->belongsTo('App\Categorie', 'category_id', 'id');
+	}
 }
