@@ -18,6 +18,18 @@ Route::get('/product/{id}', 'ProductSingle@index');
 Route::get('/category/{id}', 'CategoryProducts@index');
 Route::get('/latest/products', 'Index@recent');
 
+/*
+ cart route start 
+*/
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::post('/cart', 'CartController@addProduct')->name('cart.store');
+Route::post('/cart/update', 'CartController@updateProduct')->name('cart.update');
+Route::post('/cart/remove', 'CartController@removeProduct')->name('cart.remove');
+Route::post('/cart/clear', 'CartController@cartClear')->name('cart.clear');
+/*
+ cart route end
+*/
+
 //Route::get('/')
 
 Auth::routes();

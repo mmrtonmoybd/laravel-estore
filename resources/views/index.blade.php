@@ -18,7 +18,21 @@
                 <p class="card-text">{{ $product->description }}</p>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+			  <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ $product->id }}" id="id" name="id">
+                                        <input type="hidden" value="{{ $product->title }}" id="name" name="name">
+                                        <input type="hidden" value="{{ $product->price }}" id="price" name="price">
+                                        <input type="hidden" value="{{ $product->image }}" id="img" name="img">
+                                        <input type="hidden" value="1" id="quantity" name="quantity">
+                                        <div class="card-footer" style="background-color: white;">
+                                              <div class="row">
+                                                <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
+                                                    <i class="fa fa-shopping-cart"></i> add to cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
               </div>
             </div>
           </div>
