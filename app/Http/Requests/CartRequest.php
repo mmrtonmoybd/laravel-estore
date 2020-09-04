@@ -3,9 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Traits\CryptTrait;
 
 class CartRequest extends FormRequest
 {
+	use CryptTrait;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,13 +15,13 @@ class CartRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
     
     protected function prepareForValidation() {
        $this->merge([
-       'id' => 
-       ])
+       'id' => $this->deCrypt($this->id)
+       ]);
     }
 
     /**
@@ -30,7 +32,8 @@ class CartRequest extends FormRequest
     public function rules()
     {
         return [
-            ''
+            'id' => 'required|numeric|exists:products,id',
+			'quantity' => 'required|numeric|max:5',
         ];
     }
 }

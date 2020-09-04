@@ -3,55 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Validator;
 use Darryldecode\Cart\CartCondition;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use App\Product;
+use App\Http\Requests\CartRequest;
+use App\Traits\CryptTrait;
 
 class CartController extends Controller
 {
+	use CryptTrait;
     public function index() {
 		return view('carts.cart', [
 		'cartCollection' => \Cart::getContent()
 		]);
 	}
 	
-	protected function prepareForValidation() {
-	   try {
-	      $this->merge([
-	   'id' => Crypt::decryptString($this->id),
-	   ]);
-	   } catch (DecryptException $e) {
-	      echo "Encryption is not decrypt this hash: " . $e;
-	   }
-	}
-	
-	public function addProduct(Request $request) {
-	   /*
-	   try {
-	   $id = Crypt::decryptString($request->input('id'));
-	   } catch (DecryptException $e) {
-	      echo "Encryption is not decrypt this hash: " . $e;
-	   }
-	   echo $id;
-	   */
+	public function addProduct(CartRequest $request) {
+		
+	   $request->validated();
 	   
-	   $request->validate([
-	   'id' => 'required|numeric',
-	   'quantity' => 'required|numeric|max:5'
-	   ]);
-	   /*
-	   try {
-	      $product = Product::find(Crypt::decryptString($request->input('id')));
-	   } catch (DecryptException $e) {
-	      echo "Unable to decrypt this hash: " . $e;
-	   }
+	   $product = Product::find($request->input('id'));
 	   
 	   $condition = new CartCondition([
 	   "name" => "Discounds Offer",
 	   "type" => "discound",
 	   "value" => "-{$product->discounds}%"
+	   ]);
+	   // for vat
+	   $condition1 = new CartCondition([
+	   "name" => "VAT",
+	   "type" => "tax",
+	   "target" => "total",
+	   "value" => "{env('CART_VAT')}%"
 	   ]);
 	   
 		\Cart::add([
@@ -63,10 +46,10 @@ class CartController extends Controller
                 'image' => $product->image
             ),
             'associatedModel' => 'Product',
-            'conditions' => $condition
+            'conditions' => [$condition, $condition1]
 		]);
+		
 		return redirect()->route('cart.index')->with('success', 'Item is Added to Cart!');
-		*/
 	}
 	
 	public function removeProduct(Request $request) {

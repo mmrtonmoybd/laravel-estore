@@ -1,6 +1,7 @@
 <?php
 namespace App\Traits;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 Trait CryptTrait {
    private $value;
