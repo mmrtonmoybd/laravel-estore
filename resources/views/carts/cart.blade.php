@@ -53,9 +53,8 @@
                             <p>
                                 <b><a href='{{ url("product/{$item->id}") }}'>{{ $item->name }}</a></b><br>
                                 <b>Price: </b>${{ $item->price }}<br>
-                                <b>Sub Total: </b>${{ \Cart::getSubTotal($item->id) }}<br>
-								<b>Discount: </b>${{ \Cart::getCondition('Discounds Offer')->getValue() }}
-								<b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }}
+                        <b>Sub Total: </b>${{ $item->getPriceSum() }}<br>
+								<b>With Discount: </b>${{ $item->getPriceSumWithConditions() }}
                             </p>
                         </div>
                         <div class="col-lg-4">
@@ -63,7 +62,7 @@
                                 <form action="{{ route('cart.update') }}" method="POST">
                                     @csrf
                                     <div class="form-group row">
-                                        <input type="hidden" value="{{ $item->id}}" id="id" name="id">
+                                        <input type="hidden" value="{{ \Crypt::encryptString($item->id) }}" id="id" name="id">
                                         <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}"
                                                id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
                                         <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i class="fa fa-edit"></i></button>
@@ -91,7 +90,6 @@
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-							<b>VAT({{ env('CART_VAT') . "%"}}): </b>${{ \Cart::getCondition('VAT')->getValue()}}
 							<b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>

@@ -8,11 +8,28 @@
         <div class="card mt-4">
           <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
           <div class="card-body">
-            <h3 class="card-title">Product Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+            <h3 class="card-title">{{ $product->title }}</h3>
+            @php
+                $price = $product->price;
+                $discound = $product->discounds;
+                $calculate = $price * $discound / 100;
+                $calculate = $price - $calculate;
+                @endphp
+                <h4>@if ($calculate == 0) 
+                ${{ $price }}
+                @else 
+                <del>${{ $price }}</del>  ${{ $calculate }}
+                @endif</h4>
+                <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ \Crypt::encryptString($product->id) }}" id="id" name="id">
+ 
+                                        <input type="hidden" value="1" id="quantity" name="quantity">
+                                                <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
+                                                    <i class="fa fa-shopping-cart"></i> add to cart
+                                                </button>
+                                    </form>
+            <p class="card-text">{{ $product->description }}</p>
           </div>
         </div>
 		@includeWhen($relatedbool, 'partials.relatedproducts', ['relatedproducts' => $relatedProductsv])

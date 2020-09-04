@@ -30,11 +30,12 @@ class CartController extends Controller
 	   "value" => "-{$product->discounds}%"
 	   ]);
 	   // for vat
+	   $vat = env('CART_TAX', 5);
 	   $condition1 = new CartCondition([
 	   "name" => "VAT",
 	   "type" => "tax",
 	   "target" => "total",
-	   "value" => "{env('CART_VAT')}%"
+	   "value" => "+{$vat}%"
 	   ]);
 	   
 		\Cart::add([
@@ -48,7 +49,6 @@ class CartController extends Controller
             'associatedModel' => 'Product',
             'conditions' => [$condition, $condition1]
 		]);
-		
 		return redirect()->route('cart.index')->with('success', 'Item is Added to Cart!');
 	}
 	
@@ -60,11 +60,8 @@ class CartController extends Controller
 		return redirect()->route('cart.index')->with('success', 'Item has been removed!');
 	}
 	
-	public function updateProduct(Request $request) {
-	   $request->validate([
-	   'id' => 'required|numeric|exists:products,id',
-	   'quantity' => 'required|numeric|max:5'
-	   ]);
+	public function updateProduct(CartRequest $request) {
+	   $request->validated();
 		\Cart::update($request->input('id'), [
 		'quantity' => [
 		'relative' => false,

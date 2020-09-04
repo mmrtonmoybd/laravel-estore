@@ -9,13 +9,27 @@
                   <a href='{{ url("product/{$discound->id}") }}'>{{ $discound->title }}</a>
                 </h4>
            @php
-              $calculation = $discound->price * $discound->discounds / 100;
-              $calculation = $discound->price - $calculation; 
-           @endphp     <h5><del>৳{{ $discound->price }}</del> ৳{{ $calculation }}</h5>
-                <p class="card-text">{{ $discound->description }}</p>
+                $price = $discound->price;
+                $adiscound = $discound->discounds;
+                $calculate = $price * $adiscound / 100;
+                $calculate = $price - $calculate;
+                @endphp
+                <h5>@if ($calculate == 0) 
+                ${{ $price }}
+                @else 
+                <del>${{ $price }}</del>  ${{ $calculate }}
+                @endif</h5>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+             <form action="{{ route('cart.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" value="{{ \Crypt::encryptString($discound->id) }}" id="id" name="id">
+ 
+                                        <input type="hidden" value="1" id="quantity" name="quantity">
+                                                <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
+                                                    <i class="fa fa-shopping-cart"></i> add to cart
+                                                </button>
+                                    </form>  
               </div>
             </div>
           </div>
