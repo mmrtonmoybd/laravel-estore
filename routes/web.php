@@ -22,7 +22,7 @@ Route::get('/latest/products', 'Index@recent');
  cart route start 
 */
 Route::get('/cart', 'CartController@index')->name('cart.index');
-Route::post('/cart', 'CartController@addProduct')->name('cart.store');
+Route::post('/cart/add', 'CartController@addProduct')->name('cart.store');
 Route::post('/cart/update', 'CartController@updateProduct')->name('cart.update');
 Route::post('/cart/remove', 'CartController@removeProduct')->name('cart.remove');
 Route::post('/cart/clear', 'CartController@cartClear')->name('cart.clear');

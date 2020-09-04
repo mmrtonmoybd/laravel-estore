@@ -25,8 +25,8 @@
             </div>
         @endif
         @if(count($errors) > 0)
-            @foreach($errors0>all() as $error)
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @foreach($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     {{ $error }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -37,7 +37,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 <br>
-                @if(\Cart::getTotalQuantity()>0)
+                @if(\Cart::getTotalQuantity() > 0)
                     <h4>{{ \Cart::getTotalQuantity()}} Product(s) In Your Cart</h4><br>
                 @else
                     <h4>No Product(s) In Your Cart</h4><br>
@@ -47,14 +47,15 @@
                 @foreach($cartCollection as $item)
                     <div class="row">
                         <div class="col-lg-3">
-                            <img src="/images/{{ $item->attributes->image }}" class="img-thumbnail" width="200" height="200">
+                            <img src="http://placehold.it/700x400" class="img-thumbnail" width="200" height="200">
                         </div>
                         <div class="col-lg-5">
                             <p>
-                                <b><a href="/shop/{{ $item->attributes->slug }}">{{ $item->name }}</a></b><br>
+                                <b><a href='{{ url("product/{$item->id}") }}'>{{ $item->name }}</a></b><br>
                                 <b>Price: </b>${{ $item->price }}<br>
-                                <b>Sub Total: </b>${{ \Cart::get($item->id)->getPriceSum() }}<br>
-                                {{--                                <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }}--}}
+                                <b>Sub Total: </b>${{ \Cart::getSubTotal($item->id) }}<br>
+                                {{ \Cart::getTotal() }}
+                                <b>With Discount: </b>${{ \Cart::get($item->id)->getPriceSumWithConditions() }}
                             </p>
                         </div>
                         <div class="col-lg-4">
@@ -92,7 +93,7 @@
                             <li class="list-group-item"><b>Total: </b>${{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
-                    <br><a href="{{ route('shop') }}" class="btn btn-dark">Continue Shopping</a>
+                    <br><a href="{{ url('/') }}" class="btn btn-dark">Continue Shopping</a>
                     <a href="/checkout" class="btn btn-success">Proceed To Checkout</a>
                 </div>
             @endif

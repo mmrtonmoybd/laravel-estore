@@ -23,7 +23,7 @@ return [
      *
      * the configuration for persisting cart
      */
-    'storage' => null,
+    'storage' => \App\Carts\CartDB::class,
 
     /*
      * ---------------------------------------------------------------

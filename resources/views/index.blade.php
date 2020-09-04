@@ -20,10 +20,8 @@
               <div class="card-footer">
 			  <form action="{{ route('cart.store') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" value="{{ $product->id }}" id="id" name="id">
-                                        <input type="hidden" value="{{ $product->title }}" id="name" name="name">
-                                        <input type="hidden" value="{{ $product->price }}" id="price" name="price">
-                                        <input type="hidden" value="{{ $product->image }}" id="img" name="img">
+                                        <input type="hidden" value="{{ \Crypt::encryptString($product->id) }}" id="id" name="id">
+ 
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                         <div class="card-footer" style="background-color: white;">
                                               <div class="row">
