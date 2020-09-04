@@ -1,0 +1,27 @@
+<?php
+/***
+Author: Moshiur Rahman Tonmoy
+Facebook: https://www.facebook.com/mmrtonmoy
+GitHub: https://www.github.com/mmrtonmoybd
+About: I am a php, laravel, codeigniter developer.
+***/
+namespace {{ namespace }};
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+
+class {{ class }} extends TestCase
+{
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function testExample()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+    }
+}
