@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\UserInfo;
 
 class RegisterController extends Controller
 {
@@ -69,5 +70,18 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+	
+	/*
+	store user_id in user_infos table.
+	*/
+	protected function registered($request, $user)
+    {
+        return UserInfo::create([
+		'address' => $request->input('address'),
+		'ip' => $request->ip(),
+		'mobile' => $request->input('mobile'),
+		'user_id' => $request->user()->id
+		]);
     }
 }

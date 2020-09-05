@@ -29,12 +29,18 @@ Route::post('/cart/clear', 'CartController@cartClear')->name('cart.clear');
 /*
  cart route end
 */
-
+/*
+User route
+*/
+require('users.php');
+/* 
+user route end
+*/
 //Route::get('/')
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
