@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use App\UserInfo;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    protected function authenticated($request, $user) {
+       Auth::logoutOtherDevices($request->input('password'));
+       $info = UserInfo::where('user_id', $request->user()->id)->first();
+       $info->ip = $request->ip();
+       $info->save();
     }
 }

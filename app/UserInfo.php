@@ -11,5 +11,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserInfo extends Model
 {
-    
+    protected $fillable = ['address', 'mobile', 'ip', 'user_id'];
 }

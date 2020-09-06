@@ -54,6 +54,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:450'],
+            'mobile' => ['required', 'numeric'],
         ]);
     }
 
@@ -77,7 +79,7 @@ class RegisterController extends Controller
 	*/
 	protected function registered($request, $user)
     {
-        return UserInfo::create([
+        UserInfo::create([
 		'address' => $request->input('address'),
 		'ip' => $request->ip(),
 		'mobile' => $request->input('mobile'),
