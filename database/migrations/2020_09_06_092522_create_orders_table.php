@@ -9,7 +9,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentsTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,13 +18,11 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-			$table->string('payment_id', 255);
-			$table->string('payer_email', 255);
-			$table->text('address', 450);
-			$table->string('mobile', 15);
-			$table->double('amount');
+			$table->foreignId('payment_id')->constrained('payments')->onDelete('cascade');
+			$table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+			$table->enum('status', ['pending', 'complete'])->default('pending');
 			$table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
@@ -39,8 +37,10 @@ class CreatePaymentsTable extends Migration
     {
 		Schema::table('payments', function (Blueprint $table) {
           $table->dropForeign(['user_id']);
-          $table->dropColumn(['user_id']);
+		  $table->dropForeign(['payment_id']);
+		  $table->dropForeign(['product_id']);
+          $table->dropColumn(['user_id', 'payment_id', 'product_id']);
        });
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('orders');
     }
 }
