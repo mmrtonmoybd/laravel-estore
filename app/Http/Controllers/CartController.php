@@ -30,6 +30,7 @@ class CartController extends Controller
 	   "value" => "-{$product->discounds}%"
 	   ]);
 	   // for vat
+	   /*
 	   $vat = env('CART_TAX', 5);
 	   $condition1 = new CartCondition([
 	   "name" => "VAT",
@@ -37,6 +38,7 @@ class CartController extends Controller
 	   "target" => "total",
 	   "value" => "+{$vat}%"
 	   ]);
+	   */
 	   
 		\Cart::add([
 		'id' => $product->id,
@@ -47,7 +49,7 @@ class CartController extends Controller
                 'image' => $product->image
             ),
             'associatedModel' => 'Product',
-            'conditions' => [$condition, $condition1]
+            'conditions' => $condition
 		]);
 		return redirect()->route('cart.index')->with('success', 'Item is Added to Cart!');
 	}

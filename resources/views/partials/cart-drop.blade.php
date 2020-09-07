@@ -8,11 +8,11 @@
                     >
                 </div>
                 <div class="col-lg-6">
-                    <b>{{$item->name}}</b>
-                    <br><small>Qty: {{$item->quantity}}</small>
+                    <b>{{ $item->name }}</b>
+                    <br><small>Qty: {{ $item->quantity }}</small>
                 </div>
                 <div class="col-lg-3">
-                    <p>${{ \Cart::get($item->id)->getPriceSum() }}</p>
+                    <p>${{ $item->getPriceSumWithConditions() }}</p>
                 </div>
                 <hr>
             </div>
@@ -37,7 +37,11 @@
         <a class="btn btn-dark btn-sm btn-block" href="{{ route('cart.index') }}">
             CART <i class="fa fa-arrow-right"></i>
         </a>
-        <a class="btn btn-dark btn-sm btn-block" href="">
+        <a class="btn btn-dark btn-sm btn-block" href="@if (Auth::guard()->check())
+       checlout
+       @else
+       {{ route('login') }}
+       @endif">
             CHECKOUT <i class="fa fa-arrow-right"></i>
         </a>
     </div>

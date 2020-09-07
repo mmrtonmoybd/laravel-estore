@@ -7,9 +7,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('/') }}">Home
-              <span class="sr-only">(current)</span>
+              @if (Auth::guard()->check())
+              <span class="sr-only">{{ Auth::guard()->user()->name }}</span>
+              @endif
             </a>
           </li>
                         @guest
@@ -55,7 +57,7 @@
                        aria-haspopup="true" aria-expanded="false"
                     >
                         <span class="badge badge-pill badge-dark">
-                            <i class="fa fa-shopping-cart"></i> {{ \Cart::getTotalQuantity()}}
+                            <i class="fa fa-shopping-cart"></i> {{ \Cart::getTotalQuantity() }}
                         </span>
                     </a>
 

@@ -53,7 +53,7 @@
                             <p>
                                 <b><a href='{{ url("product/{$item->id}") }}'>{{ $item->name }}</a></b><br>
                                 <b>Price: </b>${{ $item->price }}<br>
-                        <b>Sub Total: </b>${{ $item->getPriceSum() }}<br>
+                        {{--<b>Sub Total: </b>${{ $item->getPriceSum() }}<br>--}}
 								<b>With Discount: </b>${{ $item->getPriceSumWithConditions() }}
                             </p>
                         </div>
