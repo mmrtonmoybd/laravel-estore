@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Darryldecode\Cart\CartCondition;
-use Illuminate\Contracts\Encryption\DecryptException;
 use App\Product;
 use App\Http\Requests\CartRequest;
 use App\Traits\CryptTrait;
@@ -29,16 +28,6 @@ class CartController extends Controller
 	   "type" => "discound",
 	   "value" => "-{$product->discounds}%"
 	   ]);
-	   // for vat
-	   /*
-	   $vat = env('CART_TAX', 5);
-	   $condition1 = new CartCondition([
-	   "name" => "VAT",
-	   "type" => "tax",
-	   "target" => "total",
-	   "value" => "+{$vat}%"
-	   ]);
-	   */
 	   
 		\Cart::add([
 		'id' => $product->id,
@@ -48,7 +37,6 @@ class CartController extends Controller
 		'attributes' => array(
                 'image' => $product->image
             ),
-            'associatedModel' => 'Product',
             'conditions' => $condition
 		]);
 		return redirect()->route('cart.index')->with('success', 'Item is Added to Cart!');

@@ -9,14 +9,14 @@ trait ProductShow {
        $product = ProductModel::where([
 	   ['discounds', '>=' , 1],
 	   ['quantity', '>=', 1],
-	   ])->orderBy('discounds', 'desc')->limit(env('MAX_DISCOUNDED_PRODUCTS'))->get();
+	   ])->orderBy('discounds', 'desc')->limit(config('settings.max_discounded_item'))->get();
        return $product;
     }
     /*
 	@param $category_id = product category id
 	*/
     private function getRelatedProducts(int $category_id) {
-       $product = ProductModel::where('category_id', $category_id)->orderBy('id', 'desc')->limit(env('MAX_RELATED_PRODUCTS'))->get();
+       $product = ProductModel::where('category_id', $category_id)->orderBy('id', 'desc')->limit(config('settings.max_related_item'))->get();
 	   return $product;
     }
 	

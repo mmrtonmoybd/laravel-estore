@@ -33,7 +33,7 @@ class CartRequest extends FormRequest
     {
         return [
             'id' => 'required|numeric|exists:products,id',
-			'quantity' => 'required|numeric|max:5',
+			'quantity' => 'required|numeric|max:5|gte:1',
         ];
     }
 }

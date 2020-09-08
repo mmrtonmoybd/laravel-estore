@@ -17,7 +17,7 @@ class CategoryProducts extends Controller
     public function index(Categorie $id)
     {
         return view('products.category', [
-        'products' => $id->product()->orderBy('id', 'desc')->paginate(env('MAX_PRODUCTS_PER_PAGE')),
+        'products' => $id->product()->orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
         'category' => $id,
         'categories' => $this->getCategories()
         ]);

@@ -13,7 +13,7 @@ class Index extends Controller
    All post are index in index method.
    */
     public function index() {
-       $products = Product::orderBy('id', 'desc')->limit(env('MAX_LATEST_PRODUCTS'))->get();
+       $products = Product::orderBy('id', 'desc')->limit(config('settings.max_latest_item'))->get();
        return view('index', [
        'products' => $products,
        'categories' => $this->getCategories(),
@@ -23,7 +23,7 @@ class Index extends Controller
     //recent post
     public function recent() {
        return view('products.recent', [
-       'products' => Product::orderBy('id', 'desc')->paginate(env('MAX_PRODUCTS_PER_PAGE')),
+       'products' => Product::orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
        'categories' => $this->getCategories()
        ]);
     }

@@ -24,7 +24,8 @@
                                         @csrf
                                         <input type="hidden" value="{{ \Crypt::encryptString($product->id) }}" id="id" name="id">
  
-                                        <input type="hidden" value="1" id="quantity" name="quantity">
+                                        <input type="number" class="form-control form-control-sm" value="1"
+                                               id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
                                                 <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
                                                     <i class="fa fa-shopping-cart"></i> add to cart
                                                 </button>
