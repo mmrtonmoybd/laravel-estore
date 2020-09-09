@@ -30,13 +30,51 @@
     </div>
     
     
-    <div class="col-sm-6">
-    <div class="card bg-white rounded shadow-lg mb-5">
+    <div class="col-md-8 order-md-1">
+    <div class="card rounded mb-5">
       <div class="card-body">
+      @foreach($errors->all() as $error)
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       {{ $error }}
+       </div>
+       @endforeach
+       @if(session()->has('error'))
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       {{ session()->get('error') }}
+       </div>
+       @endif
 	  
           <form id="payment-form" action="{{ route('checkout') }}" method="POST">
          @csrf
           <h2 class="text-info" align="center">Order Informations</h2>
+          
+          <div class="form-group">
+    <label for="address">Full Name</label>
+    <input type="text" class="form-control @error('name') 
+    is-invalid 
+    @enderror" id="name" aria-describedby="fullname" placeholder="Enter Full Name" name="name" value="{{ old('name') }}" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="address">Email Address</label>
+    <input type="email" class="form-control @error('email') 
+    is-invalid 
+    @enderror" id="email" aria-describedby="email" placeholder="Enter Email Address" name="email" value="{{ old('email') }}" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="address">Shipping Address</label>
+    <input type="text" class="form-control @error('address') 
+    is-invalid 
+    @enderror" id="address" aria-describedby="address" placeholder="Enter Shipping Address" name="address" value="{{ old('address') }}" required>
+  </div>
+  
+ <div class="form-group">
+    <label for="address">Mobile Number</label>
+    <input type="text" class="form-control @error('mobile') 
+    is-invalid 
+    @enderror" id="mobile" aria-describedby="mobile" placeholder="Enter Mobile Number" name="mobile" value="{{ old('mobile') }}" required>
+  </div>
           
         <label for="card-element">
         Credit or debit card

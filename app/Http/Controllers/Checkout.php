@@ -36,25 +36,27 @@ class Checkout extends Controller
     // our main method, We need to validate request then Checkout, after checkout store data in Payment table with Payment id. Also store order information in Order table.
     public function checkout(Request $request) {
        $request->validate([
-       'token' => 'required|max:255|string',
+       '_token' => 'required|max:255|string',
        'email' => 'required|email|max:255',
        'address' => 'required|max:450|string',
-       'mobile' => 'required|max:15|numeric',
+       'mobile' => 'required|numeric',
        'name' => 'required|string|max:255'
        ]);
-       /*
+       
        $omnipay = Omnipay::create('Stripe');
        $omnipay->setApiKey(config('settings.stripe_secret'));
       $response = $omnipay->purchase([
       'amount' => $this->getTotalWithVat(Cart::getTotal()),
-      'currency' => env('STRIPE_CURRENCY'),
-      'token' => $request->input('token')
+      'currency' => config('settings.stripe_currency'),
+      'token' => $request->input('_token')
       ])->send();
       
       if ($response->isRedirect()) {
          return $response->redirect();
       } elseif ($response->isSuccessful()) {
          // Payment is successful
+         dd($response->getData());
+         /*
          $data = $response->getData();
          $payment_id = $data['id'];
          $payment = Payment::where('payment_id', $payment_id)->first();
@@ -72,12 +74,12 @@ class Checkout extends Controller
                  
              }
          }
+         */
       } else {
          
          return redirect()->back()->with('error', $response->getMessage());
       }
-      */
-      print_r($request->all());
+      //print_r($request->all());
     }
     
     private function getTotalWithVat($value) {
