@@ -11,5 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
+    protected $fillable = [
+    'payment_id', 'product_id', 'quantity', 'user_id'
+    ];
 }

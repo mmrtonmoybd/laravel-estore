@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
 		'Illuminate\Auth\Events\Verified' => [
         'App\Listeners\LogVerifiedUser',
     ],
+    'App\Events\PaymentSuccess' => [
+    'App\Listeners\SendPaymentSuccessMail',
+    ],
     ];
 
     /**

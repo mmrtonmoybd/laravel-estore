@@ -18,6 +18,7 @@ use LVR\CreditCard\CardExpirationYear;
 use LVR\CreditCard\CardExpirationMonth;
 use Stripe\StripeClient;
 use Illuminate\Support\Facades\Auth;
+use App\Events\PaymentSuccess;
 
 class Checkout extends Controller
 {
@@ -85,7 +86,7 @@ class Checkout extends Controller
          $data = $response->getData();
          $payment_id = $data['id'];
          $getPayment = Payment::where('payment_id', $payment_id)->first();
-         if (!is_object($getPayment)) {
+         if (!$getPayment) {
 			 /*
              $payment = new Payment();
              $payment->payment_id = $payment_id;
@@ -96,24 +97,35 @@ class Checkout extends Controller
 			 $payment->amount = $this->getTotalWithVat(Cart::getTotal());
 			 $payment->user_id = Auth::guard()->user()->id;
              $payment->save();
-			 */
-             $npayment = Payment::where('payment_id', $payment_id)->first();
+             */
+             $payment = Payment::create([
+             'payment_id' => $payment_id,
+             'payer_email' => $request->input('email'),
+             'mobile' => $request->input('mobile'),
+             'amount' => $this->getTotalWithVat(Cart::getTotal()),
+             'address' => $request->input('address'),
+             'user_id' => Auth::guard()->user()->id,
+             'name' => $request->input('name'),
+             ]);
+             
+            // $npayment = Payment::where('payment_id', $payment_id)->first();
 			 //dd($npayment);
 			 //$getPayment->refresh();
 			 //echo $getPayment->id;
-			 echo $npayment->id;
-			 /*
+			 //echo $npayment->id;
+			 
 				 foreach (Cart::getContent() as $item) {
-                 $oder = new order();
-                 $order->payment_id = $npayment->id;
-                 $order->product_id = $item->id;
-                 $order->quantity = $item->quantity;
-                 $order->user_id = Auth::guard()->user()->id;
-                 $order->save();
                  
+         Order::create([
+         'payment_id' => $payment->id,
+         'product_id' => $item->id,
+         'quantity' => $item->quantity,
+         'user_id' => Auth::guard()->user()->id,
+         ]);    
 			 }
+			// $getPayment->refresh();
+			 event(new PaymentSuccess(Auth::guard()->user(), Payment::find($payment->id)));
 			 return redirect()->route('checkout')->with('error', 'Your payment is successful');
-			 */
          }
       } else {
          
