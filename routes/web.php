@@ -31,6 +31,8 @@ Route::post('/cart/clear', 'CartController@cartClear')->name('cart.clear');
 */
 Route::get('checkout', 'Checkout@index')->name('checkout');
 Route::post('checkout', 'Checkout@checkout');
+
+Route::get('test', 'Test@test');
 /*
 User route
 */
