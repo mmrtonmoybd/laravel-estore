@@ -36,7 +36,7 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-		Schema::table('payments', function (Blueprint $table) {
+		Schema::table('orders', function (Blueprint $table) {
           $table->dropForeign(['user_id']);
 		  $table->dropForeign(['payment_id']);
 		  $table->dropForeign(['product_id']);

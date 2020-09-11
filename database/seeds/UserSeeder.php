@@ -1,12 +1,17 @@
 <?php
-
+/***
+Author: Moshiur Rahman Tonmoy
+Facebook: https://www.facebook.com/mmrtonmoy
+GitHub: https://www.github.com/mmrtonmoybd
+About: I am a php, laravel, codeigniter developer.
+***/
 use Illuminate\Database\Seeder;
-use App\Admin;
-use Faker\Factory as Faker; 
+use App\User;
+use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 
-class AdminSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +20,8 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $fake = Faker::create();
-        $user = new Admin();
+		$fake = Faker::create();
+        $user = new User();
 		$user->name = $fake->name;
 		$user->email = $fake->email;
 		$user->password = Hash::make('12345678');

@@ -84,25 +84,36 @@ class Checkout extends Controller
          
          $data = $response->getData();
          $payment_id = $data['id'];
-         $payment = Payment::where('payment_id', $payment_id)->first();
-         if (!$payment) {
+         $getPayment = Payment::where('payment_id', $payment_id)->first();
+         if (!is_object($getPayment)) {
+			 /*
              $payment = new Payment();
              $payment->payment_id = $payment_id;
              $payment->payer_email = $request->input('email');
              $payment->mobile = $request->input('mobile');
              $payment->address = $request->input('address');
              $payment->name = $request->input('name');
+			 $payment->amount = $this->getTotalWithVat(Cart::getTotal());
+			 $payment->user_id = Auth::guard()->user()->id;
              $payment->save();
+			 */
              $npayment = Payment::where('payment_id', $payment_id)->first();
-             foreach (Cart::getContent() as $item) {
+			 //dd($npayment);
+			 //$getPayment->refresh();
+			 //echo $getPayment->id;
+			 echo $npayment->id;
+			 /*
+				 foreach (Cart::getContent() as $item) {
                  $oder = new order();
                  $order->payment_id = $npayment->id;
                  $order->product_id = $item->id;
                  $order->quantity = $item->quantity;
                  $order->user_id = Auth::guard()->user()->id;
                  $order->save();
-                 return redirect()->route('checkout')->with('error', 'Your payment is successful');
-             }
+                 
+			 }
+			 return redirect()->route('checkout')->with('error', 'Your payment is successful');
+			 */
          }
       } else {
          
@@ -121,7 +132,7 @@ class Checkout extends Controller
        /*
        
       */
-      print_r($request->all());
+      //print_r($request->all());
     }
     
     private function getTotalWithVat($value) {

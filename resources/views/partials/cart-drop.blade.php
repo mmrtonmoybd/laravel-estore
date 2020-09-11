@@ -25,12 +25,10 @@
                 <b>Total: </b>${{ \Cart::getTotal() }}
             </div>
             <div class="col-lg-2">
-            {{--
-                <form action="{{ route('cart.clear') }}" method="POST">
+			<form action="{{ route('cart.clear') }}" method="POST">
                     @csrf
                     <button class="btn btn-secondary btn-sm"><i class="fa fa-trash"></i></button>
                 </form>
-                --}}
             </div>
         </div>
     </li>
