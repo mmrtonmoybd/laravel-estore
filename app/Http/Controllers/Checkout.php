@@ -12,6 +12,12 @@ use App\Payment;
 use App\Order;
 use Omnipay\Omnipay;
 use Cart;
+use LVR\CreditCard\CardCvc;
+use LVR\CreditCard\CardNumber;
+use LVR\CreditCard\CardExpirationYear;
+use LVR\CreditCard\CardExpirationMonth;
+use Stripe\StripeClient;
+use Illuminate\Support\Facades\Auth;
 
 class Checkout extends Controller
 {
@@ -36,31 +42,50 @@ class Checkout extends Controller
     // our main method, We need to validate request then Checkout, after checkout store data in Payment table with Payment id. Also store order information in Order table.
     public function checkout(Request $request) {
        $request->validate([
-       '_token' => 'required|max:255|string',
        'email' => 'required|email|max:255',
        'address' => 'required|max:450|string',
        'mobile' => 'required|numeric',
-       'name' => 'required|string|max:255'
+       'name' => 'required|string|max:255',
+       'cardnumber' => ['required', new CardNumber()],
+       'expmonth' => ['required', new CardExpirationMonth($request->input('expyear'))],
+       'expyear' => ['required', new CardExpirationYear($request->input('expmonth'))],
+       'cvv' => ['required', new CardCvc($request->input('cardnumber'))]
        ]);
        
-       $omnipay = Omnipay::create('Stripe');
+       try {
+  // Use Stripe's library to make requests...
+  $stripe = new StripeClient(config('settings.stripe_publishable'));
+        $token = $stripe->tokens->create([
+        'card' => [
+        'number' => $request->input('cardnumber'),
+        'exp_month' => $request->input('expmonth'),
+        'exp_year' => $request->input('expyear'),
+        'cvc' => $request->input('cvv'),
+       // 'email' => 'rmedha037@gmail.com',
+        'address_country' => 'Bangladesh',
+        'address_line1' => $request->input('address'),
+        ]]);
+        //echo $token->id;
+        //dd($token);
+        
+        $omnipay = Omnipay::create('Stripe');
        $omnipay->setApiKey(config('settings.stripe_secret'));
       $response = $omnipay->purchase([
       'amount' => $this->getTotalWithVat(Cart::getTotal()),
       'currency' => config('settings.stripe_currency'),
-      'token' => $request->input('_token')
+      'token' => $token->id
       ])->send();
       
       if ($response->isRedirect()) {
          return $response->redirect();
       } elseif ($response->isSuccessful()) {
          // Payment is successful
-         dd($response->getData());
-         /*
+         //dd($response->getData());
+         
          $data = $response->getData();
          $payment_id = $data['id'];
          $payment = Payment::where('payment_id', $payment_id)->first();
-         if (is_object($payment)) {
+         if (!$payment) {
              $payment = new Payment();
              $payment->payment_id = $payment_id;
              $payment->payer_email = $request->input('email');
@@ -68,18 +93,35 @@ class Checkout extends Controller
              $payment->address = $request->input('address');
              $payment->name = $request->input('name');
              $payment->save();
-             $payment = Payment::where('payment_id', $payment_id)->first();
+             $npayment = Payment::where('payment_id', $payment_id)->first();
              foreach (Cart::getContent() as $item) {
                  $oder = new order();
-                 
+                 $order->payment_id = $npayment->id;
+                 $order->product_id = $item->id;
+                 $order->quantity = $item->quantity;
+                 $order->user_id = Auth::guard()->user()->id;
+                 $order->save();
+                 return redirect()->route('checkout')->with('error', 'Your payment is successful');
              }
          }
-         */
       } else {
          
          return redirect()->back()->with('error', $response->getMessage());
       }
-      //print_r($request->all());
+        
+} catch(\Stripe\Exception\CardException $e) {
+  // Since it's a decline, \Stripe\Exception\CardException will be caught
+  echo 'Status is:' . $e->getHttpStatus() . '\n';
+  echo 'Type is:' . $e->getError()->type . '\n';
+  echo 'Code is:' . $e->getError()->code . '\n';
+  // param is '' in this case
+  echo 'Param is:' . $e->getError()->param . '\n';
+  echo 'Message is:' . $e->getError()->message . '\n';
+}
+       /*
+       
+      */
+      print_r($request->all());
     }
     
     private function getTotalWithVat($value) {
