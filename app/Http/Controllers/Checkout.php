@@ -87,32 +87,13 @@ class Checkout extends Controller
          $payment_id = $data['id'];
          $getPayment = Payment::where('payment_id', $payment_id)->first();
          if (!$getPayment) {
-			 /*
-             $payment = new Payment();
-             $payment->payment_id = $payment_id;
-             $payment->payer_email = $request->input('email');
-             $payment->mobile = $request->input('mobile');
-             $payment->address = $request->input('address');
-             $payment->name = $request->input('name');
-			 $payment->amount = $this->getTotalWithVat(Cart::getTotal());
-			 $payment->user_id = Auth::guard()->user()->id;
-             $payment->save();
-             */
              $payment = Payment::create([
              'payment_id' => $payment_id,
-             'payer_email' => $request->input('email'),
              'mobile' => $request->input('mobile'),
              'amount' => $this->getTotalWithVat(Cart::getTotal()),
              'address' => $request->input('address'),
              'user_id' => Auth::guard()->user()->id,
-             'name' => $request->input('name'),
              ]);
-             
-            // $npayment = Payment::where('payment_id', $payment_id)->first();
-			 //dd($npayment);
-			 //$getPayment->refresh();
-			 //echo $getPayment->id;
-			 //echo $npayment->id;
 			 
 				 foreach (Cart::getContent() as $item) {
                  
@@ -123,9 +104,11 @@ class Checkout extends Controller
          'user_id' => Auth::guard()->user()->id,
          ]);    
 			 }
-			// $getPayment->refresh();
+			 
 			 event(new PaymentSuccess(Auth::guard()->user(), Payment::find($payment->id)));
 			 return redirect()->route('checkout')->with('error', 'Your payment is successful');
+         } else {
+             return redirect()->back()->with('warning', 'Your payment id is already avilable in our server or your payment and order is successfully.');
          }
       } else {
          
@@ -133,13 +116,9 @@ class Checkout extends Controller
       }
         
 } catch(\Stripe\Exception\CardException $e) {
-  // Since it's a decline, \Stripe\Exception\CardException will be caught
-  echo 'Status is:' . $e->getHttpStatus() . '\n';
-  echo 'Type is:' . $e->getError()->type . '\n';
-  echo 'Code is:' . $e->getError()->code . '\n';
-  // param is '' in this case
-  echo 'Param is:' . $e->getError()->param . '\n';
-  echo 'Message is:' . $e->getError()->message . '\n';
+  
+ // echo 'Message is:' . $e->getError()->message . '\n';
+  return redirect()->back()->with('error', $e->getError()->message);
 }
        /*
        
