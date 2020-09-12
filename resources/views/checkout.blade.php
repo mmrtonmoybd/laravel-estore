@@ -45,20 +45,6 @@
           <form id="payment-form" action="{{ route('checkout') }}" method="POST">
          @csrf
           <h2 class="text-info" align="center">Order Informations</h2>
-          
-          <div class="form-group">
-    <label for="address">Full Name</label>
-    <input type="text" class="form-control @error('name') 
-    is-invalid 
-    @enderror" id="name" aria-describedby="fullname" placeholder="Enter Full Name" name="name" value="{{ old('name') }}" required>
-  </div>
-  
-  <div class="form-group">
-    <label for="address">Email Address</label>
-    <input type="email" class="form-control @error('email') 
-    is-invalid 
-    @enderror" id="email" aria-describedby="email" placeholder="Enter Email Address" name="email" value="{{ old('email') }}" required>
-  </div>
   
   <div class="form-group">
     <label for="address">Shipping Address</label>
@@ -84,18 +70,18 @@
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
             <label for="ccnum">Credit or Debit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111 2222 3333 4444" class="form-control @error('cardnumber') is-invalid @enderror" value={{ old('cardnumber') }}>
             <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+            <input type="text" id="expmonth" name="expmonth" placeholder="{{ date('m') }}" class="form-control @error('expmonth') is-invalid @enderror" value="{{ old('expmonth') }}">
 
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
+                <input type="text" id="expyear" name="expyear" placeholder="{{ date('Y') }}" class="form-control @error('expyear') is-invalid @enderror" value="{{ old('expyear') }}">
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
+                <input type="text" id="cvv" name="cvv" placeholder="352" class="form-control @error('cvv') is-invalid @enderror" value="{{ old('cvv') }}">
               </div>
             </div>
           </div>
@@ -106,5 +92,4 @@
     
     
   </div>
-  <script src="{{ asset('js/') }}" defer></script>
   @endsection

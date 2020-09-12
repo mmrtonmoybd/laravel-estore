@@ -18,4 +18,9 @@ class Payment extends Model
     public function orders() {
         return $this->hasMany('App\Order');
     }
+    
+    public function product(int $id) {
+        $product = Product::find($id);
+        return $product;
+    }
 }

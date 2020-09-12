@@ -11,6 +11,7 @@ use App\Payment;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class OrderInfo extends Controller
 {
@@ -18,10 +19,23 @@ class OrderInfo extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        //$payment = Payment::where('user_id', Auth::guard()->user()->id)->paginate(config('settings.max_item_per_page'));
-        //$order = Payment::orders()->where('user_id', Auth::guard()->user()->id)->get();
-        //$payment = new Payment();
-        $order = Payment::;
-        dd($order);
+        $payments = Payment::where('user_id', Auth::guard()->user()->id)->paginate(config('settings.max_item_per_page'));
+        //dd($payments); successfull
+        return view('auth.payments', [
+        'payments' => $payments
+        ]);
+    }
+    
+    public function orders(Payment $id) {
+        //dd($id); successfull
+        $this->authorize('paymentOrderView', $id);
+        $orders = $id->orders()->get();
+        //dd($order); successfull
+        $product = $id->product(1);
+        //dd($product); successfull
+        return view('auth.orders', [
+        'payment' => $id,
+        'orders' => $orders,
+        ]);
     }
 }

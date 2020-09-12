@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
 		$fake = Faker::create();
         $user = new User();
 		$user->name = $fake->name;
-		$user->email = $fake->email;
+		$user->email = 'moshiur@user.com';
 		$user->password = Hash::make('12345678');
 		$user->email_verified_at = Carbon::now()->toDateTimeString();
 		$user->save();

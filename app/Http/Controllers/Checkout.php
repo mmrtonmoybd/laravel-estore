@@ -43,10 +43,8 @@ class Checkout extends Controller
     // our main method, We need to validate request then Checkout, after checkout store data in Payment table with Payment id. Also store order information in Order table.
     public function checkout(Request $request) {
        $request->validate([
-       'email' => 'required|email|max:255',
        'address' => 'required|max:450|string',
        'mobile' => 'required|numeric',
-       'name' => 'required|string|max:255',
        'cardnumber' => ['required', new CardNumber()],
        'expmonth' => ['required', new CardExpirationMonth($request->input('expyear'))],
        'expyear' => ['required', new CardExpirationYear($request->input('expmonth'))],
@@ -108,7 +106,7 @@ class Checkout extends Controller
 			 event(new PaymentSuccess(Auth::guard()->user(), Payment::find($payment->id)));
 			 return redirect()->route('checkout')->with('error', 'Your payment is successful');
          } else {
-             return redirect()->back()->with('warning', 'Your payment id is already avilable in our server or your payment and order is successfully.');
+             return redirect()->back()->with('error', 'Your payment id is already avilable in our server or your payment and order is successfully.');
          }
       } else {
          

@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
         $fake = Faker::create();
         $user = new Admin();
 		$user->name = $fake->name;
-		$user->email = $fake->email;
+		$user->email = 'moshiur@admin.com';
 		$user->password = Hash::make('12345678');
 		$user->email_verified_at = Carbon::now()->toDateTimeString();
 		$user->save();

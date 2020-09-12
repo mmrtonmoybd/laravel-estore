@@ -23,5 +23,12 @@ Route::group([
       Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
       
       Route::get('orders', 'OrderInfo@index');
+      
+      
+      Route::get('checkout', 'Checkout@index')->name('checkout');
+     Route::post('checkout', 'Checkout@checkout');
+     
+     Route::get('orders/{id}', 'OrderInfo@orders');
+
 });
 ?>
