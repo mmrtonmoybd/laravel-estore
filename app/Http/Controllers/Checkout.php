@@ -104,7 +104,7 @@ class Checkout extends Controller
 			 }
 			 
 			 event(new PaymentSuccess(Auth::guard()->user(), Payment::find($payment->id)));
-			 return redirect()->route('checkout')->with('error', 'Your payment is successful');
+			 return redirect()->url("users/orders/{$payment->id}")->with('success', 'Your payment and order are successful');
          } else {
              return redirect()->back()->with('error', 'Your payment id is already avilable in our server or your payment and order is successfully.');
          }
@@ -117,6 +117,8 @@ class Checkout extends Controller
   
  // echo 'Message is:' . $e->getError()->message . '\n';
   return redirect()->back()->with('error', $e->getError()->message);
+} catch (\Exception $e) {
+	return redirect()->back()->with('error', $e->getMessage());
 }
        /*
        
@@ -129,6 +131,6 @@ class Checkout extends Controller
        $calculation = $value * $vat / 100;
        $this->setVat($calculation);
        $calculation = $value + $calculation;
-       return $calculation;
+       return ceil($calculation);
     }
 }

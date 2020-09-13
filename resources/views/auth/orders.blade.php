@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
 <table class="table table-striped">
+@if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session()->get('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
 <thead>
 <tr>
 <th>Buyer Name:</th>
@@ -9,6 +17,18 @@
 <tr>
 <th>Buyer Email Address:</th>
 <td>{{ Auth::guard()->user()->email }}</td>
+</tr>
+<tr>
+<th>Buyer Home Address:</th>
+<td>{{ Auth::guard()->user()->userInfo()->address }}</td>
+</tr>
+<tr>
+<th>Buyer Mobile:</th>
+<td>{{ Auth::guard()->user()->userInfo()->mobile }}</td>
+</tr>
+<tr>
+<th>Buyer IP Address:</th>
+<td>{{ Auth::guard()->user()->userInfo()->ip }}</td>
 </tr>
 <tr>
 <th>Payment Id:</th>
