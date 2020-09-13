@@ -32,6 +32,7 @@ class OrderInfo extends Controller
     public function orders(Payment $id) {
         //dd($id); successfull
         $this->authorize('paymentOrderView', $id);
+		/*
         $orders = $id->orders()->get();
         $product = $id->product()->get();
         //dd($order); successfull
@@ -42,7 +43,8 @@ class OrderInfo extends Controller
         'orders' => $orders,
         'products' => $product,
         ]);
-        
+        */
+		dd($id->product()->get());
         //dd($id->product()->get()); many to many relation is successfull
     }
 }

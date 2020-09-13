@@ -93,21 +93,21 @@ class Checkout extends Controller
              'user_id' => Auth::guard()->user()->id,
              ]);
 			 //$order = new Order();
-			 $alldata = [];
+			 //$alldata = [];
 				 foreach (Cart::getContent() as $item) { 
          $datao = [
-         'payment_id' => 18,
+         'payment_id' => $payment->id,
          'product_id' => $item->id,
          'quantity' => $item->quantity,
          'user_id' => Auth::guard()->user()->id,
          ];  
-         array_push($alldata, $datao);
-         
+         //array_push($alldata, $datao);
+         Order::create($datao);
 			 }
 			//dd($alldata);
-			 Order::create($alldata);
 			 
-			 event(new PaymentSuccess(Auth::guard()->user(), Payment::find($payment->id)));
+			 
+			// event(new PaymentSuccess(Auth::guard()->user(), Payment::find($payment->id)));
 			 return redirect("users/orders/{$payment->id}")->with('success', 'Your payment and order are successful');
          } else {
              return redirect()->back()->with('error', 'Your payment id is already avilable in our server or your payment and order is successfully.');
