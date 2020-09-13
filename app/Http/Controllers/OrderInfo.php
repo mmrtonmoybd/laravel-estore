@@ -30,12 +30,16 @@ class OrderInfo extends Controller
         //dd($id); successfull
         $this->authorize('paymentOrderView', $id);
         $orders = $id->orders()->get();
+        $product = $id->product()->get();
         //dd($order); successfull
-        $product = $id->product(1);
+        //$product = $id->product(1);
         //dd($product); successfull
         return view('auth.orders', [
         'payment' => $id,
         'orders' => $orders,
+        'products' => $product,
         ]);
+        
+        //dd($id->product()->get()); many to many relation is successfull
     }
 }

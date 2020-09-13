@@ -19,8 +19,8 @@ class Payment extends Model
         return $this->hasMany('App\Order');
     }
     
-    public function product(int $id) {
-        $product = Product::find($id);
-        return $product;
+    
+    public function product() {
+        return $this->belongsToMany(Product::class, 'orders', 'payment_id', 'product_id');
     }
 }

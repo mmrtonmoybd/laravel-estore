@@ -44,9 +44,9 @@
 </thead>
 <tbody>
 @foreach ($orders as $order)
+@foreach ($products as $product)
 <tr>
 @php
-$product = $payment->product($order->product_id);
 $price = $product->price;
 $didiscounds = $product->didiscounds;
 $calculation = $price * $didiscounds / 100;
@@ -58,6 +58,7 @@ $total = $price - $calculation;
 <td>{{ $order->status }}</td>
 <td><a href='{{ url("product/{$order->product_id}") }}'><button type="button" class="btn btn-info">View product</button></a></td>
 </tr>
+@endforeach
 @endforeach
 </tbody>
 </table>
