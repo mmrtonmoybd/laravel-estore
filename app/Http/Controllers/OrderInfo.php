@@ -21,6 +21,9 @@ class OrderInfo extends Controller
     public function index() {
         $payments = Payment::where('user_id', Auth::guard()->user()->id)->paginate(config('settings.max_item_per_page'));
         //dd($payments); successfull
+        if (session()->has('success')) {
+            \Cart::clear();
+        }
         return view('auth.payments', [
         'payments' => $payments
         ]);

@@ -20,15 +20,18 @@
 </tr>
 <tr>
 <th>Buyer Home Address:</th>
-<td>{{ Auth::guard()->user()->userInfo()->address }}</td>
+@php
+$info = Auth::guard()->user()->userInfo()->first();
+@endphp
+<td>{{ $info->address }}</td>
 </tr>
 <tr>
 <th>Buyer Mobile:</th>
-<td>{{ Auth::guard()->user()->userInfo()->mobile }}</td>
+<td>{{ $info->mobile }}</td>
 </tr>
 <tr>
 <th>Buyer IP Address:</th>
-<td>{{ Auth::guard()->user()->userInfo()->ip }}</td>
+<td>{{ $info->ip }}</td>
 </tr>
 <tr>
 <th>Payment Id:</th>
