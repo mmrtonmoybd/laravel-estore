@@ -14,7 +14,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-        'App\Payment' => 'App\Policies\CheckUserAuthorize'
+        'App\Payment' => 'App\Policies\CheckUserAuthorize',
+		'App\User' => 'App\Policies\UserAuthorize',
     ];
 
     /**
@@ -26,6 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+       // Gate::define('isAuthorize', 'App\Policies\CheckUserAuthorize@isAuthorize');
     }
 }

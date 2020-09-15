@@ -9,10 +9,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Gate;
 
 class UserProfile extends Controller
 {
+	public function __construct() {
+		$this->middleware('auth');
+	}
     public function index(User $id) {
+		//$user = User::find($id->id);
+		//$this->authorize('isAuthorize', $id);
         return view('auth.profile', [
         'profile' => $id 
         ]);

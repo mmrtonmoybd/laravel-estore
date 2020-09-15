@@ -7,25 +7,23 @@ About: I am a php, laravel, codeigniter developer.
 ***/
 namespace App\Policies;
 
-use App\Payment;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CheckUserAuthorize
+class UserAuthorize
 {
     use HandlesAuthorization;
 
-    
-
     /**
-     * Determine whether the user can view the model.
+     * Create a new policy instance.
      *
-     * @param  \App\User  $user
-     * @param  \App\Payment  $payment
-     * @return mixed
+     * @return void
      */
-    public function paymentOrderView(User $user, Payment $payment)
+    public function __construct()
     {
-        return $user->id === $payment->user_id;
+        //
+    }
+	public function isAuthorize(User $user, User $currentUser) {
+        return $user->id === $currentUser->id;
     }
 }
