@@ -66,18 +66,19 @@ $info = Auth::guard()->user()->userInfo()->first();
 </tr>
 </thead>
 <tbody>
-@foreach ($products as $product)
-@endforeach
+@php
+$i = -1;
+@endphp
 @foreach ($orders as $order)
-
 <tr>
 @php
-$price = $product->price;
-$didiscounds = $product->didiscounds;
+$i++;
+$price = $products[$i]->price;
+$didiscounds = $products[$i]->didiscounds;
 $calculation = $price * $didiscounds / 100;
 $total = $price - $calculation;
 @endphp
-<td>{{ $product->title }}</td>
+<td>{{ $products[$i]->title }}</td>
 <td>{{ $order->quantity }}</td>
 <td>${{ $total }}</td>
 <td>{{ $order->status }}</td>

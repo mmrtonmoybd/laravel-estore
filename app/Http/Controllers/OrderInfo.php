@@ -19,11 +19,8 @@ class OrderInfo extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        $payments = Payment::where('user_id', Auth::guard()->user()->id)->paginate(config('settings.max_item_per_page'));
+        $payments = Payment::where('user_id', Auth::guard()->user()->id)->latest()->paginate(config('settings.max_item_per_page'));
         //dd($payments); successfull
-        if (session()->has('success')) {
-            \Cart::clear();
-        }
         return view('auth.payments', [
         'payments' => $payments
         ]);
@@ -32,7 +29,9 @@ class OrderInfo extends Controller
     public function orders(Payment $id) {
         //dd($id); successfull
         $this->authorize('paymentOrderView', $id);
-		/*
+        if (session()->has('success')) {
+            \Cart::clear();
+        }
         $orders = $id->orders()->get();
         $product = $id->product()->get();
         //dd($order); successfull
@@ -43,8 +42,7 @@ class OrderInfo extends Controller
         'orders' => $orders,
         'products' => $product,
         ]);
-        */
-		dd($id->product()->get());
+		//dd($id->product()->get());
         //dd($id->product()->get()); many to many relation is successfull
     }
 }

@@ -28,4 +28,8 @@ class CheckUserAuthorize
     {
         return $user->id === $payment->user_id;
     }
+    
+    public function isAuthorize(User $user, $id) {
+        return $user->id === $id; 
+    }
 }

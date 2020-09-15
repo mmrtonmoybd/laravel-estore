@@ -29,6 +29,8 @@ Route::group([
      Route::post('checkout', 'Checkout@checkout');
      
      Route::get('orders/{id}', 'OrderInfo@orders');
+     
+     Route::get('profile/{id}', 'UserProfile@index');
 
 });
 ?>
