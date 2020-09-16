@@ -2,5 +2,6 @@
 Route::group([
 'prefix' => 'admins',
 ], function () {
-	Route::view('dashboard', 'admin.index');
+	Route::view('/', 'admin.index');
+	Route::view('login', 'admin.auth.login');
 });
