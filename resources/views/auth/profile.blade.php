@@ -6,7 +6,10 @@
        {{ session()->get('success') }}
        </div>
        @endif
-<img src='{{ url("/") . "/" . $userinfo->image }}' class="rounded-circle" alt="Cinque Terre" width="200" height="150">
+	   @can('isAuthorize', $profile)
+	   <a href='{{ route("profile.update", ["id" => $profile->id ])}}'><button type="button" class="btn btn-info">Update profile</button></a>
+	   @endcan
+<img src='{{ asset($userinfo->image) }}' class="rounded-circle" width="200" height="150" alt="{{ $profile->name }}">
 <thead>
 <tr>
 <th>Name: </th>
@@ -19,7 +22,7 @@
 </tr>
 <tr>
 <th>Facebook: </th>
-<td><a href="//{{ $userinfo->facebook }}">{{ $profile->name }}</a></td>
+<td><a href="{{ $userinfo->facebook }}">{{ $profile->name }}</a></td>
 </tr>
 <tr>
 <th>Home Address: </th>

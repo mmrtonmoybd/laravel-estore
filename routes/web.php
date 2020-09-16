@@ -32,14 +32,7 @@ Route::get('test', 'Test@test');
 User route
 */
 require('users.php');
-/* 
-user route end
+/*
+Admin route
 */
-//Route::get('/')
-
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
-//Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
+require('admins.php');
