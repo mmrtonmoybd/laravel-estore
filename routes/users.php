@@ -31,6 +31,13 @@ Route::group([
      Route::get('orders/{id}', 'OrderInfo@orders');
      
      Route::get('profile/{id}', 'UserProfile@index');
+     
+     Route::group([
+     'middleware' => 'auth'
+     ], function () {
+         Route::get('profile/update/{id}', 'UserProfile@showInForm')->name('profile.update');
+         Route::post('profile/update/{id}', 'UserProfile@update');
+     });
 
 });
 ?>
