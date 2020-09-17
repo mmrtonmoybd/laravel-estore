@@ -901,21 +901,21 @@
         },
         {
             "name": "laravel-validation-rules/credit-card",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-validation-rules/credit-card.git",
-                "reference": "f0f62148185a01f04813a9c70b22940dcab45bc4"
+                "reference": "2ce424cc5392a38e8322a78fe66a1efd127e1dc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-validation-rules/credit-card/zipball/f0f62148185a01f04813a9c70b22940dcab45bc4",
-                "reference": "f0f62148185a01f04813a9c70b22940dcab45bc4",
+                "url": "https://api.github.com/repos/laravel-validation-rules/credit-card/zipball/2ce424cc5392a38e8322a78fe66a1efd127e1dc3",
+                "reference": "2ce424cc5392a38e8322a78fe66a1efd127e1dc3",
                 "shasum": ""
             },
             "require": {
-                "illuminate/translation": "^5.5|^6.0|^7.0",
-                "illuminate/validation": "^5.5|^6.0|^7.0",
+                "illuminate/translation": "^5.5|^6.0|^7.0|^8.0",
+                "illuminate/validation": "^5.5|^6.0|^7.0|^8.0",
                 "php": "7.*"
             },
             "require-dev": {
@@ -947,7 +947,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-03-09T06:08:20+00:00"
+            "time": "2020-09-16T18:06:45+00:00"
         },
         {
             "name": "laravel/framework",
