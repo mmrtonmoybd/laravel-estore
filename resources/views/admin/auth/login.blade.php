@@ -21,21 +21,32 @@
         <h1>{{ config('app.name') }}</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="index.html">
+        <form class="login-form" action="{{ route('admin.login') }}" method="POST">
+        @csrf
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
           <div class="form-group">
-            <label class="control-label">E-MAIL</label>
-            <input class="form-control" type="text" placeholder="Email" name="email" autofocus>
+            <label class="control-label" for="email">E-MAIL</label>
+            <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
           </div>
           <div class="form-group">
             <label class="control-label">PASSWORD</label>
-            <input class="form-control" type="password" name="password" placeholder="Password">
+            <input class="form-control @error('password') is-invalid @enderror" type="password" name="password" placeholder="Password" required autocomplete="current-password">
+            @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
           </div>
           <div class="form-group">
             <div class="utility">
               <div class="animated-checkbox">
                 <label>
-                  <input type="checkbox"><span class="label-text">Stay Signed in</span>
+                  <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}><span class="label-text">Stay Signed in</span>
                 </label>
               </div>
               <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Forgot Password ?</a></p>

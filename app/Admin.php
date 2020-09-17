@@ -5,7 +5,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -26,6 +26,8 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    protected $guarded = ['isAdmin'];
 
     /**
      * The attributes that should be cast to native types.
@@ -36,4 +38,8 @@ class Admin extends Authenticatable
         'email_verified_at' => 'datetime',
         'isAdmin' => 'boolean',
     ];
+    
+    public function sendPasswordResetNotification($token) {
+        //$this->notify(new Notifications($token));
+    }
 }
