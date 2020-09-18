@@ -24,9 +24,6 @@ class EventServiceProvider extends ServiceProvider
     'App\Events\PaymentSuccess' => [
     'App\Listeners\SendPaymentSuccessMail',
     ],
-    'App\Events\AdminVerficationEvent' => [
-    'App\Listeners\SendAdminEmailVerificationNotification',
-    ],
     ];
 
     /**
