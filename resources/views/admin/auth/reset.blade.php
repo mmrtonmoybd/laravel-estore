@@ -21,12 +21,13 @@
         <h1>{{ config('app.name') }}</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="{{ route('admin.login') }}" method="POST">
+        <form class="login-form" action="{{ route('admin.reset.update') }}" method="POST">
         @csrf
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>PASSWORD RESET</h3>
+          <input type="hidden" name="token" value="{{ $token }}">
           <div class="form-group">
             <label class="control-label" for="email">E-MAIL</label>
-            <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
             @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -43,17 +44,14 @@
                                 @enderror
           </div>
           <div class="form-group">
-            <div class="utility">
-              <div class="animated-checkbox">
-                <label>
-                  <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}><span class="label-text">Stay Signed in</span>
-                </label>
-              </div>
-              <p class="semibold-text mb-2"><a href="{{ route('admin.reset') }}">Forgot Password ?</a></p>
+            <label class="control-label">CONFIRM PASSWORD</label>
+            <input class="form-control" type="password" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
+          </div>
+              <p class="semibold-text mb-2"><a href="{{ route('admin.login') }}">Back To Login ?</a></p>
             </div>
           </div>
           <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</button>
+            <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>RESET PASSWORD</button>
           </div>
         </form>
       </div>
