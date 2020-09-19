@@ -26,6 +26,17 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="{{ asset('admin/js/plugins/pace.min.js') }}"></script>
     <!-- Page specific javascripts-->
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/chart.js') }}"></script>
+    {!! Route::currentRouteName() == "admin.product.list" ? "<script type='text/javascript' src=" . asset("admin/js/plugins/bootstrap-notify.min.js") . "</script>" : "" !!}
+    @if (Route::currentRouteName() == "admin.product.list" && session()->has('success'))
+    {!! "<script type='text/javascript'>
+      	$.notify({
+      		title: '{session()->get('title')} : ',
+      		message: '{session()->get('message')}',
+      		icon: 'fa fa-check' 
+      	},{
+      		type: '{session()->get('type')}'
+      	});</script>"
+    !!}
+    @endif
   </body>
   </html>

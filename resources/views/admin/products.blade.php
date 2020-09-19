@@ -38,7 +38,8 @@
                       <td>{{ $product->id }}</td>
                       <td>{{ $product->title }}</td>
           @php
-          //$category = \App\Product::categorya($product->id);
+          //$category = \App\Product::categorya($product->id); 
+          //\App\Product::order($product->id)
           @endphp       
                       <td>{{ $product->category->name }}</td>
                       <td>${{ $product->price }}</td>
@@ -54,6 +55,7 @@
                   </tbody>
                 </table>
               </div>
+              {{ $products->links() }}
             </div>
           </div>
         </div>
