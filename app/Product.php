@@ -15,14 +15,8 @@ class Product extends Model
 	   return $this->belongsTo('App\Categorie', 'category_id', 'id');
 	}
 	
-	public static function admin(int $id) {
-	   $admin = \App\Admin::find($id);
-	   return $admin;
-	}
-	
-	public static function categorya(int $id) {
-	   $category = \App\Categorie::find($id);
-	   return $category['name'];
+	public function admin() {
+	   return $this->belongsTo('App\Admin');
 	}
 	
 	public static function order(int $id) {

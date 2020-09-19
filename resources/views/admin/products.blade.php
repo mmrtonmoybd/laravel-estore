@@ -6,7 +6,7 @@
           <p>Display All Products</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
-          <li class="breadcrumb-item"><a href="{{ url('admins') }}"><i class="fa fa-home fa-lg"></i></a></li>
+          <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
           <li class="breadcrumb-item active">Products</li>
         </ul>
       </div>
@@ -45,7 +45,7 @@
                       <td>{{ $product->discounds }}</td>
                       <td>{{ $product->views }}</td>
                       <td>{{ $product->quantity }}</td>
-                      <td>{{ \App\Product::admin($product->admin_id) }}</td>
+                      <td>{{ $product->admin->name }}</td>
                       <td>{{ \App\Product::order($product->id) }}</td>
                       <td>{{ $product->updated_at }}</td>
                       <td>{{ $product->created_at }}</td>

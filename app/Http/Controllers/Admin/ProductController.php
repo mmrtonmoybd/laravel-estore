@@ -18,4 +18,8 @@ class ProductController extends Controller
         'products' => Product::orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
         ]);
     }
+	
+	public function add() {
+		return view('admin.productadd');
+	}
 }
