@@ -43,4 +43,8 @@ class Admin extends Authenticatable implements MustVerifyEmail
     public function sendPasswordResetNotification($token) {
         $this->notify(new AdminResetPassword($token));
     }
+    
+    public function product() {
+	   return $this->hasMany('App\Product');
+	}
 }

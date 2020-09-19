@@ -13,6 +13,9 @@ Route::group([
  //Auth middleware group route
  Route::group(['middleware' => 'adminAuth:admin'], function () {
      Route::get('/', 'Admin\Dashboard@index');
+     
      Route::get('logout', 'Admin\LoginController@logout')->name('admin.logout');
+     
+     Route::get('products', 'Admin\ProductController@index');
  });
 });

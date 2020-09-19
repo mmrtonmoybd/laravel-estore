@@ -28,6 +28,10 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
     
+    protected function authenticated($request, $user) {
+       Auth::logoutOtherDevices($request->input('password'));
+       }
+    
     public function showLoginForm()
     {
         return view('admin.auth.login');

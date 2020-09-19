@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
         // 'App\Model' => 'App\Policies\ModelPolicy',
         'App\Payment' => 'App\Policies\CheckUserAuthorize',
 		'App\User' => 'App\Policies\UserAuthorize',
+		'App\Admin' => 'App\Policies\AdminAuthorize',
     ];
 
     /**
@@ -26,7 +27,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-       // Gate::define('isAuthorize', 'App\Policies\CheckUserAuthorize@isAuthorize');
     }
 }
