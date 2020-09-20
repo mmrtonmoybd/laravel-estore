@@ -29,11 +29,11 @@
                 @csrf
 				<div class="form-group">
                     <label for="exampleInputEmail1">Product Title</label>
-                    <input class="form-control @error('title') is-invalid @enderror" id="exampleInputTitle" type="text" aria-describedby="TitleHelp" placeholder="Enter Title" name="title" required value="{{ old('title') }}">
+                    <input class="form-control @error('title') is-invalid @enderror" id="exampleInputTitle" type="text" aria-describedby="TitleHelp" placeholder="Enter Title" name="title" required value="{{ $product->title }}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputqty1">Product Quantity</label>
-                    <input class="form-control @error('quantity') is-invalid @enderror" id="exampleInputQty1" type="number" placeholder="Quantity" name="quantity" required value="{{ old('quantity') }}">
+                    <input class="form-control @error('quantity') is-invalid @enderror" id="exampleInputQty1" type="number" placeholder="Quantity" name="quantity" required value="{{ $product->quantity }}">
                   </div>
                   <div class="form-group">
                     <label for="exampleSelect1">Product Category</label>
@@ -45,25 +45,25 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleTextarea">Product Description</label>
-                    <textarea class="form-control @error('info') is-invalid @enderror" id="exampleTextarea" rows="3" name="info" required>{{ old('info') }}</textarea>
+                    <textarea class="form-control @error('info') is-invalid @enderror" id="exampleTextarea" rows="3" name="info" required>{{ $product->description }}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Product Thumbnail</label>
-                    <input class="form-control-file @error('thumbnail') is-invalid @enderror" id="exampleInputFile" type="file" aria-describedby="fileHelp" name="thumbnail" value="{{ old('thumbnail') }}" required>
+                    <input class="form-control-file @error('thumbnail') is-invalid @enderror" id="exampleInputFile" type="file" aria-describedby="fileHelp" name="thumbnail">
                   </div>
 				  <div class="form-group">
                     <label for="exampleInputqty1">Product Discounds</label>
-                    <input class="form-control @error('discounds') is-invalid @enderror" id="exampleInputDiscounds1" type="number" placeholder="Discounds" name="discounds" value="{{ old('discounds') }}" required>
+                    <input class="form-control @error('discounds') is-invalid @enderror" id="exampleInputDiscounds1" type="number" placeholder="Discounds" name="discounds" value="{{ $product->discounds }}" required>
                   </div>
                     <div class="form-group">
                       <label class="sr-only" for="exampleInputAmount">Product Price (in dollars)</label>
                       <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-                        <input class="form-control @error('price') is-invalid @enderror" id="exampleInputAmount" type="number" placeholder="Amount" name="price" required value="{{ old('price') }}">
+                        <input class="form-control @error('price') is-invalid @enderror" id="exampleInputAmount" type="number" placeholder="Amount" name="price" required value="{{ $product->price }}">
                         <div class="input-group-append"><span class="input-group-text">.00</span></div>
                       </div>
 					  <div class="tile-footer">
-              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-primary" type="submit">Update</button>
             </div>
                 </form>
               </div>

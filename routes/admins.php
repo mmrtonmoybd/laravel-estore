@@ -20,6 +20,7 @@ Route::group([
 	 Route::get('products/add', 'Admin\ProductController@add')->name('admin.product.add');
 	 Route::post('products/add', 'Admin\ProductController@store');
 	 
-	 Route::get('products/update/{id}', 'Admin\ProductController@showForm');
+	 Route::get('products/update/{id}', 'Admin\ProductController@showForm')->name('admin.product.update');
+	 Route::post('products/update/{id}', 'Admin\ProductController@update');
  });
 });

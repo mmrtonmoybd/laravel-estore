@@ -16,11 +16,12 @@ class AdminSeeder extends Seeder
     public function run()
     {
         $fake = Faker::create();
-        $user = new Admin();
-		$user->name = $fake->name;
-		$user->email = 'moshiur@admin.com';
-		$user->password = Hash::make('12345678');
-		$user->email_verified_at = Carbon::now()->toDateTimeString();
-		$user->save();
+        $admin = new Admin();
+		$admin->name = $fake->name;
+		$admin->email = 'moshiur@admin.com';
+		$admin->password = Hash::make('12345678');
+		$admin->isAdmin = 1;
+		$admin->email_verified_at = Carbon::now()->toDateTimeString();
+		$admin->save();
     }
 }

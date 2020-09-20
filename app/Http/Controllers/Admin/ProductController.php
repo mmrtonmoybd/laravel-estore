@@ -61,6 +61,19 @@ class ProductController extends Controller
 	public function showForm(Product $id) {
 	    return view('admin.productedit', [
 	    'product' => $id,
+	    'categorys' => Categorie::get(),
+	    ]);
+	}
+	
+	public function update(Request $request, Product $id) {
+	    $request->validate([
+	    'title' => 'required|string|max:255',
+	    'quantity' => 'required|integer',
+	    'category' => 'required|integer|exists:categories,id',
+	    'info' => 'required|string',
+	    'thumbnail' => 'image|mimes:jpeg,png,gif,jpg,svg|max:4096|dimensions:min_width=400,min_height=200,max_width=2500,max_height=2500',
+	    'discounds' => 'required|integer|max:100',
+	    'price' => 'required|numeric',
 	    ]);
 	}
 }
