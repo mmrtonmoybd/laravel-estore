@@ -15,6 +15,14 @@
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
+            @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session()->get('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                   <thead>

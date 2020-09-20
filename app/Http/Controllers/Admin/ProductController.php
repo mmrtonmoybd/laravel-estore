@@ -55,8 +55,12 @@ class ProductController extends Controller
       'admin_id' => $request->user()->id,
       ]);
       
-      return redirect()->route('admin.product.list')->with(['title' => 'Product Add', 'message' => 'Product adding is successfull.', 'type' => 'info']);
-      
-      //dd($request->user()->hasVerifiedEmail());
+      return redirect()->route('admin.product.list')->with('success', 'Product adding is successfull.');
+	}
+	
+	public function showForm(Product $id) {
+	    return view('admin.productedit', [
+	    'product' => $id,
+	    ]);
 	}
 }

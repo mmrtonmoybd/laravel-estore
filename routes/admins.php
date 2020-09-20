@@ -19,5 +19,7 @@ Route::group([
      Route::get('products', 'Admin\ProductController@index')->name('admin.product.list');
 	 Route::get('products/add', 'Admin\ProductController@add')->name('admin.product.add');
 	 Route::post('products/add', 'Admin\ProductController@store');
+	 
+	 Route::get('products/update/{id}', 'Admin\ProductController@showForm');
  });
 });
