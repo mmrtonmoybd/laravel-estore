@@ -55,7 +55,7 @@ class ProductController extends Controller
       'admin_id' => $request->user()->id,
       ]);
       
-      return redirect()->route('admin.product.list')->with('success', 'Product adding is successfull.');
+      return redirect()->route('admin.product.list')->with('success', 'Product adding is successfull!');
 	}
 	
 	public function showForm(Product $id) {
@@ -76,11 +76,19 @@ class ProductController extends Controller
 	    'price' => 'required|numeric',
 	    ]);
 	    
+		if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
+          $thumbnail = $request->file('thumbnail')->store('products');
+          $id->image = $thumbnail;
+      }
+	  
 	    $id->title = $request->input('title');
-	    $id->quantity = $required->input('quantity');
+	    $id->quantity = $request->input('quantity');
 	    $id->category_id = $request->input('category');
 	    $id->description = $request->input('info');
-	    $id->
-	    print_r($request->all());
+	    $id->discounds = $request->input('discounds');
+		$id->price = $request->input('price');
+		$id->save();
+		
+	    return redirect()->route('admin.product.list')->with('success', 'Product Update is successfull!');
 	}
 }

@@ -14,6 +14,10 @@
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
+		  <div class="tile-title-w-btn">
+              <h3 class="title">All Products</h3>
+              <p><a class="btn btn-primary icon-btn" href="{{ route('admin.product.add') }}"><i class="fa fa-plus"></i>Add Product</a></p>
+            </div>
             <div class="tile-body">
             @if(session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -23,6 +27,7 @@
                 </button>
             </div>
         @endif
+		
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
                   <thead>
@@ -38,6 +43,7 @@
                       <th>Sells</th>
                       <th>Updated</th>
                       <th>Created</th>
+					  <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,6 +64,7 @@
                       <td>{{ \App\Product::order($product->id) }}</td>
                       <td>{{ $product->updated_at }}</td>
                       <td>{{ $product->created_at }}</td>
+					  <td><div class="btn-group"><a class="btn btn-primary" href='{{ url("/product/{$product->id}") }}'><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.product.update', ['id' => $product->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="#"><i class="fa fa-lg fa-trash"></i></a></div></td>
                     </tr>
                     @endforeach
                   </tbody>

@@ -9,7 +9,7 @@
       </div>
       <ul class="app-menu">
         <li><a class="app-menu__item {{ Route::currentRouteName() == 'admin.dashboard' ? 'active' : '' }}" href="{{ route('admin.dashboard') }}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-        <li class="treeview"><a class="app-menu__item @if (Route::currentRouteName() == 'admin.product.list' || Route::currentRouteName() == 'admin.product.add') {{ 'active' }} @endif" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-product-hunt"></i><span class="app-menu__label">Products</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item @if (Route::currentRouteName() == 'admin.product.list' || Route::currentRouteName() == 'admin.product.add' || Route::currentRouteName() == 'admin.product.update') {{ 'active' }} @endif" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-product-hunt"></i><span class="app-menu__label">Products</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{{ route('admin.product.list') }}"><i class="icon fa fa-circle-o"></i> Product Lists</a></li>
             <li><a class="treeview-item" href="{{ route('admin.product.add') }}" rel="noopener"><i class="icon fa fa-circle-o"></i> Product Add</a></li>
