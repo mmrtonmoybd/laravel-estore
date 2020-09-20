@@ -75,5 +75,12 @@ class ProductController extends Controller
 	    'discounds' => 'required|integer|max:100',
 	    'price' => 'required|numeric',
 	    ]);
+	    
+	    $id->title = $request->input('title');
+	    $id->quantity = $required->input('quantity');
+	    $id->category_id = $request->input('category');
+	    $id->description = $request->input('info');
+	    $id->
+	    print_r($request->all());
 	}
 }
