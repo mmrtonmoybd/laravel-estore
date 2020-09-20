@@ -59,12 +59,15 @@
                       <td>${{ $product->price }}</td>
                       <td>{{ $product->discounds }}</td>
                       <td>{{ $product->views }}</td>
-                      <td>{{ $product->quantity }}</td>
+     @if ($product->quantity < 1)                 <td class="btn btn-danger">{{ $product->quantity }} </td>
+     @else
+     <td>{{ $product->quantity }} </td>
+     @endif
                       <td>{{ $product->admin->name }}</td>
                       <td>{{ \App\Product::order($product->id) }}</td>
                       <td>{{ $product->updated_at }}</td>
                       <td>{{ $product->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href='{{ url("/product/{$product->id}") }}'><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.product.update', ['id' => $product->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="#"><i class="fa fa-lg fa-trash"></i></a></div></td>
+					  <td><div class="btn-group"><a class="btn btn-primary" href='{{ url("/product/{$product->id}") }}'><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.product.update', ['id' => $product->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.product.delete', ['id' => $product->id ]) }}"><i class="fa fa-lg fa-trash"></i></a></div></td>
                     </tr>
                     @endforeach
                   </tbody>

@@ -23,4 +23,8 @@ class Payment extends Model
     public function product() {
         return $this->belongsToMany(Product::class, 'orders', 'payment_id', 'product_id');
     }
+    
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

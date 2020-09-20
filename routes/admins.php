@@ -22,5 +22,18 @@ Route::group([
 	 
 	 Route::get('products/update/{id}', 'Admin\ProductController@showForm')->name('admin.product.update');
 	 Route::post('products/update/{id}', 'Admin\ProductController@update');
+	 
+	 Route::get('products/delete/{id}', 'Admin\ProductController@delete')->name('admin.product.delete');
+	 
+	 Route::get('categories', 'Admin\CategoryController@index')->name('admin.category.list');
+	 Route::get('categories/add', 'Admin\CategoryController@showForm')->name('admin.category.add');
+	 Route::post('categories/add', 'Admin\CategoryController@store');
+	 Route::get('categories/update/{id}', 'Admin\CategoryController@updateForm')->name('admin.category.update');
+	 Route::post('categories/update/{id}', 'Admin\CategoryController@update');
+	 Route::get('categories/delete/{id}', 'Admin\CategoryController@delete')->name('admin.category.delete');
+	 
+	 Route::get('payments', 'Admin\PaymentController@index')->name('admin.payment.list');
+	 Route::get('payments/update/{id}', 'Admin\PaymentController@showForm')->name('admin.payment.update');
+	 Route::post('payments/update/{id}', 'Admin\PaymentController@update');
  });
 });

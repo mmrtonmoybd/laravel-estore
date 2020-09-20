@@ -30,7 +30,7 @@ class ProductController extends Controller
 	public function store(Request $request) {
 	    $request->validate([
 	    'title' => 'required|string|max:255',
-	    'quantity' => 'required|integer',
+	    'quantity' => 'required|integer|min:1',
 	    'category' => 'required|integer|exists:categories,id',
 	    'info' => 'required|string',
 	    'thumbnail' => 'required|image|mimes:jpeg,png,gif,jpg,svg|max:4096|dimensions:min_width=400,min_height=200,max_width=2500,max_height=2500',
@@ -55,6 +55,9 @@ class ProductController extends Controller
       'admin_id' => $request->user()->id,
       ]);
       
+      $category = Categorie::find($request->input('category'));
+      $category->products++;
+      $category->save();
       return redirect()->route('admin.product.list')->with('success', 'Product adding is successfull!');
 	}
 	
@@ -68,7 +71,7 @@ class ProductController extends Controller
 	public function update(Request $request, Product $id) {
 	    $request->validate([
 	    'title' => 'required|string|max:255',
-	    'quantity' => 'required|integer',
+	    'quantity' => 'required|integer|min:1',
 	    'category' => 'required|integer|exists:categories,id',
 	    'info' => 'required|string',
 	    'thumbnail' => 'image|mimes:jpeg,png,gif,jpg,svg|max:4096|dimensions:min_width=400,min_height=200,max_width=2500,max_height=2500',
@@ -89,6 +92,11 @@ class ProductController extends Controller
 		$id->price = $request->input('price');
 		$id->save();
 		
-	    return redirect()->route('admin.product.list')->with('success', 'Product Update is successfull!');
+	    return redirect()->route('admin.product.list')->with('success', 'Product updated is successfull!');
+	}
+	
+	public function delete(Product $id) {
+	    $id->delete();
+	    return redirect()->route('admin.product.list')->with('success', 'Product deleted is successfull!');
 	}
 }
