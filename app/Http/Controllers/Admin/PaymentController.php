@@ -24,4 +24,15 @@ class PaymentController extends Controller
         'payment' => $id,
         ]);
     }
+    
+    public function update(Request $request, Payment $id) {
+    	$request->validate([
+    	'address' => 'required|string|max:450',
+    	'mobile' => 'required|numeric',
+    	]);
+    	$id->address = $request->input('address');
+    	$id->mobile = $request->input('mobile');
+    	$id->save();
+    	return redirect()->route('admin.payment.list')->with('success', 'Payment is updated!');
+    }
 }
