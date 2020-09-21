@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	@if (Route::currentRouteName() == 'admin.product.add') 
+		<link href="https://inacho.github.io/bootstrap-markdown-editor/dist/css/bootstrap-markdown-editor.css" rel="stylesheet">
+	@endif
   </head>
   <body class="app sidebar-mini">
     @include('admin.partials.header')
@@ -25,5 +28,10 @@
     <script src="{{ asset('admin/js/main.js')}}"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="{{ asset('admin/js/plugins/pace.min.js') }}"></script>
+	@if (Route::currentRouteName() == 'admin.product.add') 
+		<script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+		<script src="https://inacho.github.io/bootstrap-markdown-editor/dist/js/bootstrap-markdown-editor.js"></script>
+	@endif
   </body>
   </html>
