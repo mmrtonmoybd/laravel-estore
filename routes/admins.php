@@ -19,10 +19,8 @@ Route::group([
      Route::get('products', 'Admin\ProductController@index')->name('admin.product.list');
 	 Route::get('products/add', 'Admin\ProductController@add')->name('admin.product.add');
 	 Route::post('products/add', 'Admin\ProductController@store');
-	 
 	 Route::get('products/update/{id}', 'Admin\ProductController@showForm')->name('admin.product.update');
 	 Route::post('products/update/{id}', 'Admin\ProductController@update');
-	 
 	 Route::get('products/delete/{id}', 'Admin\ProductController@delete')->name('admin.product.delete');
 	 
 	 Route::get('categories', 'Admin\CategoryController@index')->name('admin.category.list');
@@ -35,5 +33,8 @@ Route::group([
 	 Route::get('payments', 'Admin\PaymentController@index')->name('admin.payment.list');
 	 Route::get('payments/update/{id}', 'Admin\PaymentController@showForm')->name('admin.payment.update');
 	 Route::post('payments/update/{id}', 'Admin\PaymentController@update');
+	 Route::get('payments/delete/{id}', 'Admin\PaymentController@delete')->name('admin.payment.delete');
+	 
+	 Route::get('users', 'Admin\UserController@index')->name('admin.user.list');
  });
 });

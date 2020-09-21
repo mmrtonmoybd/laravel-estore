@@ -35,4 +35,9 @@ class PaymentController extends Controller
     	$id->save();
     	return redirect()->route('admin.payment.list')->with('success', 'Payment is updated!');
     }
+	
+	public function delete(Payment $id) {
+		$id->delete();
+		return redirect()->route('admin.payment.list')->with('success', 'Payment is deleted!');
+	}
 }

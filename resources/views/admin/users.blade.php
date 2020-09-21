@@ -2,12 +2,12 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i>Payments</h1>
-          <p>Display All Payments</p>
+          <h1><i class="fa fa-th-list"></i>Users</h1>
+          <p>Display All Users</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
-          <li class="breadcrumb-item active">Payments</li>
+          <li class="breadcrumb-item active">Users</li>
         </ul>
       </div>
       
@@ -15,7 +15,7 @@
         <div class="col-md-12">
           <div class="tile">
           <div class="tile-title-w-btn">
-              <h3 class="title">All Payments</h3>
+              <h3 class="title">All Users</h3>
               </div>
             <div class="tile-body">
             @if(session()->has('success'))
@@ -32,38 +32,36 @@
                   <thead>
                   <tr>
                       <th>ID</th>
-                      <th>Payment ID</th>
-                      <th>Buyer Name</th>
-                      <th>Shipping Address</th>
-                      <th>Shipping Mobile</th>
-                      <th>Shipping Email</th>
-                      <th>Amount</th>
-                      <th>User ID</th>
+                      <th>User Name</th>
+                      <th>User Email</th>
+                      <th>Home Address</th>
+                      <th>User Mobile</th>
+                      <th>User Facebook</th>
+                      <th>User IP</th>
                       <th>Updated</th>
                       <th>Created</th>
 					  <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($payments as $payment)
+                  @foreach ($users as $user)
                   <tr>
-                      <td>{{ $payment->id }}</td>
-                      <td>{{ $payment->payment_id }}</td> 
-                      <td>{{ $payment->user->name }}</td>  
-                      <td>{{ $payment->address }}</td>
-                      <td>{{ $payment->mobile }}</td>
-                      <td>{{ $payment->user->email }}</td>
-                      <td>${{ $payment->amount }}</td>
-                      <td>{{ $payment->user_id }}</td>
-                      <td>{{ $payment->updated_at }}</td>
-                      <td>{{ $payment->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href="{{ route('admin.payment.update', ['id' => $payment->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.payment.delete', ['id' => $payment->id])}}"><i class="fa fa-lg fa-trash"></i></a></div></td>
+                      <td>{{ $user->id }}</td>
+                      <td>{{ $user->name }}</td> 
+                      <td>{{ $user->email }}</td>  
+                      <td>{{ $user->userInfo->address }}</td>
+                      <td>{{ $user->userInfo->mobile }}</td>
+                      <td>{{ $user->userInfo->facebook }}</td>
+                      <td>{{ $user->userInfo->ip }}</td>
+                      <td>{{ $user->updated_at }}</td>
+                      <td>{{ $user->created_at }}</td>
+					  <td><div class="btn-group"><a class="btn btn-primary" href=""><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-trash"></i></a></div></td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
               </div>
-              {{ $payments->links() }}
+              {{ $users->links() }}
             </div>
           </div>
         </div>
