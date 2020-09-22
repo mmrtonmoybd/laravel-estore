@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\UserInfo;
 
 class UserController extends Controller
 {
@@ -37,12 +38,20 @@ class UserController extends Controller
 		$id->name = $request->input('name');
 		$id->email = $request->input('email');
 		$id->userInfo->address = $request->input('address');
-		$id->userInfo->mobile = $request->input('mobile');
-		$id->userInfo->facebook = $request->input('facebook');
+		$id->userInfo->
 		if (!empty($request->input('password'))) {
 			$id->password = Password::make($request->input('password'));
 		}
 		$id->save();
+		$info = UserInfo::find($id->id);
+		$info->mobile = $request->input('mobile');
+		$info->facebook = $request->input('facebook');
+		$info->save();
 		return redirect()->route('admin.user.list')->with('success', 'User is updated');
+	}
+	
+	public function delete(User $id) {
+		$id->delete();
+		return redirect()->route('admin.user.list')->with('success', 'User is deleted');
 	}
 }
