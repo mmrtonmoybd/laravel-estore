@@ -37,4 +37,11 @@ Route::group([
 	 
 	 Route::get('users', 'Admin\UserController@index')->name('admin.user.list');
  });
+ Route::get('users/update/{id}', 'Admin\UserController@showForm')->name('admin.user.update');
+ Route::post('users/update/{id}', 'Admin\UserController@update');
+ 
+ Route::get('orders', 'Admin\OrderController@index')->name('admin.order.list');
+ Route::get('orders/update/{id}', 'Admin\OrderController@showForm')->name('admin.order.update');
+ Route::post('orders/update/{id}', 'Admin\OrderController@update');
+ Route::get('orders/delete/{id}', 'Admin\OrderController@delete')->name('admin.order.delete');
 });

@@ -55,7 +55,7 @@
                       <td>{{ $user->userInfo->ip }}</td>
                       <td>{{ $user->updated_at }}</td>
                       <td>{{ $user->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href=""><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-trash"></i></a></div></td>
+					  <td><div class="btn-group"><a class="btn btn-primary" href='{{ url("/users/profile/{$user->id}") }}'><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.user.update', ['id' => $user->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-trash"></i></a></div></td>
                     </tr>
                     @endforeach
                   </tbody>

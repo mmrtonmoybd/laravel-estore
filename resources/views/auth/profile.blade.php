@@ -15,6 +15,28 @@
 <th>Name: </th>
 <td>{{ $profile->name }}</td>
 </tr>
+@if (\Auth::guard('admin')->check())
+<tr>
+<th>Email Address: </th>
+<td>{{ $profile->email }}</td>
+</tr>
+<tr>
+<th>Facebook: </th>
+<td><a href="{{ $userinfo->facebook }}">{{ $profile->name }}</a></td>
+</tr>
+<tr>
+<th>Home Address: </th>
+<td>{{ $userinfo->address }}</td>
+</tr>
+<tr>
+<th>Mobile Phone: </th>
+<td>{{ $userinfo->mobile }}</td>
+</tr>
+<tr>
+<th>IP Address: </th>
+<td>{{ $userinfo->ip }}</td>
+</tr>
+@endif
 @can('isAuthorize', $profile)
 <tr>
 <th>Email Address: </th>

@@ -45,7 +45,7 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleTextarea">Product Description</label>
-                    <textarea class="form-control @error('info') is-invalid @enderror" id="editor" rows="10" name="info" required>{{ old('info') }}</textarea>
+                    <textarea class="form-control @error('info') is-invalid @enderror" id="summernote" rows="5" name="info" required>{{ old('info') }}</textarea>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Product Thumbnail</label>
@@ -73,18 +73,4 @@
           </div>
         </div>
       </div>
-	  <script>
-
-            jQuery(document).ready(function($) {
-
-                $('#editor').markdownEditor({
-                    preview: true,
-                    onPreview: function (content, callback) {
-                        callback( marked(content) );
-                    }
-                });
-
-            });
-
-        </script>
 @endsection
