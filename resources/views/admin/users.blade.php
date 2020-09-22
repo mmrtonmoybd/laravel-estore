@@ -16,6 +16,7 @@
           <div class="tile">
           <div class="tile-title-w-btn">
               <h3 class="title">All Users</h3>
+              <p><a class="btn btn-primary icon-btn" href="{{ route('admin.user.add') }}"><i class="fa fa-plus"></i>Add User</a></p>
               </div>
             <div class="tile-body">
             @if(session()->has('success'))

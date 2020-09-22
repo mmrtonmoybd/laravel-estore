@@ -23,9 +23,8 @@ class AdminAuthorize
     {
         //
     }
-    /*
-    public function isAdmin(Admin $admin) {
-        return $admin->isAdmin === 1;
+    
+    public function asminAuthorize(Admin $admin, $id) {
+    	return $admin->id === $id || $admin->isAdmin;
     }
-    */
 }

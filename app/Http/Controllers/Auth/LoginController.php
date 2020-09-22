@@ -42,8 +42,8 @@ class LoginController extends Controller
     
     protected function authenticated($request, $user) {
        Auth::logoutOtherDevices($request->input('password'));
-       $info = UserInfo::where('user_id', $request->user()->id)->first();
-       $info->ip = $request->ip();
+       $info = UserInfo::find($request->user()->id);
+       $info->ip = !empty($request->ip()) ? $request->ip() : '127.0.0.1';
        $info->save();
     }
 }

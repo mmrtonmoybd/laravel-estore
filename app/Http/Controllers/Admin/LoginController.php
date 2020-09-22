@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use App\AdminInfo;
 
 class LoginController extends Controller
 {
@@ -28,13 +29,24 @@ class LoginController extends Controller
         return Auth::guard('admin');
     }
     
-    protected function authenticated($request, $user) {
-       Auth::logoutOtherDevices($request->input('password'));
-       }
+    
     
     public function showLoginForm()
     {
         return view('admin.auth.login');
     }
+    
+    protected function authenticated(Request $request, $user) {
+       Auth::logoutOtherDevices($request->input('password'));
+       //dd($request->ip());
+       $admin = AdminInfo::find(Auth::guard('admin')->user()->id);
+       $admin->ip = !empty($request->ip()) ? $request->ip() : '127.0.0.1';
+       $admin->save();
+       
+       }
+       
+       protected function loggedOut(Request $request) {
+       	return redirect()->route('admin.login');
+       }
     
 }

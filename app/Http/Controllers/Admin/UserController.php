@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserInfo;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -18,6 +19,33 @@ class UserController extends Controller
 		return view('admin.users', [
 		'users' => User::paginate(config('settings.max_item_per_page')),
 		]);
+	}
+	
+	public function addForm() {
+		return view('admin.useradd');
+	}
+	
+	public function create(Request $request) {
+		$request->validate([
+		'name' => 'required|string',
+		'email' => 'required|email|max:255',
+		'address' => 'required|string',
+		'mobile' => 'required|numeric',
+		'password' => 'required|confirmed|min:7|string',
+		]);
+		$user = User::create([
+		'name' => $request->input('name'),
+		'email' => $request->input('email'),
+		'password' => Hash::make($request->input('password')),
+		]);
+		
+		UserInfo::create([
+		'address' => $request->input('address'),
+		'mobile' => $request->input('mobile'),
+		'user_id' => $user->id,
+		'ip' => '127.0.0.1',
+		]);
+		return redirect()->route('admin.user.list')->with('success', 'User is created!');
 	}
 	
 	public function showForm(User $id) {
@@ -37,21 +65,20 @@ class UserController extends Controller
 		]);
 		$id->name = $request->input('name');
 		$id->email = $request->input('email');
-		$id->userInfo->address = $request->input('address');
-		$id->userInfo->
 		if (!empty($request->input('password'))) {
-			$id->password = Password::make($request->input('password'));
+			$id->password = Hash::make($request->input('password'));
 		}
 		$id->save();
 		$info = UserInfo::find($id->id);
 		$info->mobile = $request->input('mobile');
+		$info->address = $request->input('address');
 		$info->facebook = $request->input('facebook');
 		$info->save();
-		return redirect()->route('admin.user.list')->with('success', 'User is updated');
+		return redirect()->route('admin.user.list')->with('success', 'User is updated!');
 	}
 	
 	public function delete(User $id) {
 		$id->delete();
-		return redirect()->route('admin.user.list')->with('success', 'User is deleted');
+		return redirect()->route('admin.user.list')->with('success', 'User is deleted!');
 	}
 }

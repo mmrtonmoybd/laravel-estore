@@ -16,7 +16,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'isAdmin',
     ];
 
     /**
@@ -28,7 +28,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
     
-    protected $guarded = ['isAdmin'];
+    //protected $guarded = ['isAdmin'];
 
     /**
      * The attributes that should be cast to native types.
@@ -42,5 +42,9 @@ class Admin extends Authenticatable implements MustVerifyEmail
     
     public function sendPasswordResetNotification($token) {
         $this->notify(new AdminResetPassword($token));
+    }
+    
+    public function adminInfo() {
+        return $this->hasOne('App\AdminInfo', 'admin_id', 'id');
     }
 }

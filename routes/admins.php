@@ -36,12 +36,34 @@ Route::group([
 	 Route::get('payments/delete/{id}', 'Admin\PaymentController@delete')->name('admin.payment.delete');
 	 
 	 Route::get('users', 'Admin\UserController@index')->name('admin.user.list');
- });
- Route::get('users/update/{id}', 'Admin\UserController@showForm')->name('admin.user.update');
+	 Route::get('users/update/{id}', 'Admin\UserController@showForm')->name('admin.user.update');
  Route::post('users/update/{id}', 'Admin\UserController@update');
+ Route::get('users/delete/{id}', 'Admin\UserController@delete')->name('admin.user.delete');
+ Route::get('users/add', 'Admin\UserController@addForm')->name('admin.user.add');
+ Route::post('users/add', 'Admin\UserController@create');
  
  Route::get('orders', 'Admin\OrderController@index')->name('admin.order.list');
  Route::get('orders/update/{id}', 'Admin\OrderController@showForm')->name('admin.order.update');
  Route::post('orders/update/{id}', 'Admin\OrderController@update');
  Route::get('orders/delete/{id}', 'Admin\OrderController@delete')->name('admin.order.delete');
+ 
+ //Super Admin Permission
+ 
+ Route::group(['middleware' => 'can:isAdmin'], function () {
+ 	
+ 	
+ 	Route::get('admins', 'Admin\AdminController@index')->name('admin.admin.list');
+ 	Route::get('admins/update/{id}', 'Admin\AdminController@edit')->name('admin.admin.update');
+ 	Route::post('admins/update/{id}', 'Admin\AdminController@update');
+ 	Route::get('admins/add', 'Admin\AdminController@create')->name('admin.admin.add');
+ 	Route::post('admins/add', 'Admin\AdminController@store');
+ 	Route::get('admins/delete/{id}', 'Admin\AdminController@destroy')->name('admin.admin.delete');
+ 	
+ 	
+ });
+ 
+ 
+ });
+ 
+ 
 });
