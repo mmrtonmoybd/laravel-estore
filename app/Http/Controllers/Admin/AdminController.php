@@ -91,9 +91,13 @@ class AdminController extends Controller
      */
     public function edit(Admin $id)
     {
+    	if (Auth::guard('admin')->user()->id !== $id->id) {
         return view('admin.adminupdate', [
         'admin' => $id,
         ]);
+        } else {
+        	return redirect()->route('admin.admin.list')->with('success', 'Current user can not be updated');
+        }
     }
 
     /**
@@ -105,6 +109,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $id)
     {
+    	if (Auth::guard('admin')->user()->id !== $id->id) {
         $request->validate([
         'name' => 'required|string',
 		'email' => 'required|email|max:255',
@@ -128,6 +133,9 @@ class AdminController extends Controller
 		$info->facebook = $request->input('facebook');
 		$info->save();
 		return redirect()->route('admin.admin.list')->with('success', 'Admin is updated!');
+		} else {
+			return redirect()->route('admin.admin.list')->with('success', 'Current user can not be updated');
+		}
     }
 
     /**

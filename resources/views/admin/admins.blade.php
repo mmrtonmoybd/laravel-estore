@@ -35,6 +35,7 @@
                       <th>ID</th>
                       <th>Admin Name</th>
                       <th>Admin Email</th>
+                      <th>Admin Permission</th>
                       <th>Home Address</th>
                       <th>Admin Mobile</th>
                       <th>Admin Facebook</th>
@@ -49,14 +50,15 @@
                   <tr>
                       <td>{{ $admin->id }}</td>
                       <td>{{ $admin->name }}</td> 
-                      <td>{{ $admin->email }}</td>  
+                      <td>{{ $admin->email }}</td> 
+                      <td>@if ($admin->isAdmin == 1) {{ "Super Admin"}} @else {{ "Normal Admin"}} @endif</td>
                       <td>{{ $admin->adminInfo->address }}</td>
                       <td>{{ $admin->adminInfo->mobile }}</td>
                       <td>{{ $admin->adminInfo->facebook }}</td>
                       <td>{{ $admin->adminInfo->ip }}</td>
                       <td>{{ $admin->updated_at }}</td>
                       <td>{{ $admin->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href=''><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.admin.update', ['id' => $admin->id]) }}"><i class="fa fa-lg fa-edit"></i></a>@if (Auth::guard('admin')->user()->id !== $admin->id)<a class="btn btn-primary" href="{{ route('admin.admin.delete', ['id' => $admin->id ])}}"><i class="fa fa-lg fa-trash"></i></a>@endif</div></td>
+					  <td>@if (Auth::guard('admin')->user()->id !== $admin->id)<div class="btn-group"><a class="btn btn-primary" href=''><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.admin.update', ['id' => $admin->id]) }}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.admin.delete', ['id' => $admin->id ])}}"><i class="fa fa-lg fa-trash"></i></a></div> @else This admin is current user.@endif</td>
                     </tr>
                     @endforeach
                   </tbody>
