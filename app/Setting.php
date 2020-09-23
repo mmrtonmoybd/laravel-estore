@@ -33,4 +33,12 @@ class Setting extends Model
 		$get = Setting::where('name', $name)->first();
 		return $get->value;
 	}
+	
+	public static function putValue($name, $putval) {
+		
+		$getId = Setting::where('name', $name)->first();
+		$find = Setting::find($getId->id);
+	  $find->value = $putval;
+	  return $find->save();
+	}
 }

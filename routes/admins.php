@@ -60,6 +60,9 @@ Route::group([
  	Route::get('admins/delete/{id}', 'Admin\AdminController@destroy')->name('admin.admin.delete');
  	
  	
+ 	Route::get('settings', 'Admin\SettingController@index')->name('admin.setting.list');
+ 	Route::post('settings', 'Admin\SettingController@update');
+ 	
  });
  
  

@@ -17,30 +17,6 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        Setting::create([
-        'name' => 'app_name',
-        'value' => 'Moshiur Ecommerce',
-        ]);
-        
-        Setting::create([
-        'name' => 'app_url',
-        'value' => 'http://127.0.0.1:8000',
-        ]);
-        
-        Setting::create([
-        'name' => 'app_env',
-        'value' => 'local',
-        ]);
-        
-        Setting::create([
-        'name' => 'app_debug',
-        'value' => 'false',
-        ]);
-        
-        Setting::create([
-        'name' => 'app_timezone',
-        'value' => 'Asia/Dhaka',
-        ]);
         
         Setting::create([
         'name' => 'stripe_secret',
@@ -68,13 +44,28 @@ class SettingSeeder extends Seeder
         ]);
         
         Setting::create([
-        'name' => 'register',
-        'value' => 1,
+        'name' => 'currency',
+        'value' => 'USD',
         ]);
         
         Setting::create([
-        'name' => 'checkout',
-        'value' => 1,
+        'name' => 'home_title',
+        'value' => "Moshiur Ecommerce",
+        ]);
+        
+        Setting::create([
+        'name' => 'home_info',
+        'value' => 'home description',
+        ]);
+        
+        Setting::create([
+        'name' => 'google_key',
+        'value' => 'JVJjckkkckfkkdk8884848jcjjc',
+        ]);
+        
+        Setting::create([
+        'name' => 'bing_key',
+        'value' => 'ifjjgkvkvkk77668984',
         ]);
     }
 }

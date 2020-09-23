@@ -3,23 +3,23 @@ return [
 /*
 Item displaying limit for pagination
 */
-'max_item_per_page' => env('MAX_PRODUCTS_PER_PAGE'),
+'max_item_per_page' => \App\Setting::getValue('item_per_page'),
 
-'max_discounded_item' => env('MAX_DISCOUNDED_PRODUCTS'),
+'max_discounded_item' => \App\Setting::getValue('item_per_column'),
 
-'max_related_item' => env('MAX_RELATED_PRODUCTS'),
+'max_related_item' => \App\Setting::getValue('item_per_column'),
 
-'max_latest_item' => env('MAX_LATEST_PRODUCTS'),
+'max_latest_item' => \App\Setting::getValue('item_per_column'),
 //Tax that will be charge in checkout
-'vat' => env('VAT'),
+'vat' => \App\Setting::getValue('vat'),
 
 //stripe secret key
-'stripe_secret' => env('STRIPE_SECRET_KEY'),
+'stripe_secret' => \App\Setting::getValue('stripe_secret'),
 
 //stripe publishable key
-'stripe_publishable' => env('STRIPE_PUBLISHABLE_KEY'),
+'stripe_publishable' => \App\Setting::getValue('stripe_public'),
 
 //stripe currency that will be used in checkout
-'stripe_currency' => env('STRIPE_CURRENCY'),
+'stripe_currency' => \App\Setting::getValue('currency'),
 ]
 ?>

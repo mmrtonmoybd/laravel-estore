@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Darryldecode\Cart\CartServiceProvider::class,
+        Actuallymab\LaravelComment\LaravelCommentServiceProvider::class,
         /*
          * Application Service Providers...
          */
