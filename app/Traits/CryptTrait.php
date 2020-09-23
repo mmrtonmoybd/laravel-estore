@@ -4,23 +4,23 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 Trait CryptTrait {
-   private $value;
+   private $valuet;
    
-   private function setavalue($value) {
-      $this->value = $value;
-      return $this->value;
+   private function setavalue($valuet) {
+      $this->valuet = $valuet;
+      return $this->valuet;
    }
-   public function encrypt($value) {
-      $this->setavalue($value);
-      return Crypt::encryptString($this->value);
+   public function encrypt($valuet) {
+      $this->setavalue($valuet);
+      return Crypt::encryptString($this->valuet);
    }
    
-   public function deCrypt($value) {
-      $this->setavalue($value);
+   public function deCrypt($valuet) {
+      $this->setavalue($valuet);
       try {
-	      return Crypt::decryptString($this->value);
+	      return Crypt::decryptString($this->valuet);
 	   } catch (DecryptException $e) {
-	      echo "Unable to decrypt this hash: " . $e;
+	      echo "Unable to decrypt this hash: ";
 	   } 
    }
 }

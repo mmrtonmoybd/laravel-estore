@@ -29,7 +29,7 @@ class SettingSeeder extends Seeder
         
         Setting::create([
         'name' => 'app_env',
-        'value' => 'development',
+        'value' => 'local',
         ]);
         
         Setting::create([
