@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => \App\Setting::getValue('app_name'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => \App\Setting::getValue('app_env'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (\App\Setting::getValue('app_debug') == 1) ? true : false,
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => \App\Setting::getValue('app_url'),
+    'url' => env('APP_URL', 'http://127.0.0.1:8000'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => \App\Setting::getValue('app_timezone'),
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
