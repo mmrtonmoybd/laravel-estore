@@ -32,6 +32,29 @@
                                     </form>
             <p class="card-text">{{ $product->description }}</p>
           </div>
+          <form action="{{ route('user.comment') }}" method="POST">
+@csrf
+@foreach($errors->all() as $error)
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       {{ $error }}
+       </div>
+       @endforeach
+       @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session()->get('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+<div class="form-group">
+    <label for="exampleInputName">Comment Content</label>
+    <textarea class="form-control @error('comment') is-invalid @enderror" id="exampleInputName" aria-describedby="nameHelp" name="comment">{{ old('comment') }}</textarea>
+  </div>
+  <input type="hidden" value="{{ $product->id }}" id="id" name="id">
+  
+  <button type="submit" class="btn btn-primary">Comment</button>
+</form>
         </div>
 		@includeWhen($relatedbool, 'partials.relatedproducts', ['relatedproducts' => $relatedProductsv])
         @include('partials.discountsproducts')

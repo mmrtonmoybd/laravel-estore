@@ -7,12 +7,13 @@ About: I am a php, laravel, codeigniter developer.
 ***/
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Setting;
+use App\Product;
 
 class Test extends Controller
 {
     public function test() {
-      $get = Setting::where('name', 'app_name')->first();
-		return $get->value;
+      $get = Product::find(8);
+     $mm = $get->comments()->get();
+     dd($mm);
     }
 }

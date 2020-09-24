@@ -11,5 +11,5 @@ use Actuallymab\LaravelComment\Models\Comment as LaravelComment;
 
 class Comment extends LaravelComment
 {
-    //
+    protected $with = ['comments'];
 }
