@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
+use App\Comment;
 
 class CommentController extends Controller
 {
@@ -26,6 +27,24 @@ class CommentController extends Controller
     //$product = Product::where('id', )
     	$user = Auth::user();
     	$user->comment($product, $request->input('comment'));
-   // 	return redirect("/product/{$request->input('id')}")->with('success', 'Comment is successfull');
+    	return redirect("/product/{$request->input('id')}")->with('success', 'Comment is successfull');
+    }
+    
+    public function reply(Request $request) {
+    	$request->validate([
+    	'comment' => 'required|string',
+    	'cid' => 'required|integer|exists:comments,id',
+    	'pid' => 'required|integer|exists:products,id',
+    	]);
+    	
+    	Comment::create([
+    	'commentable_id' => $request->input('cid'),
+    	'commentable_type' => 'App\Comment',
+    	'commented_id' => Auth::user()->id,
+    	'commented_type' => get_class(Auth::user()),
+    	'comment' => $request->input('comment'),
+    	]);
+    	
+    return redirect("/product/{$request->input('pid')}")->with('success', 'Reply is successfull');
     }
 }

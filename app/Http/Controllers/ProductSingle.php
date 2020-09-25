@@ -20,7 +20,8 @@ class ProductSingle extends Controller
      'relatedProductsv' => $this->getRelatedProducts($id->category_id),
 	 'categories' => $this->getCategories(),
      'discounds' => $this->getDiscoundProducts(),
-	 'relatedbool' => $related
+	 'relatedbool' => $related,
+	 'comments' => $id->comments()->get(),
      ]);
      //dd($id);
     }

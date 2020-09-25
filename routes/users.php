@@ -40,6 +40,7 @@ Route::group([
      });
      
      Route::post('comment', 'CommentController@store')->name('user.comment');
+     Route::post('reply', 'CommentController@reply')->name('user.reply');
 
 });
 ?>

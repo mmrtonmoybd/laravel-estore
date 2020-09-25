@@ -32,9 +32,51 @@
                                     </form>
             <p class="card-text">{{ $product->description }}</p>
           </div>
-          <form action="{{ route('user.comment') }}" method="POST">
-@csrf
-@foreach($errors->all() as $error)
+          <!-- You can start editing here. -->
+
+	<h3 id="comments">
+		{{ $product->totalCommentsCount() }} responses to &#8220;{{ $product->title }}&#8221;</h3>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+	@foreach ($comments as $comment)
+			<li class="comment even thread-even depth-1 parent" id="comment-10">
+				<div id="div-comment-10" class="comment-body">
+				<div class="comment-author vcard">
+				@php
+			$user = $product->user($comment->commented_id);
+			@endphp
+			<img alt='' src='{{ asset($user->userInfo->image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"> {{ $user->name }} @if ($comment->commented_type == "App\Admin") (Admin) @endif</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			{{ $comment->created_at }}
+						</div>
+
+		<p>{{ $comment->comment }}</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}' data-commentid="{{ $comment->id }}" data-postid="{{ $product->id }}" data-belowelement="div-comment-10" data-respondelement="respond" aria-label='Reply to {{ $user->name }}'>Reply</a></div>
+				</div>
+				
+</li><!-- #comment-## -->
+@endforeach
+		
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply
+		@if (Request::get('reply') !== null)
+		<small><a rel="nofollow" id="cancel-comment-reply-link" href='{{ url("/product/{$product->id}") }}'>Cancel reply</a></small>
+		@endif </h3>	
+		@foreach($errors->all() as $error)
        <div class="alert alert-danger alert-dismissible fade show" role="alert">
        {{ $error }}
        </div>
@@ -47,14 +89,19 @@
                 </button>
             </div>
         @endif
-<div class="form-group">
-    <label for="exampleInputName">Comment Content</label>
-    <textarea class="form-control @error('comment') is-invalid @enderror" id="exampleInputName" aria-describedby="nameHelp" name="comment">{{ old('comment') }}</textarea>
-  </div>
-  <input type="hidden" value="{{ $product->id }}" id="id" name="id">
-  
-  <button type="submit" class="btn btn-primary">Comment</button>
-</form>
+        		<form action="@if (Request::get('reply') !== null) {{ route('user.reply') }} @else {{ route('user.comment') }} @endif" method="POST" id="commentform" class="comment-form">
+		@csrf
+				<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>
+				@if (Request::get('reply') !== null) 
+				<input type="hidden" name="cid" value="{{ Request::get('reply') }}">
+				<input type="hidden" name="pid" value="{{ $product->id }}">
+				@else
+				<input type="hidden" name="id" value="{{ $product->id }}">
+				@endif
+				
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" />
+</p>			</form>
+			</div><!-- #respond -->
         </div>
 		@includeWhen($relatedbool, 'partials.relatedproducts', ['relatedproducts' => $relatedProductsv])
         @include('partials.discountsproducts')

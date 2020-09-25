@@ -27,9 +27,8 @@ class Product extends Model implements Commentable
 	    return $order;
 	}
 	
-	/*
-	public function order() {
-	    return $this->hasMany('App\Order');
+	public function user(int $id) {
+		$find = \App\User::find($id);
+		return $find;
 	}
-	*/
 }
