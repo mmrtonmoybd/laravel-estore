@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use App\Comment;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAdmin', function ($admin) {
             return $admin->isAdmin;
         });
+        
+       // comment authorization
+       Gate::define('isAction', function ($user, $id) {
+       	$comment = Comment::find($id);
+       	return $comment->commented_id == $user->id;
+       });
     }
 }

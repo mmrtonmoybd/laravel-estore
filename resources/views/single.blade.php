@@ -48,9 +48,15 @@
 				<div id="div-comment-10" class="comment-body">
 				<div class="comment-author vcard">
 				@php
-			$user = $product->user($comment->commented_id);
+			if ($comment->commented_type == "App\Admin") {
+				$user = $product->adminCom($comment->commented_id);
+				$image = $user->adminInfo->image;
+			} else {
+				$user = $product->user($comment->commented_id);
+				$image = $user->userInfo->image;
+			}
 			@endphp
-			<img alt='' src='{{ asset($user->userInfo->image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"> {{ $user->name }} @if ($comment->commented_type == "App\Admin") (Admin) @endif</cite> <span class="says">says:</span>		</div>
+			<img alt='' src='{{ asset($image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"> {{ $user->name }} @if ($comment->commented_type == "App\Admin") (Admin) @endif</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
 			{{ $comment->created_at }}
@@ -58,7 +64,44 @@
 
 		<p>{{ $comment->comment }}</p>
 
-		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}' data-commentid="{{ $comment->id }}" data-postid="{{ $product->id }}" data-belowelement="div-comment-10" data-respondelement="respond" aria-label='Reply to {{ $user->name }}'>Reply</a></div>
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}' data-commentid="{{ $comment->id }}" data-postid="{{ $product->id }}" data-belowelement="div-comment-10" data-respondelement="respond" aria-label='Reply to {{ $user->name }}'>Reply</a> 
+		@can ('isAction', $comment->id)
+<a rel='nofollow' class='comment-edit-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}'>Edit</a>	
+@endcan
+</div>
+		
+		@php
+		$replys = \App\Comment::reply($comment->id);
+		@endphp
+		@if (count($replys) > 0)
+		<ul class="children">
+		@foreach ($replys as $reply )
+		@php
+			if ($reply->commented_type == "App\Admin") {
+				$user = $product->adminCom($reply->commented_id);
+				$image = $user->adminInfo->image;
+			} else {
+				$user = $product->user($reply->commented_id);
+				$image = $user->userInfo->image;
+			}
+			@endphp
+		<li class="comment byuser comment-author-admi2019 odd alt depth-2" id="comment-11">
+				<div id="div-comment-11" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt='' src='{{ asset($image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn">{{ $user->name }}    @if ($reply->commented_type == "App\Admin") (Admin) @endif</cite> <span class="says">replis:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://newssitedesign.com/blog/archives/88#comment-11">
+			{{ $reply->created_at }}			</a>
+						</div>
+
+		<p>{{ $reply->comment }}</p>
+				</div>
+				</li><!-- #comment-## -->
+				@endforeach
+</ul><!-- .children -->
+@endif
+
+
 				</div>
 				
 </li><!-- #comment-## -->
@@ -91,7 +134,7 @@
         @endif
         		<form action="@if (Request::get('reply') !== null) {{ route('user.reply') }} @else {{ route('user.comment') }} @endif" method="POST" id="commentform" class="comment-form">
 		@csrf
-				<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>
+				<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required">{{ old('comment') }}</textarea></p>
 				@if (Request::get('reply') !== null) 
 				<input type="hidden" name="cid" value="{{ Request::get('reply') }}">
 				<input type="hidden" name="pid" value="{{ $product->id }}">

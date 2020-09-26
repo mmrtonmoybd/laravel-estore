@@ -38,9 +38,6 @@ Route::group([
          Route::get('profile/update/{id}', 'UserProfile@showInForm')->name('profile.update');
          Route::post('profile/update/{id}', 'UserProfile@update');
      });
-     
-     Route::post('comment', 'CommentController@store')->name('user.comment');
-     Route::post('reply', 'CommentController@reply')->name('user.reply');
 
 });
 ?>

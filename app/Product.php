@@ -31,4 +31,9 @@ class Product extends Model implements Commentable
 		$find = \App\User::find($id);
 		return $find;
 	}
+	
+	public function adminCom(int $id) {
+		$find = \App\Admin::find($id);
+		return $find;
+	}
 }

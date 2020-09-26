@@ -27,6 +27,13 @@ Route::post('/cart/update', 'CartController@updateProduct')->name('cart.update')
 Route::post('/cart/remove', 'CartController@removeProduct')->name('cart.remove');
 Route::post('/cart/clear', 'CartController@cartClear')->name('cart.clear');
 
+Route::post('comment', 'CommentController@store')->name('user.comment');
+Route::post('reply', 'CommentController@reply')->name('user.reply');
+
+Route::get('comment/edit/{id}', 'CommentController@comedit')->name('com.edit');
+Route::post('comment/edit/{id}', 'CommentController@comeditp');
+Route::get('comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
+
 Route::get('test', 'Test@test');
 /*
 User route
@@ -36,3 +43,9 @@ require('users.php');
 Admin route
 */
 require('admins.php');
+
+/*
+Sitemap route
+*/
+//require('sitemap.php');
+Route::get('sitemap.xml', 'Sitemap@sitemap');

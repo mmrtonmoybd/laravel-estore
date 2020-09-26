@@ -12,4 +12,9 @@ use Actuallymab\LaravelComment\Models\Comment as LaravelComment;
 class Comment extends LaravelComment
 {
     protected $with = ['comments'];
+    
+    public static function reply(int $comID) {
+    	$find = Comment::where('commentable_id', $comID)->where('commentable_type', 'App\Comment')->get();
+    	return $find;
+    }
 }
