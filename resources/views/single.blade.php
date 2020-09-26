@@ -63,12 +63,14 @@
 						</div>
 
 		<p>{{ $comment->comment }}</p>
-
+        @if (Auth::check() || Auth::guard('admin')->check())
 		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}' data-commentid="{{ $comment->id }}" data-postid="{{ $product->id }}" data-belowelement="div-comment-10" data-respondelement="respond" aria-label='Reply to {{ $user->name }}'>Reply</a> 
-		@can ('isAction', $comment->id)
-<a rel='nofollow' class='comment-edit-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}'>Edit</a>	
-@endcan
+	@if (Auth::guard('admin')->user()->can('isAction', $comment->id) || Auth::user()->can('isAction', $comment->id))
+<a rel='nofollow' class='comment-edit-link' href='{{ route("com.edit", ["id" => $comment->id]) }}'>Edit</a>
+<a rel='nofollow' class='comment-edit-link' href='{{ route("comment.delete", ["id" => $comment->id]) }}'>Delete</a>	
+@endif
 </div>
+@endif
 		
 		@php
 		$replys = \App\Comment::reply($comment->id);
@@ -90,11 +92,19 @@
 				<div class="comment-author vcard">
 			<img alt='' src='{{ asset($image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn">{{ $user->name }}    @if ($reply->commented_type == "App\Admin") (Admin) @endif</cite> <span class="says">replis:</span>		</div>
 		
-		<div class="comment-meta commentmetadata"><a href="http://newssitedesign.com/blog/archives/88#comment-11">
-			{{ $reply->created_at }}			</a>
+		<div class="comment-meta commentmetadata">
+			{{ $reply->created_at }}
 						</div>
 
 		<p>{{ $reply->comment }}</p>
+		 @if (Auth::check() || Auth::guard('admin')->check())
+		<div class="reply">
+		@if (Auth::guard('admin')->user()->can('isAction', $reply->id) || Auth::user()->can('isAction', $reply->id))
+<a rel='nofollow' class='comment-edit-link' href='{{ route("com.edit", ["id" => $reply->id]) }}'>Edit</a>
+<a rel='nofollow' class='comment-edit-link' href='{{ route("comment.delete", ["id" => $reply->id]) }}'>Delete</a>	
+@endif
+</div>
+@endif
 				</div>
 				</li><!-- #comment-## -->
 				@endforeach
@@ -113,7 +123,7 @@
 		<div class="alignleft"></div>
 		<div class="alignright"></div>
 	</div>
-
+@if (Auth::check() || Auth::guard('admin')->check())
 	<div id="respond" class="comment-respond">
 		<h3 id="reply-title" class="comment-reply-title">Leave a Reply
 		@if (Request::get('reply') !== null)
@@ -134,7 +144,7 @@
         @endif
         		<form action="@if (Request::get('reply') !== null) {{ route('user.reply') }} @else {{ route('user.comment') }} @endif" method="POST" id="commentform" class="comment-form">
 		@csrf
-				<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required">{{ old('comment') }}</textarea></p>
+				<p class="comment-form-comment"><label for="comment">Comment</label> <textarea class="form-control @error('comment') is-invalid @enderror" id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required">{{ old('comment') }}</textarea></p>
 				@if (Request::get('reply') !== null) 
 				<input type="hidden" name="cid" value="{{ Request::get('reply') }}">
 				<input type="hidden" name="pid" value="{{ $product->id }}">
@@ -145,6 +155,11 @@
 <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" />
 </p>			</form>
 			</div><!-- #respond -->
+			@else
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">You Must <a href="{{ route('login') }}">Login</a> To Comment Or Reply</h3>
+</div>		  
+			@endif
         </div>
 		@includeWhen($relatedbool, 'partials.relatedproducts', ['relatedproducts' => $relatedProductsv])
         @include('partials.discountsproducts')

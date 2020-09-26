@@ -35,6 +35,7 @@ class AuthServiceProvider extends ServiceProvider
        // comment authorization
        Gate::define('isAction', function ($user, $id) {
        	$comment = Comment::find($id);
+		//dd($user);
        	return $comment->commented_id == $user->id;
        });
     }

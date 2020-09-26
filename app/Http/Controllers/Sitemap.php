@@ -8,6 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers;
 use App\Product;
 use App\Categorie;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class Sitemap extends Controller
 {
     public function sitemap() {
     	$sitemap = \App::make('sitemap');
+		
 
 	// get all products from db (or wherever you store them)
 	$products = \DB::table('products')->orderBy('created_at', 'desc')->get();
@@ -22,7 +24,7 @@ class Sitemap extends Controller
 	// counters
 	$counter = 0;
 	$sitemapCounter = 0;
-
+    $sitemap->add('/', Carbon::now()->toDateTimeString(), 1.0, 'daily');
 	// add every product to multiple sitemaps with one sitemap index
 	foreach ($products as $p) {
 		if ($counter == 50000) {

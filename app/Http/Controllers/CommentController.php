@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Gate;
 class CommentController extends Controller
 {
     public function __construct() {
-    	if (!Auth::check()) {
+    	if (!Auth::check() || !Auth::guard('admin')->check()) {
     		return redirect()->route('login');
     	}
     }
@@ -28,7 +28,10 @@ class CommentController extends Controller
     	
     $product = Product::find($request->input('id'));
     //$product = Product::where('id', )
-    	$user = Auth::user();
+    	//$user = Auth::user();
+		//$user = $request->user();
+		$user = (Auth::check()) ? Auth::user() : Auth::guard('admin')->user();
+		//$user = Auth::guard('admin')->user();
     	$user->comment($product, $request->input('comment'));
     	return redirect("/product/{$request->input('id')}")->with('success', 'Comment is successfull');
     }
@@ -39,12 +42,12 @@ class CommentController extends Controller
     	'cid' => 'required|integer|exists:comments,id',
     	'pid' => 'required|integer|exists:products,id',
     	]);
-    	
+    	$user = (Auth::check()) ? Auth::user() : Auth::guard('admin')->user();
     	Comment::create([
     	'commentable_id' => $request->input('cid'),
     	'commentable_type' => 'App\Comment',
-    	'commented_id' => Auth::user()->id,
-    	'commented_type' => get_class(Auth::user()),
+    	'commented_id' => $user->id,
+    	'commented_type' => get_class($user),
     	'comment' => $request->input('comment'),
     	]);
     	
