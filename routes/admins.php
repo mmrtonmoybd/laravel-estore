@@ -47,6 +47,13 @@ Route::group([
  Route::post('orders/update/{id}', 'Admin\OrderController@update');
  Route::get('orders/delete/{id}', 'Admin\OrderController@delete')->name('admin.order.delete');
  
+ Route::get('comments', 'Admin\CommentController@index')->name('admin.comment.list');
+ Route::get('comments/update/{id}', 'Admin\CommentController@showForm')->name('admin.comment.update');
+ Route::post('comments/update/{id}', 'Admin\CommentController@update');
+ Route::get('comments/delete/{id}', 'Admin\CommentController@delete')->name('admin.comment.delete');
+ Route::post('comments/add', 'Admin\CommentController@store')->name('admin.comment.add');
+ Route::post('comments/reply/add', 'Admin\CommentController@reply')->name('admin.reply.add');
+ 
  //Super Admin Permission
  
  Route::group(['middleware' => 'can:isAdmin'], function () {

@@ -2,40 +2,81 @@
 <?xml-stylesheet href="/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
+	<loc>/</loc>
+		<priority>1</priority>
+		<lastmod>2020-09-26T19:25:41+00:00</lastmod>
+		<changefreq>daily</changefreq>
+	</url>
+	<url>
 	<loc>product/8</loc>
 		<priority>0.7</priority>
 		<lastmod>2020-09-20T18:08:40+00:00</lastmod>
 		<changefreq>weekly</changefreq>
+		<image:image>
+			<image:loc>products/products/MCGRkwWeuoE6CRoCtwQAfKS1tC0LTkqqfihiIbDL.png</image:loc>
+			<image:title>Jfjjvjcjj JJ jfkk</image:title>
+			<image:caption>Jcj jdii jdi kdkk jdi jjfj jdi jdjj icjkfj jfii cji cjj jc</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>product/1</loc>
 		<priority>0.7</priority>
 		<changefreq>weekly</changefreq>
+		<image:image>
+			<image:loc>products/image.jpg</image:loc>
+			<image:title>Orange color T-Shirt</image:title>
+			<image:caption>It is a Orange color T-Shirt. All size are avilabe</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>product/2</loc>
 		<priority>0.7</priority>
 		<changefreq>weekly</changefreq>
+		<image:image>
+			<image:loc>products/image.jpg</image:loc>
+			<image:title>Green color T-Shirt</image:title>
+			<image:caption>It is a Green color T-Shirt. All size are avilabe</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>product/3</loc>
 		<priority>0.7</priority>
 		<changefreq>weekly</changefreq>
+		<image:image>
+			<image:loc>products/image.jpg</image:loc>
+			<image:title>Blue color T-Shirt</image:title>
+			<image:caption>It is a Blue color T-Shirt. All size are avilabe</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>product/4</loc>
 		<priority>0.7</priority>
 		<changefreq>weekly</changefreq>
+		<image:image>
+			<image:loc>products/image.jpg</image:loc>
+			<image:title>Red color T-Shirt</image:title>
+			<image:caption>It is a Red color T-Shirt. All size are avilabe</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>product/5</loc>
 		<priority>0.7</priority>
 		<changefreq>weekly</changefreq>
+		<image:image>
+			<image:loc>products/image.jpg</image:loc>
+			<image:title>Black color T-Shirt</image:title>
+			<image:caption>It is a Black color T-Shirt. All size are avilabe</image:caption>
+		</image:image>
 	</url>
 	<url>
 	<loc>product/6</loc>
 		<priority>0.7</priority>
 		<changefreq>weekly</changefreq>
+		<image:image>
+			<image:loc>products/image.jpg</image:loc>
+			<image:title>Pink color T-Shirt</image:title>
+			<image:caption>It is a Pink color T-Shirt. All size are avilabe</image:caption>
+		</image:image>
 	</url>
 </urlset>
 

@@ -9,11 +9,11 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "It's Over 9000!", // set false to total remove
+            'title'        => env('APP_NAME', 'Moshiur'), // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'For those who helped create the Genki Dama', // set false to total remove
+            'description'  => 'Make your life eazy. Buy best product with us.', // set false to total remove
             'separator'    => ' - ',
-            'keywords'     => [],
+            'keywords'     => [env('APP_NAME', 'Moshiur'), 'Ecommerce', 'Online Shopping', 'T shirt'],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
@@ -36,11 +36,11 @@ return [
          * The default configurations to be used by the opengraph generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'       => 'Moshiur Ecommerce Site', // set false to total remove
+            'description' => 'Make your life eazy. Buy best product with us.', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => false,
-            'site_name'   => false,
+            'site_name'   => env('APP_NAME', 'Moshiur'),
             'images'      => [],
         ],
     ],
@@ -58,8 +58,8 @@ return [
          * The default configurations to be used by the json-ld generator.
          */
         'defaults' => [
-            'title'       => 'Over 9000 Thousand!', // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'title'       => 'Moshiur Ecommerce', // set false to total remove
+            'description' => 'Make your life eazy. Buy best product with us.', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],

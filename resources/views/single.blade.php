@@ -142,7 +142,7 @@
                 </button>
             </div>
         @endif
-        		<form action="@if (Request::get('reply') !== null) {{ route('user.reply') }} @else {{ route('user.comment') }} @endif" method="POST" id="commentform" class="comment-form">
+        		<form action="@if (Request::get('reply') !== null && Auth::check()) {{ route('user.reply') }} @elseif (Auth::check()) {{ route('user.comment') }} @elseif (Auth::guard('admin')->check() && Request::get('reply') !== null){{ route('admin.reply.add') }}@elseif (Auth::guard('admin')->check()) {{ route('admin.comment.add') }} @endif" method="POST" id="commentform" class="comment-form">
 		@csrf
 				<p class="comment-form-comment"><label for="comment">Comment</label> <textarea class="form-control @error('comment') is-invalid @enderror" id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required">{{ old('comment') }}</textarea></p>
 				@if (Request::get('reply') !== null) 

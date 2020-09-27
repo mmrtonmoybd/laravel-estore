@@ -2,6 +2,6 @@
 <?xml-stylesheet href="/vendor/sitemap/styles/sitemapindex.xsl" type="text/xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
-		<loc>https://127.0.0.1:8000/sitemap-0.xml</loc>
+		<loc>http://127.0.0.1:8000/sitemap-0.xml</loc>
 		</sitemap>
 </sitemapindex>

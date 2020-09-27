@@ -17,4 +17,14 @@ class Comment extends LaravelComment
     	$find = Comment::where('commentable_id', $comID)->where('commentable_type', 'App\Comment')->get();
     	return $find;
     }
+    
+    public static function user(int $id) {
+		$find = \App\User::find($id);
+		return $find;
+	}
+	
+	public static function adminCom(int $id) {
+		$find = \App\Admin::find($id);
+		return $find;
+	}
 }

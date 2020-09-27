@@ -50,11 +50,7 @@
                   @foreach ($products as $product)
                   <tr>
                       <td>{{ $product->id }}</td>
-                      <td>{{ $product->title }}</td>
-          @php
-          //$category = \App\Product::categorya($product->id); 
-          //\App\Product::order($product->id)
-          @endphp       
+                      <td>{{ $product->title }}</td>      
                       <td>{{ $product->category->name }}</td>
                       <td>${{ $product->price }}</td>
                       <td>{{ $product->discounds }}</td>

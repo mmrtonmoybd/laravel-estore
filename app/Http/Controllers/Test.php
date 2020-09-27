@@ -14,9 +14,7 @@ class Test extends Controller
 {
     public function test() {
       
-     //dd($mm);
-     $product = Product::where('id', 8)->first();
-     $user = Auth::user();
-     $user->comment(\App\Comment::class, 'Reply to mmrtonmoy');
+     $products = Product::where('title', 'LIKE', '%orange%')->get();
+     dd($products);
     }
 }
