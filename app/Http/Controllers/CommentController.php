@@ -75,6 +75,9 @@ class CommentController extends Controller
     
     public function delete(Comment $id) {
     	$this->checkAuthrize();
+    	if ($id->commentable_type = 'App\Comment') {
+    		Comment::where('commentable_id', $id->id)->delete();
+    	}
     	$id->delete();
     	if ($id->commented_type == "App\Product") {
     	return redirect("/product/{$id->commentable_id}")->with('success', 'Comment is deleted');

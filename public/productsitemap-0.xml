@@ -2,12 +2,6 @@
 <?xml-stylesheet href="/vendor/sitemap/styles/xml.xsl" type="text/xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 	<url>
-	<loc>/</loc>
-		<priority>1</priority>
-		<lastmod>2020-09-26T19:25:41+00:00</lastmod>
-		<changefreq>daily</changefreq>
-	</url>
-	<url>
 	<loc>product/8</loc>
 		<priority>0.7</priority>
 		<lastmod>2020-09-20T18:08:40+00:00</lastmod>
