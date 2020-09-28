@@ -63,12 +63,17 @@
 						</div>
 
 		<p>{{ $comment->comment }}</p>
-        @if (Auth::check() || Auth::guard('admin')->check())
+        @if (Auth::check())
 		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}' data-commentid="{{ $comment->id }}" data-postid="{{ $product->id }}" data-belowelement="div-comment-10" data-respondelement="respond" aria-label='Reply to {{ $user->name }}'>Reply</a> 
-	@if (Auth::guard('admin')->user()->can('isAction', $comment->id) || Auth::user()->can('isAction', $comment->id))
+	@can('isAction', $comment->id)
 <a rel='nofollow' class='comment-edit-link' href='{{ route("com.edit", ["id" => $comment->id]) }}'>Edit</a>
 <a rel='nofollow' class='comment-edit-link' href='{{ route("comment.delete", ["id" => $comment->id]) }}'>Delete</a>	
-@endif
+@endcan
+</div>
+@elseif (Auth::guard('admin')->check())
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='{{ url("/product/{$product->id}?reply={$comment->id}") }}' data-commentid="{{ $comment->id }}" data-postid="{{ $product->id }}" data-belowelement="div-comment-10" data-respondelement="respond" aria-label='Reply to {{ $user->name }}'>Reply</a>
+ <a rel='nofollow' class='comment-edit-link' href='{{ route("admin.comment.update", ["id" => $comment->id]) }}'>Edit</a>
+<a rel='nofollow' class='comment-edit-link' href='{{ route("admin.comment.delete", ["id" => $comment->id]) }}'>Delete</a>
 </div>
 @endif
 		
@@ -97,12 +102,17 @@
 						</div>
 
 		<p>{{ $reply->comment }}</p>
-		 @if (Auth::check() || Auth::guard('admin')->check())
+		 @if (Auth::check())
 		<div class="reply">
-		@if (Auth::guard('admin')->user()->can('isAction', $reply->id) || Auth::user()->can('isAction', $reply->id))
+		@can('isAction', $reply->id)
 <a rel='nofollow' class='comment-edit-link' href='{{ route("com.edit", ["id" => $reply->id]) }}'>Edit</a>
 <a rel='nofollow' class='comment-edit-link' href='{{ route("comment.delete", ["id" => $reply->id]) }}'>Delete</a>	
-@endif
+@endcan
+</div>
+@elseif (Auth::guard('admin')->check())
+<div class="reply">
+<a rel='nofollow' class='comment-edit-link' href='{{ route("admin.comment.update", ["id" => $reply->id]) }}'>Edit</a>
+<a rel='nofollow' class='comment-edit-link' href='{{ route("admin.comment.delete", ["id" => $reply->id]) }}'>Delete</a>	
 </div>
 @endif
 				</div>

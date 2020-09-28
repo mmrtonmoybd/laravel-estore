@@ -36,7 +36,7 @@ class AuthServiceProvider extends ServiceProvider
        Gate::define('isAction', function ($user, $id) {
        	$comment = Comment::find($id);
 		//dd($user);
-       	return $comment->commented_id == $user->id;
+       	return $comment->commented_id == $user->id && $comment->commented_type == 'App\User';
        });
     }
 }

@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Gate;
 class CommentController extends Controller
 {
     public function __construct() {
-    	if (!Auth::check() || !Auth::guard('admin')->check()) {
-    		return redirect()->route('login');
-    	}
+    	$this->middleware('auth');
     }
     public function store(Request $request) {
     	$request->validate([
@@ -27,11 +25,7 @@ class CommentController extends Controller
     	]);
     	
     $product = Product::find($request->input('id'));
-    //$product = Product::where('id', )
-    	//$user = Auth::user();
-		//$user = $request->user();
-		$user = (Auth::check()) ? Auth::user() : Auth::guard('admin')->user();
-		//$user = Auth::guard('admin')->user();
+		$user = Auth::user();
     	$user->comment($product, $request->input('comment'));
     	return redirect("/product/{$request->input('id')}")->with('success', 'Comment is successfull');
     }
@@ -42,7 +36,7 @@ class CommentController extends Controller
     	'cid' => 'required|integer|exists:comments,id',
     	'pid' => 'required|integer|exists:products,id',
     	]);
-    	$user = (Auth::check()) ? Auth::user() : Auth::guard('admin')->user();
+    	$user = Auth::user();
     	Comment::create([
     	'commentable_id' => $request->input('cid'),
     	'commentable_type' => 'App\Comment',

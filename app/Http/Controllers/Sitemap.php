@@ -10,6 +10,7 @@ use App\Product;
 use App\Categorie;
 use Carbon\Carbon;
 use URL;
+use App;
 
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class Sitemap extends Controller
     public function genarate() {
     	
     	//Home, category and pages sitemap
-    	$main = \App::make('sitemap');
+    	$main = App::make('sitemap');
     	$main->add('/', Carbon::now()->toDateTimeString(), 1.0, 'daily');
     	$main->add('about/', Carbon::now()->toDateTimeString(), 0.6, 'monthly');
     	$main->add('contact/', Carbon::now()->toDateTimeString(), 0.6, 'monthly');
@@ -33,7 +34,7 @@ class Sitemap extends Controller
     //	return $main->render('sitemapindex');
     	
     	
-    	$sitemap = \App::make('sitemap');
+    	$sitemap = App::make('sitemap');
     	$sitemap->addSitemap(URL::to('mainsitemap.xml'), Carbon::now()->toDateTimeString());
 		
 
