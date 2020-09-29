@@ -168,6 +168,7 @@ return [
         Darryldecode\Cart\CartServiceProvider::class,
         Actuallymab\LaravelComment\LaravelCommentServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        willvincent\Rateable\RateableServiceProvider::class,
         /*
          * Application Service Providers...
          */

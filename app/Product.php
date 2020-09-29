@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
+use willvincent\Rateable\Rateable;
 
 class Product extends Model implements Commentable
 {
-	use HasComments;
+	use HasComments, Rateable;
   protected $fillable = ['category_id', 'title', 'price', 'discounds', 'description', 'quantity', 'admin_id', 'image'];
 	protected $guarded = [
 	'views'

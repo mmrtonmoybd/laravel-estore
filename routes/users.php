@@ -21,14 +21,6 @@ Route::group([
 	  Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
       Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
       Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
-      
-      Route::get('orders', 'OrderInfo@index');
-      
-      
-      Route::get('checkout', 'Checkout@index')->name('checkout');
-     Route::post('checkout', 'Checkout@checkout');
-     
-     Route::get('orders/{id}', 'OrderInfo@orders');
      
      Route::get('profile/{id}', 'UserProfile@index');
      
@@ -37,6 +29,23 @@ Route::group([
      ], function () {
          Route::get('profile/update/{id}', 'UserProfile@showInForm')->name('profile.update');
          Route::post('profile/update/{id}', 'UserProfile@update');
+         
+         Route::post('comment', 'CommentController@store')->name('user.comment');
+Route::post('reply', 'CommentController@reply')->name('user.reply');
+
+Route::get('comment/edit/{id}', 'CommentController@comedit')->name('com.edit');
+Route::post('comment/edit/{id}', 'CommentController@comeditp');
+Route::get('comment/delete/{id}', 'CommentController@delete')->name('comment.delete');
+
+Route::get('orders', 'OrderInfo@index');
+      
+      
+      Route::get('checkout', 'Checkout@index')->name('checkout');
+     Route::post('checkout', 'Checkout@checkout');
+     
+     Route::get('orders/{id}', 'OrderInfo@orders');
+     
+     Route::post('rating', 'RatingController@store')->name('rating');
      });
 
 });

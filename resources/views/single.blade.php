@@ -31,6 +31,44 @@
                                                 </button>
                                     </form>
             <p class="card-text">{{ $product->description }}</p>
+            @php
+            $rating = round($product->averageRating, 2);
+            @endphp
+          
+            @if (Auth::check())
+            
+            <div class="stars">
+            @if(session()->has('rsuccess'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session()->get('rsuccess') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
+        @foreach($errors->all() as $error)
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       {{ $error }}
+       </div>
+       @endforeach
+       {{ $product->userSumRating }}
+  <form action="{{ route('rating') }}" method="POST">
+  @csrf
+    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+    <label class="star star-5" for="star-5"></label>
+    <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+    <label class="star star-4" for="star-4"></label>
+    <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+    <label class="star star-3" for="star-3"></label>
+    <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+    <label class="star star-2" for="star-2"></label>
+    <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+    <label class="star star-1" for="star-1"></label>
+    <input type="hidden" name="pid" value="{{ $product->id }}" />
+    <button type="submit" class="btn btn-primary">Review</button>
+  </form>
+</div>
+@endif
           </div>
           <!-- You can start editing here. -->
 
