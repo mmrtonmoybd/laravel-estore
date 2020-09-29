@@ -24,6 +24,8 @@ class ProductSingle extends Controller
 		} else {
 			$related = false;
 		}
+		$id->views++;
+		$id->save();
      return view('single', [
      'product' => $id,
      'relatedProductsv' => $this->getRelatedProducts($id->category_id),

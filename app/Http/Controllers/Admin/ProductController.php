@@ -36,6 +36,8 @@ class ProductController extends Controller
 	    'thumbnail' => 'required|image|mimes:jpeg,png,gif,jpg,svg|max:4096|dimensions:min_width=400,min_height=200,max_width=2500,max_height=2500',
 	    'discounds' => 'required|integer|max:100',
 	    'price' => 'required|numeric',
+	    'size' => 'required|string|regex:/[A-Za-z0-9\, ]$/i',
+	    'color' => 'required|string|regex:/[A-Za-z0-9\, ]$/i',
 	    ]);
 	    
 	    if (!$request->file('thumbnail')->isValid()) {
@@ -53,6 +55,8 @@ class ProductController extends Controller
       'quantity' => $request->input('quantity'),
       'image' => $thumbnail,
       'admin_id' => $request->user()->id,
+      'size' => $request->input('size'),
+      'color' => $request->input('color'),
       ]);
       
       $category = Categorie::find($request->input('category'));
@@ -77,6 +81,8 @@ class ProductController extends Controller
 	    'thumbnail' => 'image|mimes:jpeg,png,gif,jpg,svg|max:4096|dimensions:min_width=400,min_height=200,max_width=2500,max_height=2500',
 	    'discounds' => 'required|integer|max:100',
 	    'price' => 'required|numeric',
+	    'size' => 'required|string|regex:/[A-Za-z0-9\, ]$/i',
+	    'color' => 'required|string|regex:/[A-Za-z0-9\, ]$/i',
 	    ]);
 	    
 		if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
@@ -90,6 +96,8 @@ class ProductController extends Controller
 	    $id->description = $request->input('info');
 	    $id->discounds = $request->input('discounds');
 		$id->price = $request->input('price');
+		$id->color = $request->input('color');
+		$id->size = $request->input('size');
 		$id->save();
 		
 	    return redirect()->route('admin.product.list')->with('success', 'Product updated is successfull!');

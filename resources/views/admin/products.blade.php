@@ -39,6 +39,9 @@
                       <th>Discounds</th>
                       <th>Views</th>
                       <th>Quantitys</th>
+                      <th>Review</th>
+                      <th>Color</th>
+                      <th>Size</th>
                       <th>Admin Name</th>
                       <th>Sells</th>
                       <th>Updated</th>
@@ -59,6 +62,12 @@
      @else
      <td>{{ $product->quantity }} </td>
      @endif
+     <td>@php
+            $rating = round($product->averageRating, 2);
+            @endphp
+			<span class="text-warning" >@for ($i = 1; $i <= 5; $i++) @if ($rating >= $i){!! '&#9733;' !!} @else {!! '&#9734;' !!} @endif @endfor</span></td>
+     <td>{{ $product->color }}</td>
+     <td>{{ $product->size }}</td>
                       <td>{{ $product->admin->name }}</td>
                       <td>{{ \App\Product::order($product->id) }}</td>
                       <td>{{ $product->updated_at }}</td>

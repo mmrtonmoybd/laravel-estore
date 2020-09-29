@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Auth;
 class Test extends Controller
 {
     public function test() {
-      
-     $products = Product::where('title', 'LIKE', '%orange%')->get();
-     dd($products);
+      $str = "black, red, green, blue";
+      $arr = explode(',', $str);
+     //dd($arr);
+     foreach ($arr as $key => $value) {
+     	echo $key . $value;
+     }
     }
 }

@@ -52,6 +52,8 @@
                         <div class="col-lg-5">
                             <p>
                                 <b><a href='{{ url("product/{$item->id}") }}'>{{ $item->name }}</a></b><br>
+                                <b>Color:</b>  {{ $item->attributes->color }}<br>
+                                <b>Size:</b>  {{ $item->attributes->size }}<br>
                                 <b>Price: </b>${{ $item->price }}<br>
                         {{--<b>Sub Total: </b>${{ $item->getPriceSum() }}<br>--}}
 								<b>With Discount: </b>${{ $item->getPriceSumWithConditions() }}
@@ -65,6 +67,30 @@
                                         <input type="hidden" value="{{ \Crypt::encryptString($item->id) }}" id="id" name="id">
                                         <input type="number" class="form-control form-control-sm" value="{{ $item->quantity }}"
                                                id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
+                             <div class="form-group">
+                    <label for="exampleSelect1">Color</label>
+                    <select class="form-control @error('color') is-invalid @enderror" id="exampleSelect1" name="color" required>
+                    @php
+                    $colors = explode(',', $item->associatedModel->color);
+                    @endphp
+                    
+                    @foreach ($colors as $color)
+                      <option value="{{ $color }}">{{ $color }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Size</label>
+                    <select class="form-control @error('size') is-invalid @enderror" id="exampleSelect1" name="size" required>
+                    @php
+                    $sizes = explode(',', $item->associatedModel->size);
+                    @endphp
+                    
+                    @foreach ($sizes as $size)
+                      <option value="{{ $size }}">{{ $size }}</option>
+                      @endforeach
+                    </select>
+                  </div>                  
                                         <button class="btn btn-secondary btn-sm" style="margin-right: 25px;"><i class="fa fa-edit"></i></button>
                                     </div>
                                 </form>

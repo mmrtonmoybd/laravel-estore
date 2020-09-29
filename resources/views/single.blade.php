@@ -20,12 +20,43 @@
                 @else 
                 <del>${{ $price }}</del>  ${{ $calculate }}
                 @endif</h4>
+                @foreach($errors->all() as $error)
+       <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       {{ $error }}
+       </div>
+       @endforeach
                 <form action="{{ route('cart.store') }}" method="POST">
                                         @csrf
                                         <input type="hidden" value="{{ \Crypt::encryptString($product->id) }}" id="id" name="id">
  
-                                        <input type="number" class="form-control form-control-sm" value="1"
+         <div class="form-group">
+                    <label for="exampleSelect1">Quantity</label>                               <input type="number" class="form-control form-control-sm" value="1"
                                                id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
+                                               </div>
+                                               <div class="form-group">
+                    <label for="exampleSelect1">Color</label>
+                    <select class="form-control @error('color') is-invalid @enderror" id="exampleSelect1" name="color" required>
+                    @php
+                    $colors = explode(',', $product->color);
+                    @endphp
+                    
+                    @foreach ($colors as $color)
+                      <option value="{{ $color }}">{{ $color }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect1">Size</label>
+                    <select class="form-control @error('size') is-invalid @enderror" id="exampleSelect1" name="size" required>
+                    @php
+                    $sizes = explode(',', $product->size);
+                    @endphp
+                    
+                    @foreach ($sizes as $size)
+                      <option value="{{ $size }}">{{ $size }}</option>
+                      @endforeach
+                    </select>
+                  </div>
                                                 <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
                                                     <i class="fa fa-shopping-cart"></i> add to cart
                                                 </button>

@@ -34,6 +34,8 @@ class CartRequest extends FormRequest
         return [
             'id' => 'required|numeric|exists:products,id',
 			'quantity' => 'required|numeric|max:5|gte:1',
+			'size' => 'required|string',
+			'color' => 'required|string',
         ];
     }
 }

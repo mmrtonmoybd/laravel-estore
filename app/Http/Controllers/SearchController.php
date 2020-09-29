@@ -16,10 +16,14 @@ class SearchController extends Controller
 	use ProductShow;
     public function index(Request $request) {
 		$request->validate([
-		'search' => 'required|string|regex:^[A-Za-z0-9 ]',
+		'search' => 'required|string|regex:/[A-Za-z0-9 ]$/i',
 		]);
+		$products = Product::where('title', 'LIKE', '%' . $request->search . '%')->latest()->paginate(config('settings.max_item_per_page'));
+		if (count($products) < 1) {
+			abort(404);
+		}
 		return view('products.search', [
-       'products' => Product::where('title', 'LIKE', '%' . $request->search . '%')->latest()->paginate(config('settings.max_item_per_page')),
+       'products' => $products,
        'categories' => $this->getCategories(),
        ]);
 	}

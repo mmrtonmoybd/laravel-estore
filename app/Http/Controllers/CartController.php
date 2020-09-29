@@ -6,11 +6,9 @@ use Illuminate\Http\Request;
 use Darryldecode\Cart\CartCondition;
 use App\Product;
 use App\Http\Requests\CartRequest;
-use App\Traits\CryptTrait;
 
 class CartController extends Controller
 {
-	use CryptTrait;
     public function index() {
 		return view('carts.cart', [
 		'cartCollection' => \Cart::getContent()
@@ -34,9 +32,12 @@ class CartController extends Controller
 		'name' => $product->title,
         'price' => $product->price,
         'quantity' => $request->input('quantity'),
-		'attributes' => array(
-                'image' => $product->image
-            ),
+		'attributes' => [
+                'image' => $product->image,
+                'color' => $request->input('color'),
+                'size' => $request->input('size'),
+            ],
+            'associatedModel' => $product,
             'conditions' => $condition
 		]);
 		return redirect()->route('cart.index')->with('success', 'Item is Added to Cart!');
@@ -57,6 +58,10 @@ class CartController extends Controller
 		'relative' => false,
 		'value' => $request->input('quantity')
 		],
+		'attributes' => [
+		'color' => $request->input('color'),
+                'size' => $request->input('size'),
+		]
 		]);
 		return redirect()->route('cart.index')->with('success', 'Item has been updated!');
 	}

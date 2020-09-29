@@ -48,6 +48,14 @@
                     <textarea class="form-control @error('info') is-invalid @enderror" id="summernote" rows="5" name="info" required>{{ old('info') }}</textarea>
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputqty1">Product Color</label>
+                    <input class="form-control @error('color') is-invalid @enderror" id="exampleInputQty1" type="text" placeholder="Red, Green, Blue" name="color" required value="{{ old('color') }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputqty1">Product Size</label>
+                    <input class="form-control @error('size') is-invalid @enderror" id="exampleInputQty1" type="size" placeholder="XL, XXL, M, L" name="size" required value="{{ old('size') }}">
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputFile">Product Thumbnail</label>
                     <input class="form-control-file @error('thumbnail') is-invalid @enderror" id="exampleInputFile" type="file" aria-describedby="fileHelp" name="thumbnail" value="{{ old('thumbnail') }}" required>
                   </div>
