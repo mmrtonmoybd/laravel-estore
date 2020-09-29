@@ -34,6 +34,17 @@
             @php
             $rating = round($product->averageRating, 2);
             @endphp
+			<span class="text-warning" >
+			<h2>
+			@for ($i = 1; $i <= 5; $i++)
+			@if ($rating >= $i)
+			{!! '&#9733;' !!}
+		@else 
+		{!! '&#9734;' !!}
+		@endif
+				@endfor
+				</h2>
+			 </span>
           
             @if (Auth::check())
             
@@ -51,7 +62,8 @@
        {{ $error }}
        </div>
        @endforeach
-       {{ $product->userSumRating }}
+       
+	   <p>You Given: {{ $product->userSumRating }} star</p>
   <form action="{{ route('rating') }}" method="POST">
   @csrf
     <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
