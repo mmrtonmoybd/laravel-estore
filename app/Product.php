@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
 use willvincent\Rateable\Rateable;
+use Illuminate\Support\HtmlString;
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment;
+use League\CommonMark\Extension\Table\TableExtension;
 
 class Product extends Model implements Commentable
 {
 	use HasComments, Rateable;
-  protected $fillable = ['category_id', 'title', 'price', 'discounds', 'description', 'quantity', 'admin_id', 'image'];
+  protected $fillable = ['category_id', 'title', 'price', 'discounds', 'description', 'quantity', 'admin_id', 'image', 'color', 'size'];
 	protected $guarded = [
 	'views'
 	];
@@ -37,4 +41,17 @@ class Product extends Model implements Commentable
 		$find = \App\Admin::find($id);
 		return $find;
 	}
+	
+	// markdown affect view
+	public static function getDescriptionAttribute($value)
+{
+	$environment = Environment::createCommonMarkEnvironment();
+
+        $environment->addExtension(new TableExtension);
+
+        $converter = new CommonMarkConverter([
+            'allow_unsafe_links' => false,
+        ], $environment);
+    return new HtmlString($converter->convertToHtml($value));
+}
 }

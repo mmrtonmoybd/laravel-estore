@@ -45,7 +45,13 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleTextarea">Product Description</label>
-                    <textarea class="form-control @error('info') is-invalid @enderror" id="summernote" rows="5" name="info" required>{{ old('info') }}</textarea>
+                    <textarea class="form-control @error('info') is-invalid @enderror" id="summernote" rows="5" name="info">{{ old('info') }}</textarea>
+					<script>
+               new SimpleMDE({
+		element: document.getElementById("summernote"),
+		spellChecker: false,
+	});
+</script>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputqty1">Product Color</label>

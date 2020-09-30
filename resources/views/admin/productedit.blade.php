@@ -49,11 +49,11 @@
                   </div>
                <div class="form-group">
                     <label for="exampleInputqty1">Product Color</label>
-                    <input class="form-control @error('color') is-invalid @enderror" id="exampleInputQty1" type="text" placeholder="Red, Green, Blue" name="color" required value="{{ old('color') }}">
+                    <input class="form-control @error('color') is-invalid @enderror" id="exampleInputQty1" type="text" placeholder="Red, Green, Blue" name="color" required value="{{ old('color') ? old('color') : $product->color }}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputqty1">Product Size</label>
-                    <input class="form-control @error('size') is-invalid @enderror" id="exampleInputQty1" type="size" placeholder="XL, XXL, M, L" name="size" required value="{{ old('size') }}">
+                    <input class="form-control @error('size') is-invalid @enderror" id="exampleInputQty1" type="size" placeholder="XL, XXL, M, L" name="size" required value="{{ old('size') ? old('size') : $product->size }}">
                   </div>  
                   <div class="form-group">
                     <label for="exampleInputFile">Product Thumbnail</label>

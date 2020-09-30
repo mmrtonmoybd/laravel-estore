@@ -15,7 +15,7 @@ class RatingController extends Controller
 {
     public function index() {
     	return view('admin.rating', [
-    	'rates' = Rating::latest()->paginate(config('settings.max_item_per_page')),
+    	'rates' => Rating::latest()->paginate(config('settings.max_item_per_page')),
     	]);
     }
     

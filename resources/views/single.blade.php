@@ -94,7 +94,7 @@
        </div>
        @endforeach
        
-	   <p>You Given: {{ $product->userSumRating }} star</p>
+	   <p>{{ ($product->userSumRating != 0) ? 'You Given: ' . $product->userSumRating . ' Star' : 'You Have not given review yet!' }}</p>
   <form action="{{ route('rating') }}" method="POST">
   @csrf
     <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>

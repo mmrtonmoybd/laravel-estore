@@ -47,9 +47,12 @@
                       <td>{{ $rate->rating }}</td>
                       <td><a href='{{ url("/product/{$rate->rateable_id}") }}'>{{ $rate->rateable_id }}</a></td>      
                       <td><a href='{{ url("/users/profile/{$rate->user_id}") }}'>{{ $rate->user_id }}</a></td>
-                      <td>{{ $order->updated_at }}</td>
-                      <td>{{ $order->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href=""><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-trash"></i></a></div></td>
+                      <td>{{ $rate->updated_at }}</td>
+                      <td>{{ $rate->created_at }}</td>
+					  <td><div class="btn-group">
+					  <a class="btn btn-primary" href='{{ url("/product/{$rate->rateable_id}") }}'><i class="fa fa-lg fa-eye"></i></a>
+					  <a class="btn btn-primary" href='{{ route("admin.rating.delete", ["id" => $rate->id]) }}'><i class="fa fa-lg fa-trash"></i></a>
+					  </div></td>
                     </tr>
                     @endforeach
                   </tbody>

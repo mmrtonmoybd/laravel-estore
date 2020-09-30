@@ -30,9 +30,7 @@
     <!-- The javascript plugin to display page loading on top-->
     <script src="{{ asset('admin/js/plugins/pace.min.js') }}"></script>
 	@if (Route::currentRouteName() == 'admin.product.add') 
-		<script>
-var simplemde = new SimpleMDE();
-</script>
+		
 	@endif
   </body>
   </html>

@@ -69,7 +69,7 @@ Route::group([
  	Route::get('settings/', 'Admin\SettingController@index')->name('admin.setting.list');
  	Route::post('settings/', 'Admin\SettingController@update');
  	
- 	Route::get('rating/', 'Admin\RatingController@index')->name('admin.rating.list');
+ 	Route::get('ratings/', 'Admin\RatingController@index')->name('admin.rating.list');
  	Route::get('rating/{id}', 'Admin\RatingController@delete')->name('admin.rating.delete');
  	
  });
