@@ -29,9 +29,6 @@ class OrderInfo extends Controller
     public function orders(Payment $id) {
         //dd($id); successfull
         $this->authorize('paymentOrderView', $id);
-        if (session()->has('success')) {
-            \Cart::clear();
-        }
         $orders = $id->orders()->get();
         $product = $id->product()->get();
         //dd($order); successfull

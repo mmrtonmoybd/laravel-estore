@@ -2,12 +2,12 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i>Orders</h1>
-          <p>Display All Orders</p>
+          <h1><i class="fa fa-th-list"></i>Ratings</h1>
+          <p>Display All Rating</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
-          <li class="breadcrumb-item active">Orders</li>
+          <li class="breadcrumb-item active">Rating</li>
         </ul>
       </div>
       
@@ -15,7 +15,7 @@
         <div class="col-md-12">
           <div class="tile">
 		  <div class="tile-title-w-btn">
-              <h3 class="title">All Orders</h3>
+              <h3 class="title">All Rating</h3>
             </div>
             <div class="tile-body">
             @if(session()->has('success'))
@@ -32,38 +32,30 @@
                   <thead>
                   <tr>
                       <th>ID</th>
-                      <th>Payment ID</th>
-                      <th>Product Title</th>
-                      <th>Quantity</th>
-                      <th>Size</th>
-                      <th>Color</th>
-                      <th>User</th>
-                      <th>Status</th>
+                      <th>Rate</th>
+                      <th>Product ID</th>
+                      <th>User ID</th>
                       <th>Updated</th>
                       <th>Created</th>
 					  <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($orders as $order)
+                  @foreach ($rates as $rate)
                   <tr>
-                      <td>{{ $order->id }}</td>
-                      <td>{{ $order->payment_id }}</td>
-                      <td><a href='{{ url("/product/{$order->product_id}") }}'>{{ $order->product->title }}</a></td>      
-                      <td>{{ $order->quantity }}</td>
-                      <td>{{ $order->size }}</td>
-                      <td>{{ $order->color }}</td>
-                      <td><a href='{{ url("/users/profile/{$order->user_id}") }}'>{{ $order->user->name }}</a></td>
-                      <td>{{ $order->status }}</td>
+                      <td>{{ $rate->id }}</td>
+                      <td>{{ $rate->rating }}</td>
+                      <td><a href='{{ url("/product/{$rate->rateable_id}") }}'>{{ $rate->rateable_id }}</a></td>      
+                      <td><a href='{{ url("/users/profile/{$rate->user_id}") }}'>{{ $rate->user_id }}</a></td>
                       <td>{{ $order->updated_at }}</td>
                       <td>{{ $order->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href="{{ route('admin.order.update', ['id' => $order->id]) }}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.order.delete', ['id' => $order->id]) }}"><i class="fa fa-lg fa-trash"></i></a></div></td>
+					  <td><div class="btn-group"><a class="btn btn-primary" href=""><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-trash"></i></a></div></td>
                     </tr>
                     @endforeach
                   </tbody>
                 </table>
               </div>
-              {{ $orders->links() }}
+              {{ $rates->links() }}
             </div>
           </div>
         </div>

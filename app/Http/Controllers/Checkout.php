@@ -99,12 +99,15 @@ class Checkout extends Controller
          'product_id' => $item->id,
          'quantity' => $item->quantity,
          'user_id' => Auth::guard()->user()->id,
+         'size' => $item->attributes->size,
+         'color' => $item->attributes->color,
          ];  
          Order::create($datao);
 			 }
 			 
 			 
 			 event(new PaymentSuccess(Auth::guard()->user(), Payment::find($payment->id)));
+			 Cart::clear();
 			 return redirect("users/orders/{$payment->id}")->with('success', 'Your payment and order are successful');
          } else {
              return redirect()->back()->with('error', 'Your payment id is already avilable in our server or your payment and order is successfully.');

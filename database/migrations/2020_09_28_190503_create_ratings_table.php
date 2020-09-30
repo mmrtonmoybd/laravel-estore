@@ -13,7 +13,6 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->integer('rating');
             $table->morphs('rateable');
             $table->bigInteger('user_id')->unsigned();
@@ -21,6 +20,7 @@ class CreateRatingsTable extends Migration
             $table->index('rateable_type');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('rateable_id')->references('id')->on('products');
+            $table->timestamps();
         });
     }
 

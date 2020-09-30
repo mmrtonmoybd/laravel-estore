@@ -61,6 +61,8 @@ $info = Auth::guard()->user()->userInfo()->first();
 <th>Item Name</th>
 <th>Item Qty</th>
 <th>Price</th>
+<th>Size</th>
+<th>Color</th>
 <th>Status</th>
 <th>Action</th>
 </tr>
@@ -81,6 +83,8 @@ $total = $price - $calculation;
 <td>{{ $products[$i]->title }}</td>
 <td>{{ $order->quantity }}</td>
 <td>${{ $total }}</td>
+<td>{{ $order->size }}</td>
+<td>{{ $order->color }}</td>
 <td>{{ $order->status }}</td>
 <td><a href='{{ url("product/{$order->product_id}") }}'><button type="button" class="btn btn-info">View product</button></a></td>
 </tr>
