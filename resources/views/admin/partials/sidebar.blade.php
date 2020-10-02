@@ -1,7 +1,7 @@
 <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ asset(Auth::guard('admin')->user()->adminInfo->image) }}" alt="User Image">
+      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="{{ (!is_null(Auth::guard('admin')->user()->adminInfo->image)) ? asset(Auth::guard('admin')->user()->adminInfo->image) : 'https://st2.depositphotos.com/1006318/5909/v/950/depositphotos_59095529-stock-illustration-profile-icon-male-avatar.jpg' }}" alt="User Image" width="80" height="80">
         <div>
           <p class="app-sidebar__user-name">{{ Auth::guard('admin')->user()->name }}</p>
           <p class="app-sidebar__user-designation">@if (Auth::guard('admin')->user()->isAdmin == 1) {{ "Super Admin"}} @else {{ "Normal Admin"}} @endif</p>

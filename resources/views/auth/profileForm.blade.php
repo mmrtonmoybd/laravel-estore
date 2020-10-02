@@ -9,7 +9,7 @@
        @endforeach
 <div class="form-group">
     <label for="exampleInputName">Full Name</label>
-    <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter name" value="{{ $profile->name }}" name="name">
+    <input type="text" class="form-control @error('name') is-invalid @enderror" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter name" value="{{ old('name') ? old('name') : $profile->name }}" name="name">
   </div>
   
 <div class="form-group">
@@ -19,17 +19,17 @@
   </div>
   <div class="form-group">
     <label for="exampleInputAddress">Home address</label>
-    <input type="text" class="form-control @error('address') is-invalid @enderror" id="exampleInputAddress" aria-describedby="addressHelp" placeholder="Enter home address" value="{{ $userinfo->address }}" name="address">
+    <input type="text" class="form-control @error('address') is-invalid @enderror" id="exampleInputAddress" aria-describedby="addressHelp" placeholder="Enter home address" value="{{ old('address') ? old('address') : $userinfo->address }}" name="address">
   
   </div>
   <div class="form-group">
-    <label for="exampleInputMobile">Email address</label>
-    <input type="text" class="form-control @error('mobile') is-invalid @enderror" id="exampleInputMobile" aria-describedby="mobileHelp" placeholder="Enter mobile" value={{ $userinfo->mobile }} name="mobile">
+    <label for="exampleInputMobile">Mobile No</label>
+    <input type="text" class="form-control @error('mobile') is-invalid @enderror" id="exampleInputMobile" aria-describedby="mobileHelp" placeholder="Enter mobile" value={{ old('mobile') ? old('mobile') : $userinfo->mobile }} name="mobile">
   
   </div>
   <div class="form-group">
     <label for="exampleInputFacebook">Facebook Profile</label>
-    <input type="url" class="form-control @error('facebook') is-invalid @enderror" id="exampleInputFacebook" aria-describedby="addressHelp" placeholder="Enter Facebook Profile" value="{{ $userinfo->facebook }}" name="facebook">
+    <input type="url" class="form-control @error('facebook') is-invalid @enderror" id="exampleInputFacebook" aria-describedby="addressHelp" placeholder="Enter Facebook Profile" value="{{ old('facebook') ? old('facebook') : $userinfo->facebook }}" name="facebook">
   
   </div>
   <div class="form-group">
@@ -44,7 +44,7 @@
   </div>
   <div class="form-group">
     <label for="cpassword">Confrim Password</label>
-    <input type="password" class="form-control @error('cpassword') is-invalid @enderror" id="exampleInputPassword2" placeholder="Confrim Password" name="password_confirmation">
+    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="exampleInputPassword2" placeholder="Confrim Password" name="password_confirmation">
   </div>
   
   <button type="submit" class="btn btn-primary">Update</button>
