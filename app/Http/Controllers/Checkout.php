@@ -19,6 +19,7 @@ use LVR\CreditCard\CardExpirationMonth;
 use Stripe\StripeClient;
 use Illuminate\Support\Facades\Auth;
 use App\Events\PaymentSuccess;
+use App\Product;
 
 class Checkout extends Controller
 {
@@ -94,6 +95,13 @@ class Checkout extends Controller
              ]);
 			 
 				 foreach (Cart::getContent() as $item) { 
+				   $product = Product::find($item->id);
+				   if ($product->quantity >= $item->quantity) {
+				   	$product->quantity = $product->quantity - $item->quantity;
+				   } else {
+				   	$product->quantity = 0;
+				   }
+				   $product->save();
          $datao = [
          'payment_id' => $payment->id,
          'product_id' => $item->id,

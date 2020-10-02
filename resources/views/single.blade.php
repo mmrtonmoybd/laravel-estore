@@ -31,7 +31,7 @@
  
          <div class="form-group">
                     <label for="exampleSelect1">Quantity</label>                               <input type="number" class="form-control form-control-sm" value="1"
-                                               id="quantity" name="quantity" style="width: 70px; margin-right: 10px;">
+                                               id="quantity" name="quantity" style="width: 70px; margin-right: 10px;" >
                                                </div>
                                                <div class="form-group">
                     <label for="exampleSelect1">Color</label>
@@ -61,7 +61,7 @@
                                                     <i class="fa fa-shopping-cart"></i> add to cart
                                                 </button>
                                     </form>
-            <p class="card-text">{{ $product->description }}</p>
+            {{ $product->getParse($product->description) }}
             @php
             $rating = round($product->averageRating, 2);
             @endphp

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\CryptTrait;
+use App\Product;
 
 class CartRequest extends FormRequest
 {
@@ -31,9 +32,10 @@ class CartRequest extends FormRequest
      */
     public function rules()
     {
+    	$product = Product::find($this->id);
         return [
             'id' => 'required|numeric|exists:products,id',
-			'quantity' => 'required|numeric|max:5|gte:1',
+			'quantity' => 'required|numeric|gte:1|max:' . $product->quantity,
 			'size' => 'required|string',
 			'color' => 'required|string',
         ];

@@ -24,7 +24,7 @@ class AdminAuthorize
         //
     }
     
-    public function asminAuthorize(Admin $admin, $id) {
-    	return $admin->id === $id || $admin->isAdmin;
+    public function adminAuthorize(Admin $admin, Admin $current) {
+    	return $admin->id === $current->id;
     }
 }

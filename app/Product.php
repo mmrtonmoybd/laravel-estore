@@ -43,7 +43,8 @@ class Product extends Model implements Commentable
 	}
 	
 	// markdown affect view
-	public static function getDescriptionAttribute($value)
+	
+	public static function getParse($value)
 {
 	$environment = Environment::createCommonMarkEnvironment();
 
@@ -51,7 +52,9 @@ class Product extends Model implements Commentable
 
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
+            'html_input' => 'escape',
         ], $environment);
     return new HtmlString($converter->convertToHtml($value));
 }
+
 }

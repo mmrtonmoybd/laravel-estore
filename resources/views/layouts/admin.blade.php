@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   <head>
-  <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Vali Admin - Free Bootstrap 4 Admin Template</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+     <title>Vali Admin - Free Bootstrap 4 Admin Template</title>
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}">
     <!-- Font-icon css-->

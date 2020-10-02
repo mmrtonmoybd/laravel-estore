@@ -53,6 +53,10 @@ Route::group([
      Route::get('comments/delete/{id}', 'Admin\CommentController@delete')->name('admin.comment.delete');
      Route::post('comments/add', 'Admin\CommentController@store')->name('admin.comment.add');
      Route::post('comments/reply/add/', 'Admin\CommentController@reply')->name('admin.reply.add');
+     
+     Route::get('profile/{id}', 'Admin\ProfileController@index')->name('admin.profile');
+     Route::get('profile/update/{id}', 'Admin\ProfileController@showForm')->name('admin.profile.update');
+     Route::post('profile/update/{id}', 'Admin\ProfileController@update');
  
  //Super Admin Permission
  

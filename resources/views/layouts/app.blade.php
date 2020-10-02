@@ -10,7 +10,6 @@
 
     <!-- Scripts -->
    <script src="{{ asset('js/app.js') }}" defer></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,7 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
 	<link href="{{ asset('frontend/css/styles.css') }}" rel="stylesheet">
 </head>
 <body>

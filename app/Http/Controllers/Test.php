@@ -9,15 +9,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
+use Cart;
 
 class Test extends Controller
 {
     public function test() {
-      $str = "black, red, green, blue";
-      $arr = explode(',', $str);
-     //dd($arr);
-     foreach ($arr as $key => $value) {
-     	echo $key . $value;
-     }
+    	$arr = [];
+      foreach (Cart::getContent() as $cart) {
+      	//dd($cart);
+      	$arr[] = $cart->id;
+      }
+      if (in_array(8, $arr)) {
+      	echo "not adding this item, item already add in cart.";
+      }
     }
 }
