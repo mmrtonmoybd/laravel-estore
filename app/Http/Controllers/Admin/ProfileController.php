@@ -14,13 +14,17 @@ use App\Admin;
 class ProfileController extends Controller
 {
     public function index(Admin $id) {
-    dd($id);
+    return view('admin.profile', [
+	'profile' => $id,
+	]);
     }
     
     public function showForm(Admin $id) {
     	//show form for update
     	$this->AuthRizeCheck($id);
-    	dd($id);
+    	return view('admin.profileupdate', [
+		'profile' => $id,
+		]);
     }
     
     public function update(Request $request, Admin $id) {
