@@ -57,7 +57,7 @@
                       <td>{{ $payment->user_id }}</td>
                       <td>{{ $payment->updated_at }}</td>
                       <td>{{ $payment->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href="{{ route('admin.payment.update', ['id' => $payment->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.payment.delete', ['id' => $payment->id])}}"><i class="fa fa-lg fa-trash"></i></a></div></td>
+					  <td><div class="btn-group"><a class="btn btn-primary" href="{{ route('admin.invoice.view', ['id' => $payment->id])}}"><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.invoice.download', ['id' => $payment->id])}}"><i class="fa fa-lg fa-download"></i></a><a class="btn btn-primary" href="{{ route('admin.payment.update', ['id' => $payment->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.payment.delete', ['id' => $payment->id])}}"><i class="fa fa-lg fa-trash"></i></a></div></td>
                     </tr>
                     @endforeach
                   </tbody>

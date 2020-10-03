@@ -14,19 +14,9 @@ use PDF;
 
 class Invoice extends Controller
 {
-	   private $pdf;
-    public function stream(Payment $id) {
-    	$this->genarate($id);
-        return $this->pdf->stream();
-    }
-    
-    public function download(Payment $id) {
-    	$this->genarate($id);
-    	return $this->pdf->download($id->id . 'pdf');
-    }
-    
-    private function genarate(Payment $id) {
-    		$orders = $id->orders()->get();
+	private $pdf;
+	private function genarate(Payment $id) {
+        $orders = $id->orders()->get();
         $product = $id->product()->get();
     	$this->pdf = PDF::loadView('admin.invoice', [
         'payment' => $id,
@@ -34,5 +24,14 @@ class Invoice extends Controller
         'products' => $product,
         ]);
     	return $this->pdf;
+    }
+    public function stream(Payment $id) {
+    	$this->genarate($id);
+        return $this->pdf->stream();
+    }
+    
+    public function download(Payment $id) {
+    	$this->genarate($id);
+    	return $this->pdf->download($id->id);
     }
 }

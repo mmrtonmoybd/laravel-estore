@@ -57,6 +57,9 @@ Route::group([
      Route::get('profile/{id}', 'Admin\ProfileController@index')->name('admin.profile');
      Route::get('profile/update/{id}', 'Admin\ProfileController@showForm')->name('admin.profile.update');
      Route::post('profile/update/{id}', 'Admin\ProfileController@update');
+	 
+	 Route::get('invoice/{id}', 'Admin\Invoice@stream')->name('admin.invoice.view');
+	 Route::get('invoice/download/{id}', 'Admin\Invoice@download')->name('admin.invoice.download');
  
  //Super Admin Permission
  

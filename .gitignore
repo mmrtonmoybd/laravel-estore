@@ -17,3 +17,5 @@ yarn-error.log
 /public/frontend
 /public/products
 /public/avaters
+/public/js
+/public/css

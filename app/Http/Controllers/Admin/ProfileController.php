@@ -35,7 +35,7 @@ class ProfileController extends Controller
       'name' => 'required|string|max:255',
       'address' => 'required|max:450|string',
       'mobile' => 'required|numeric',
-      'image' => 'image|mimes:jpeg,png,gif,jpg,bmp|size:1024|dimensions:min_width=100,min_height=50,max_width=450,max_height=350',
+      'image' => 'image|mimes:jpeg,png,gif,jpg,bmp|max:1024|dimensions:min_width=100,min_height=50,max_width=450,max_height=480',
       'password' => 'confirmed',
       'facebook' => 'url|required',
       ]);

@@ -3,7 +3,7 @@
 <div class="row user">
         <div class="col-md-12">
           <div class="profile">
-            <div class="info"><img class="user-img" src="{{ (!is_null($profile->image)) ? asset($profile->image) : 'https://st2.depositphotos.com/1006318/5909/v/950/depositphotos_59095529-stock-illustration-profile-icon-male-avatar.jpg' }}">
+            <div class="info"><img class="user-img" src="{{ (!is_null($profile->adminInfo->image)) ? asset($profile->adminInfo->image) : 'https://st2.depositphotos.com/1006318/5909/v/950/depositphotos_59095529-stock-illustration-profile-icon-male-avatar.jpg' }}">
               <h4>{{ $profile->name }}</h4>
               <p>@if ($profile->isAdmin == 1) {{ "Super Admin"}} @else {{ "Normal Admin"}} @endif</p>
             </div>
