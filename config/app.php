@@ -169,6 +169,7 @@ return [
         Actuallymab\LaravelComment\LaravelCommentServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -231,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
 		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+		'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
