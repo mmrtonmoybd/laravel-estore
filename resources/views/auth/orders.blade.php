@@ -76,7 +76,7 @@ $i = -1;
 @php
 $i++;
 $price = $products[$i]->price;
-$didiscounds = $products[$i]->didiscounds;
+$didiscounds = $products[$i]->discounds;
 $calculation = $price * $didiscounds / 100;
 $total = $price - $calculation;
 @endphp

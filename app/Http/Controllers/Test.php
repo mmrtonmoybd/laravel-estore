@@ -10,17 +10,13 @@ use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Cart;
+use App\Traits\ProductShow;
 
 class Test extends Controller
-{
+{ 
+use ProductShow;
+	
     public function test() {
-    	$arr = [];
-      foreach (Cart::getContent() as $cart) {
-      	//dd($cart);
-      	$arr[] = $cart->id;
-      }
-      if (in_array(8, $arr)) {
-      	echo "not adding this item, item already add in cart.";
-      }
+    	dd($this->getMostSellProduct());
     }
 }

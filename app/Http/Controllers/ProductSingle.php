@@ -19,7 +19,7 @@ class ProductSingle extends Controller
         //SEOTools::twitter()->setSite('@LuizVinicius73');
         SEO::jsonLd()->addImage(asset("products/{$id->image}"));
 
-		if (is_object($this->getRelatedProducts($id->category_id))) {
+		if (is_object($this->getRelatedProducts($id->category_id, $id->id))) {
 			$related = true;
 		} else {
 			$related = false;

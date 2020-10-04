@@ -201,7 +201,7 @@ $i = -1;
 			@php
 $i++;
 $price = $products[$i]->price;
-$didiscounds = $products[$i]->didiscounds;
+$didiscounds = $products[$i]->discounds;
 $calculation = $price * $didiscounds / 100;
 $total = $price - $calculation;
 @endphp
@@ -209,6 +209,7 @@ $total = $price - $calculation;
 <td>{{ $order->quantity }}</td>
 <td>{{ $order->size }}</td>
 <td>{{ $order->color }}</td>
+<td>{{ $calculation }}</td>
 <td>${{ $total }}</td>
             </tr>
 			@endforeach

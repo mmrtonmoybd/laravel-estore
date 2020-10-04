@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
 			$table->foreignId('payment_id')->constrained('payments')->onDelete('cascade');
 			$table->foreignId('product_id')->constrained('products')->onDelete('cascade');
 			$table->integer('quantity');
-			$table->enum('status', ['pending', 'complete'])->default('pending');
+			$table->enum('status', ['pending', 'complete'])->default('complete');
 			$table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

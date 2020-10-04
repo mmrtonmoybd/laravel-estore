@@ -17,7 +17,9 @@ class Index extends Controller
        return view('index', [
        'products' => $products,
        'categories' => $this->getCategories(),
-       'discounds' => $this->getDiscoundProducts()
+       'discounds' => $this->getDiscoundProducts(),
+       'selles' => $this->getMostSellProduct(),
+       'views' => $this->getMostViewsProduct(),
        ]);
     }
     //recent post

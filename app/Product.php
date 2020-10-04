@@ -57,4 +57,8 @@ class Product extends Model implements Commentable
     return new HtmlString($converter->convertToHtml($value));
 }
 
+public function orderr() {
+	return $this->hasMany('App\Order');
+}
+
 }
