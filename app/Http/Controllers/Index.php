@@ -18,8 +18,10 @@ class Index extends Controller
        'products' => $products,
        'categories' => $this->getCategories(),
        'discounds' => $this->getDiscoundProducts(),
-       'selles' => $this->getMostSellProduct(),
        'views' => $this->getMostViewsProduct(),
+	   'viewbool' => (is_object($this->getMostViewsProduct())) ? true : false,
+	   'disbool' => (is_object($this->getDiscoundProducts())) ? true : false,
+	   'catebool' => (is_object($this->getCategories())) ? true : false,
        ]);
     }
     //recent post

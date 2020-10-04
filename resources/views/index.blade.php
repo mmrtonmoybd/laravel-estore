@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="row">
-@include('partials.categorylist')
+@includeWhen($catebool,'partials.categorylist', ['categories' => $categories])
 </div>
 <div class="row">
 
@@ -40,7 +40,7 @@
             </div>
           </div>
           @endforeach
-          @include('partials.selled')
-          @include('partials.discountsproducts')
+          @includeWhen($viewbool, 'partials.viewed', ['views' => $views])
+          @includeWhen($disbool ,'partials.discountsproducts', ['discounds' => $discounds])
 		  </div>
 		  @endsection

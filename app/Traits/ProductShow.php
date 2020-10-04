@@ -28,10 +28,5 @@ trait ProductShow {
 	private function getMostViewsProduct() {
 		return ProductModel::orderBy('views', 'desc')->limit(config('settings.max_related_item'))->get();
 	}
-	
-	private function getMostSellProduct() {
-		return OrderModel::select(\DB::raw(' COUNT(`product_id`) AS `product_id`'))->with('product')->groupBy('product_id')->limit(config('settings.max_related_item'))->get();
-	}
-	
 	}
 ?>

@@ -1,16 +1,16 @@
 <div class="page-header">
-  <h2>Most Selled Products</h2>
-@foreach ($selles as $discound) 
+  <h2>Most Viewed Products</h2>
+@foreach ($views as $view) 
 <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href='{{ url("product/{$discound->product->id}") }}'>{{ $discound->product->title }}</a>
+                  <a href='{{ url("product/{$view->id}") }}'>{{ $view->title }}</a>
                 </h4>
            @php
-                $price = $discound->product->price;
-                $adiscound = $discound->product->discounds;
+                $price = $view->price;
+                $adiscound = $view->discounds;
                 $calculate = $price * $adiscound / 100;
                 $calculate = $price - $calculate;
                 @endphp
@@ -23,7 +23,7 @@
               <div class="card-footer">
              <form action="{{ route('cart.store') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" value="{{ \Crypt::encryptString($discound->product->id) }}" id="id" name="id">
+                                        <input type="hidden" value="{{ \Crypt::encryptString($view->id) }}" id="id" name="id">
  
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                                 <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
