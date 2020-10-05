@@ -24,7 +24,7 @@ class ProductSingle extends Controller
 		} else {
 			$related = false;
 		}
-		$id->views++;
+        $id->visit();		
 		$id->save();
      return view('single', [
      'product' => $id,

@@ -57,7 +57,7 @@
                       <td>{{ $product->category->name }}</td>
                       <td>${{ $product->price }}</td>
                       <td>{{ $product->discounds }}</td>
-                      <td>{{ $product->views }}</td>
+                      <td>{{ $product->visitsForever() }}</td>
      @if ($product->quantity < 1)                 <td class="btn btn-danger">{{ $product->quantity }} </td>
      @else
      <td>{{ $product->quantity }} </td>

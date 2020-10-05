@@ -16,7 +16,8 @@ trait ProductShow {
     /*
 	@param $category_id = product category id
 	*/
-    private function getRelatedProducts(int $category_id, $id) {
+    private function getRelatedProducts(int $category_id, $id = 1) {
+		//dd($id);
        $product = ProductModel::where('category_id', $category_id)->where('id', '!=', $id)->orderBy('id', 'desc')->limit(config('settings.max_related_item'))->get();
 	   return $product;
     }
@@ -26,7 +27,7 @@ trait ProductShow {
 	}
 	
 	private function getMostViewsProduct() {
-		return ProductModel::orderBy('views', 'desc')->limit(config('settings.max_related_item'))->get();
+		return ProductModel::popularAllTime()->limit(config('settings.max_related_item'))->get();
 	}
 	}
 ?>
