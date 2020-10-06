@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categorie;
 use Illuminate\Http\Request;
 use App\Traits\ProductShow;
+use SEO;
 
 class CategoryProducts extends Controller
 {
@@ -16,6 +17,12 @@ class CategoryProducts extends Controller
      */
     public function index(Categorie $id)
     {
+    	SEO::setTitle($id->name);
+    	SEO::setDescription(substr($id->description, 0, 170));
+        SEO::opengraph()->setUrl(url("/category/{$id->id}"));
+        SEO::setCanonical(url("/category/{$id->id}"));
+        SEO::opengraph()->addProperty('type', 'products');
+        //SEOTools::twitter()->setSite('@LuizVinicius73');
         return view('products.category', [
         'products' => $id->product()->orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
         'category' => $id,

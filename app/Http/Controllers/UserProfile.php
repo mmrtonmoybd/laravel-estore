@@ -12,6 +12,7 @@ use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use App\UserInfo;
+use SEO;
 
 class UserProfile extends Controller
 {
@@ -19,6 +20,12 @@ class UserProfile extends Controller
 		//$this->middleware('auth');
 	}
     public function index(User $id) {
+    	SEO::setTitle($id->name);
+        SEO::opengraph()->setUrl(url("/users/profile/{$id->id}"));
+        SEO::setCanonical(url("/users/profile/{$id->id}"));
+        SEO::opengraph()->addProperty('type', 'profile');
+        //SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEO::jsonLd()->addImage(asset($id->userInfo->image));
         return view('auth.profile', [
         'profile' => $id,
         'userinfo' => $id->userInfo()->first(),
@@ -27,6 +34,12 @@ class UserProfile extends Controller
     
     public function showInForm(User $id) {
         $this->authorize('isAuthorize', $id);
+        SEO::setTitle($id->name);
+        SEO::opengraph()->setUrl(url("/users/profile/{$id->id}"));
+        SEO::setCanonical(url("/users/profile/{$id->id}"));
+        SEO::opengraph()->addProperty('type', 'profile');
+        //SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEO::jsonLd()->addImage(asset($id->userInfo->image));
         return view('auth.profileForm', [
         'profile' => $id,
         'userinfo' => $id->userInfo()->first(),

@@ -23,6 +23,10 @@
             <li><a class="treeview-item" href="{{ route('admin.product.add') }}" rel="noopener"><i class="icon fa fa-circle-o"></i> Product Add</a></li>
           </ul>
         </li>
+        @can('isAdmin')
+        <li><a class="app-menu__item @if (Route::currentRouteName() == 'admin.rating.list') {{ 'active' }} @endif" href="{{ route('admin.rating.list') }}"><i class="app-menu__icon fa fa-star"></i><span class="app-menu__label">Ratings</span></a>
+        </li>
+        @endcan
 		<li><a class="app-menu__item @if (Route::currentRouteName() == 'admin.order.list' || Route::currentRouteName() == 'admin.order.update') {{ 'active' }} @endif" href="{{ route('admin.order.list') }}"><i class="app-menu__icon fa fa-first-order"></i><span class="app-menu__label">Orders</span></a></li>
          <li><a class="app-menu__item @if (Route::currentRouteName() == 'admin.payment.list' || Route::currentRouteName() == 'admin.payment.update') {{ 'active' }} @endif" href="{{ route('admin.payment.list') }}"><i class="app-menu__icon fa fa-credit-card"></i><span class="app-menu__label">Payments</span></a></li>
 		@can ('isAdmin')

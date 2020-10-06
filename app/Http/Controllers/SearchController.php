@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Traits\ProductShow;
+use SEO;
 
 class SearchController extends Controller
 {
@@ -18,10 +19,17 @@ class SearchController extends Controller
 		$request->validate([
 		'search' => 'required|string|regex:/[A-Za-z0-9 ]$/i',
 		]);
+		
 		$products = Product::where('title', 'LIKE', '%' . $request->search . '%')->latest()->paginate(config('settings.max_item_per_page'));
 		if (count($products) < 1) {
 			abort(404);
 		}
+		
+		SEO::setTitle('“' . $request->search . '”');
+        SEO::opengraph()->setUrl(url("/search?search={$request->search}"));
+        SEO::setCanonical(url("/search?search={$request->search}"));
+        SEO::opengraph()->addProperty('type', 'page');
+		
 		return view('products.search', [
        'products' => $products,
        'categories' => $this->getCategories(),

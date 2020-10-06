@@ -6,10 +6,15 @@ use Illuminate\Http\Request;
 use Darryldecode\Cart\CartCondition;
 use App\Product;
 use App\Http\Requests\CartRequest;
+use SEO;
 
 class CartController extends Controller
 {
     public function index() {
+    	SEO::setTitle("Cart Items");
+        SEO::opengraph()->setUrl(url("/cart/"));
+        SEO::setCanonical(url("/cart/"));
+        SEO::opengraph()->addProperty('type', 'page');
 		return view('carts.cart', [
 		'cartCollection' => \Cart::getContent()
 		]);
@@ -53,6 +58,11 @@ class CartController extends Controller
 	
 	public function updateProduct(CartRequest $request) {
 	   $request->validated();
+	   
+	   SEO::setTitle("Cart Update");
+        SEO::opengraph()->setUrl(url("/cart/update/"));
+        SEO::setCanonical(url("/cart/update/"));
+        SEO::opengraph()->addProperty('type', 'page');
 		\Cart::update($request->input('id'), [
 		'quantity' => [
 		'relative' => false,

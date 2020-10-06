@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\UserInfo;
+use SEO;
 
 class RegisterController extends Controller
 {
@@ -40,6 +41,10 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        SEO::setTitle("User Registraion");
+        SEO::opengraph()->setUrl(route('register'));
+        SEO::setCanonical(route('register'));
+        SEO::opengraph()->addProperty('type', 'page');
     }
 
     /**

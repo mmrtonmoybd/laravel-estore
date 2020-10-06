@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Traits\ProductShow;
+use SEO;
 
 class Index extends Controller
 {
@@ -26,6 +27,11 @@ class Index extends Controller
     }
     //recent post
     public function recent() {
+    	SEO::setTitle("Recent Products");
+        SEO::opengraph()->setUrl(url("/latest/products"));
+        SEO::setCanonical(url("/latest/products"));
+        SEO::opengraph()->addProperty('type', 'products');
+        //SEOTools::twitter()->setSite('@LuizVinicius73');
        return view('products.recent', [
        'products' => Product::orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
        'categories' => $this->getCategories()

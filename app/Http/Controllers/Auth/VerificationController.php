@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use SEO;
 
 class VerificationController extends Controller
 {
@@ -38,5 +39,9 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+        SEO::setTitle("User Email Verify");
+        SEO::opengraph()->setUrl(route('verification.notice'));
+        SEO::setCanonical(route('verification.notice'));
+        SEO::opengraph()->addProperty('type', 'page');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use SEO;
 
 class ForgotPasswordController extends Controller
 {
@@ -19,4 +20,11 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+    
+    public function __construct() {
+    	SEO::setTitle("User Forgot Password");
+        SEO::opengraph()->setUrl(route('password.request'));
+        SEO::setCanonical(route('password.request'));
+        SEO::opengraph()->addProperty('type', 'page');
+    }
 }

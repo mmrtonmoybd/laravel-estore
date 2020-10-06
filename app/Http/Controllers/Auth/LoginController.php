@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\UserInfo;
+use SEO;
 
 class LoginController extends Controller
 {
@@ -38,6 +39,10 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        SEO::setTitle("User Login");
+        SEO::opengraph()->setUrl(route('login'));
+        SEO::setCanonical(route('login'));
+        SEO::opengraph()->addProperty('type', 'page');
     }
     
     protected function authenticated($request, $user) {
