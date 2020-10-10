@@ -20,11 +20,8 @@ class ProductCreateTable extends Migration
             $table->double('price');
 			$table->integer('discounds')->default(0);
 			$table->text('description');
-           // $table->integer('views')->default(0);
             $table->integer('quantity');
             $table->string('image');
-            $table->string('color');
-            $table->string('size');
             $table->foreignId('admin_id')->constrained('admins')->onDelete('cascade');
             $table->timestamps();
         });

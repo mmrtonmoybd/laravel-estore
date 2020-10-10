@@ -21,7 +21,9 @@ class ProductSeeder extends Seeder
         "description" => "It is a Orange color T-Shirt. All size are avilabe",
         "admin_id" => 1,
         "quantity" => 10,
-        "image" => "image.jpg"
+        "image" => "image.jpg",
+        "size" => "xl, l, m",
+        "color" => "black, green, blue",
         ],
         [
         "title" => "Green color T-Shirt",
@@ -31,7 +33,9 @@ class ProductSeeder extends Seeder
         "description" => "It is a Green color T-Shirt. All size are avilabe",
         "admin_id" => 1,
         "quantity" => 5,
-        "image" => "image.jpg"
+        "image" => "image.jpg",
+        "size" => "xl, l, m",
+        "color" => "green, pink",
         ],
         [
         "title" => "Blue color T-Shirt",
@@ -41,7 +45,9 @@ class ProductSeeder extends Seeder
         "description" => "It is a Blue color T-Shirt. All size are avilabe",
         "admin_id" => 1,
         "quantity" => 4,
-        "image" => "image.jpg"
+        "image" => "image.jpg",
+        "size" => "xl, l",
+        "color" => "blue, yello",
         ],
         [
         "title" => "Red color T-Shirt",
@@ -51,7 +57,9 @@ class ProductSeeder extends Seeder
         "description" => "It is a Red color T-Shirt. All size are avilabe",
         "admin_id" => 1,
         "quantity" => 10,
-        "image" => "image.jpg"
+        "image" => "image.jpg",
+        "size" => "xl, m",
+        "color" => "red, pink",
         ],
         [
         "title" => "Black color T-Shirt",
@@ -61,7 +69,9 @@ class ProductSeeder extends Seeder
         "description" => "It is a Black color T-Shirt. All size are avilabe",
         "admin_id" => 1,
         "quantity" => 10,
-        "image" => "image.jpg"
+        "image" => "image.jpg",
+        "size" => "xl, m",
+        "color" => "black, blue",
         ],
         [
         "title" => "Pink color T-Shirt",
@@ -71,7 +81,9 @@ class ProductSeeder extends Seeder
         "description" => "It is a Pink color T-Shirt. All size are avilabe",
         "admin_id" => 1,
         "quantity" => 10,
-        "image" => "image.jpg"
+        "image" => "image.jpg",
+        "size" => "xl, v",
+        "color" => "red, pink",
         ]
         ];
         Product::insert($data);
