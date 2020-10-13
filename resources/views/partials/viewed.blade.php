@@ -1,9 +1,11 @@
-<div class="page-header">
+<<div class="row">
+ <div class="page-header">
+ </div>
   <h2>Most Viewed Products</h2>
 @foreach ($views as $view) 
 <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src="{{ asset($product->image) }}" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href='{{ url("product/{$view->id}") }}'>{{ $view->title }}</a>
@@ -26,6 +28,21 @@
                                         <input type="hidden" value="{{ \Crypt::encryptString($view->id) }}" id="id" name="id">
  
                                         <input type="hidden" value="1" id="quantity" name="quantity">
+                                        @php 
+                                        if (!function_exists('mrtattribute')) {
+                                        function mrtattribute($attribute) {
+                                         $arr = explode(',', $attribute);
+                                         foreach ($arr as $arrnew) {
+                                           $attribute = $arrnew;
+                                           break;
+                                         }
+                                         return $attribute;
+                                        }
+                                        }
+                                        @endphp
+                                        <input type="hidden" value="1" id="quantity" name="quantity">
+                                        <input type="hidden" name="color" value="{{ mrtattribute($product->color) }}" required>
+                                        <input type="hidden" name="size" value="{{ mrtattribute($product->size) }}" required>
                                                 <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
                                                     <i class="fa fa-shopping-cart"></i> add to cart
                                                 </button>
@@ -34,4 +51,3 @@
             </div>
           </div>
           @endforeach
-</div>
