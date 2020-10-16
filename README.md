@@ -1,1 +1,1 @@
-Laravel Ecommerce running project make by Moshiur Rahman.
+Laravel Ecommerce project make by Moshiur Rahman.
