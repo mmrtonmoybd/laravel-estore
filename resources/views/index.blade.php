@@ -45,7 +45,7 @@
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                         <input type="hidden" name="color" value="{{ mrtattribute($product->color) }}" required>
                                         <input type="hidden" name="size" value="{{ mrtattribute($product->size) }}" required> 
-                                                <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
+                                                <button class="btn btn-secondary btn-sm tooltip-test" type="submit" title="add to cart">
                                                     <i class="fa fa-shopping-cart"></i> add to cart
                                                 </button>
                                     </form>
