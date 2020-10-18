@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkout' => \App\Http\Middleware\Checkout::class,
         'adminAuth' => \App\Http\Middleware\AdminAuthenticate::class,
+        'HtmlMinifire' => \App\Http\Middleware\HtmlMifier::class,
     ];
 }
