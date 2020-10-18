@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	@if (Route::currentRouteName() == 'admin.product.add') 
+	@if (Route::currentRouteName() == 'admin.product.add' || Route::currentRouteName() == 'admin.product.update') 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 	@endif
@@ -29,8 +29,5 @@
     <script src="{{ asset('admin/js/main.js')}}"></script>
     <!-- The javascript plugin to display page loading on top-->
     <script src="{{ asset('admin/js/plugins/pace.min.js') }}"></script>
-	@if (Route::currentRouteName() == 'admin.product.add') 
-		
-	@endif
   </body>
   </html>

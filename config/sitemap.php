@@ -1,6 +1,6 @@
 <?php
 
-/* Simple configuration file for Laravel Sitemap package */
+// Simple configuration file for Laravel Sitemap package
 return [
     'use_cache' => false,
     'cache_key' => 'laravel-sitemap.'.config('app.url'),
@@ -10,5 +10,5 @@ return [
     'max_size' => null,
     'use_styles' => true,
     'styles_location' => '/vendor/sitemap/styles/',
-    'use_gzip' => false
+    'use_gzip' => false,
 ];

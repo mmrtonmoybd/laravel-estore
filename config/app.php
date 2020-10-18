@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -135,10 +134,7 @@ return [
     */
 
     'providers' => [
-
-        /*
-         * Laravel Framework Service Providers...
-         */
+        // Laravel Framework Service Providers...
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -162,23 +158,19 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers...
-         */
+        // Package Service Providers...
         Darryldecode\Cart\CartServiceProvider::class,
         Actuallymab\LaravelComment\LaravelCommentServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        /*
-         * Application Service Providers...
-         */
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        // Application Service Providers...
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*
@@ -193,7 +185,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -230,10 +221,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-		'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
-		'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
-		'PDF' => Barryvdh\DomPDF\Facade::class,
-
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
-
 ];

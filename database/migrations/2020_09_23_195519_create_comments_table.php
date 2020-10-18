@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
@@ -32,6 +33,6 @@ class CreateCommentsTable extends Migration
     {
         $model = config('comment.model');
 
-        return (new $model)->getTable();
+        return (new $model())->getTable();
     }
 }

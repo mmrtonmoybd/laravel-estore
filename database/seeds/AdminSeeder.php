@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Admin;
-use Faker\Factory as Faker; 
-use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
@@ -17,11 +17,11 @@ class AdminSeeder extends Seeder
     {
         $fake = Faker::create();
         $admin = new Admin();
-		$admin->name = $fake->name;
-		$admin->email = 'moshiur@admin.com';
-		$admin->password = Hash::make('12345678');
-		$admin->isAdmin = 1;
-		$admin->email_verified_at = Carbon::now()->toDateTimeString();
-		$admin->save();
+        $admin->name = $fake->name;
+        $admin->email = 'moshiur@admin.com';
+        $admin->password = Hash::make('12345678');
+        $admin->isAdmin = 1;
+        $admin->email_verified_at = Carbon::now()->toDateTimeString();
+        $admin->save();
     }
 }

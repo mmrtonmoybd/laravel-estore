@@ -1,10 +1,10 @@
 <?php
-/***
+/*
 Author: Moshiur Rahman Tonmoy
 Facebook: https://www.facebook.com/mmrtonmoy
 GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
-***/
+*/
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,9 +20,9 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-          $table->string('name');
-          $table->text('value');
-           $table->timestamps();
+            $table->string('name');
+            $table->text('value');
+            $table->timestamps();
         });
     }
 

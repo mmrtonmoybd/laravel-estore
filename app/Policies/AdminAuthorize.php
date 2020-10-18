@@ -1,10 +1,11 @@
 <?php
-/***
+/*
 Author: Moshiur Rahman Tonmoy
 Facebook: https://www.facebook.com/mmrtonmoy
 GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
-***/
+*/
+
 namespace App\Policies;
 
 use App\Admin;
@@ -21,10 +22,10 @@ class AdminAuthorize
      */
     public function __construct()
     {
-        //
     }
-    
-    public function adminAuthorize(Admin $admin, Admin $current) {
-    	return $admin->id === $current->id;
+
+    public function adminAuthorize(Admin $admin, Admin $current)
+    {
+        return $admin->id === $current->id;
     }
 }

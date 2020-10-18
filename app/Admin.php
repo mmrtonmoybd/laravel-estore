@@ -1,15 +1,17 @@
 <?php
 
 namespace App;
+
+use Actuallymab\LaravelComment\CanComment;
+use App\Notifications\AdminResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Notifications\AdminResetPassword;
-use Actuallymab\LaravelComment\CanComment;
 
 class Admin extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, CanComment;
+    use Notifiable;
+    use CanComment;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +30,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     //protected $guarded = ['isAdmin'];
 
     /**
@@ -40,12 +42,14 @@ class Admin extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'isAdmin' => 'boolean',
     ];
-    
-    public function sendPasswordResetNotification($token) {
+
+    public function sendPasswordResetNotification($token)
+    {
         $this->notify(new AdminResetPassword($token));
     }
-    
-    public function adminInfo() {
+
+    public function adminInfo()
+    {
         return $this->hasOne('App\AdminInfo', 'admin_id', 'id');
     }
 }

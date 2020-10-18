@@ -1,15 +1,15 @@
 <?php
-/***
+/*
 Author: Moshiur Rahman Tonmoy
 Facebook: https://www.facebook.com/mmrtonmoy
 GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
-***/
-use Illuminate\Database\Seeder;
+*/
 use App\User;
-use Faker\Factory as Faker;
-use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -20,12 +20,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-		$fake = Faker::create();
+        $fake = Faker::create();
         $user = new User();
-		$user->name = $fake->name;
-		$user->email = 'moshiur@user.com';
-		$user->password = Hash::make('12345678');
-		$user->email_verified_at = Carbon::now()->toDateTimeString();
-		$user->save();
+        $user->name = $fake->name;
+        $user->email = 'moshiur@user.com';
+        $user->password = Hash::make('12345678');
+        $user->email_verified_at = Carbon::now()->toDateTimeString();
+        $user->save();
     }
 }

@@ -1,81 +1,94 @@
 <?php
+/*
+Author: Moshiur Rahman Tonmoy
+Facebook: https://www.facebook.com/mmrtonmoy
+GitHub: https://www.github.com/mmrtonmoybd
+About: I am a php, laravel, codeigniter developer.
+*/
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Actuallymab\LaravelComment\Contracts\Commentable;
 use Actuallymab\LaravelComment\HasComments;
-use willvincent\Rateable\Rateable;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use League\CommonMark\Extension\Table\TableExtension;
-use App\Visit;
-use Carbon\Carbon;
+use willvincent\Rateable\Rateable;
 
 class Product extends Model implements Commentable
 {
-	use HasComments, Rateable;
-  protected $fillable = ['category_id', 'title', 'price', 'discounds', 'description', 'quantity', 'admin_id', 'image', 'color', 'size'];
-	/*
-	protected $guarded = [
-	'views'
-	];
-	*/
+    use HasComments;
+    use Rateable;
+    protected $fillable = ['category_id', 'title', 'price', 'discounds', 'description', 'quantity', 'admin_id', 'image', 'color', 'size'];
+    /*
+    protected $guarded = [
+    'views'
+    ];
+    */
 
-	public function category() {
-	   return $this->belongsTo('App\Categorie', 'category_id', 'id');
-	}
-	
-	public function admin() {
-	   return $this->belongsTo('App\Admin');
-	}
+    public function category()
+    {
+        return $this->belongsTo('App\Categorie', 'category_id', 'id');
+    }
 
-	public static function order(int $id) {
-	    $order = \App\Order::where('product_id', $id)->sum('quantity');
-	    return $order;
-	}
-	
-	public function user(int $id) {
-		$find = \App\User::find($id);
-		return $find;
-	}
-	
-	public function adminCom(int $id) {
-		$find = \App\Admin::find($id);
-		return $find;
-	}
-	
-	// markdown affect view
-	
-	public static function getParse($value)
-{
-	$environment = Environment::createCommonMarkEnvironment();
+    public function admin()
+    {
+        return $this->belongsTo('App\Admin');
+    }
 
-        $environment->addExtension(new TableExtension);
+    public static function order(int $id)
+    {
+        return \App\Order::where('product_id', $id)->sum('quantity');
+    }
+
+    public function user(int $id)
+    {
+        return \App\User::find($id);
+    }
+
+    public function adminCom(int $id)
+    {
+        return \App\Admin::find($id);
+    }
+
+    // markdown affect view
+
+    public static function getParse($value)
+    {
+        $environment = Environment::createCommonMarkEnvironment();
+
+        $environment->addExtension(new TableExtension());
 
         $converter = new CommonMarkConverter([
             'allow_unsafe_links' => false,
             'html_input' => 'escape',
         ], $environment);
-    return new HtmlString($converter->convertToHtml($value));
-}
 
-    public function orderr() {
-	return $this->hasMany('App\Order');
-}
+        return new HtmlString($converter->convertToHtml($value));
+    }
 
-/**
+    public function orderr()
+    {
+        return $this->hasMany('App\Order');
+    }
+
+    /**
      * Registrates a visit into the database if it does not exist on current day
-     * (Registers unique visitors)
+     * (Registers unique visitors).
+     *
+     * @param mixed $ip
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function visit($ip = '')
     {
-        if(empty($ip)){
+        if (empty($ip)) {
             $ip = request()->ip();
         }
-        
+
         return Visit::firstOrCreate([
             'ip' => $ip,
             'date' => Carbon::now()->toDateString(),
@@ -86,7 +99,8 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Setting relationship
+     * Setting relationship.
+     *
      * @return mixed
      */
     public function visits()
@@ -95,7 +109,8 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Return count of the visits in the last day
+     * Return count of the visits in the last day.
+     *
      * @return mixed
      */
     public function visitsDay()
@@ -104,7 +119,8 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Return count of the visits in the last 7 days
+     * Return count of the visits in the last 7 days.
+     *
      * @return mixed
      */
     public function visitsWeek()
@@ -113,7 +129,8 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Return count of the visits in the last 30 days
+     * Return count of the visits in the last 30 days.
+     *
      * @return mixed
      */
     public function visitsMonth()
@@ -122,19 +139,23 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Return the count of visits since system was installed
+     * Return the count of visits since system was installed.
+     *
      * @return mixed
      */
     public function visitsForever()
     {
         return $this->visits()
-            ->count();
+            ->count()
+        ;
     }
 
     /**
-     * Filter by popular in the last $days days
+     * Filter by popular in the last $days days.
+     *
      * @param $query
      * @param $days
+     *
      * @return mixed
      */
     public function scopePopularLast($query, $days)
@@ -143,8 +164,10 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Filter by popular in the last day
+     * Filter by popular in the last day.
+     *
      * @param $query
+     *
      * @return mixed
      */
     public function scopePopularDay($query)
@@ -153,8 +176,10 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Filter by popular in the last 7 days
+     * Filter by popular in the last 7 days.
+     *
      * @param $query
+     *
      * @return mixed
      */
     public function scopePopularWeek($query)
@@ -163,8 +188,10 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Filter by popular in the last 30 days
+     * Filter by popular in the last 30 days.
+     *
      * @param $query
+     *
      * @return mixed
      */
     public function scopePopularMonth($query)
@@ -173,8 +200,10 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Filter by popular in the last 365 days
+     * Filter by popular in the last 365 days.
+     *
      * @param $query
+     *
      * @return mixed
      */
     public function scopePopularYear($query)
@@ -183,8 +212,10 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Filter by popular in all time
+     * Filter by popular in all time.
+     *
      * @param $query
+     *
      * @return mixed
      */
     public function scopePopularAllTime($query)
@@ -193,20 +224,26 @@ class Product extends Model implements Commentable
     }
 
     /**
-     * Return the visits of the model in the last ($days) days
+     * Return the visits of the model in the last ($days) days.
+     *
+     * @param mixed $days
+     *
      * @return mixed
      */
     public function visitsLast($days)
     {
         return $this->visits()
             ->where('date', '>=', Carbon::now()->subDays($days)->toDateString())
-            ->count();
+            ->count()
+        ;
     }
 
     /**
-     * Returns a Query Builder with Model ordered by popularity in the Last ($days) days
+     * Returns a Query Builder with Model ordered by popularity in the Last ($days) days.
+     *
      * @param $query
      * @param $days
+     *
      * @return mixed
      */
     public function queryPopularLast($query, $days)
@@ -215,5 +252,4 @@ class Product extends Model implements Commentable
             $query->where('date', '>=', Carbon::now()->subDays($days)->toDateString());
         }])->orderBy('visits_count', 'desc');
     }
-
 }

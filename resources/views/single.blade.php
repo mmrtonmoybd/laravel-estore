@@ -6,8 +6,9 @@
 <div class="col-lg-9">
 
         <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+          <img class="card-img-top img-fluid" src="{{ asset($product->image) }}" alt="">
           <div class="card-body">
+          <p></p>
             <h3 class="card-title">{{ $product->title }}</h3>
             @php
                 $price = $product->price;
@@ -57,7 +58,7 @@
                       @endforeach
                     </select>
                   </div>
-                                                <button class="btn btn-secondary btn-sm" class="tooltip-test" title="add to cart">
+                                                <button class="btn btn-secondary btn-sm tooltip-test" type="submit" title="add to cart">
                                                     <i class="fa fa-shopping-cart"></i> add to cart
                                                 </button>
                                     </form>

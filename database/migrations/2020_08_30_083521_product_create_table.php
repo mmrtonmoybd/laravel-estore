@@ -18,8 +18,8 @@ class ProductCreateTable extends Migration
             $table->string('title');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->double('price');
-			$table->integer('discounds')->default(0);
-			$table->text('description');
+            $table->integer('discounds')->default(0);
+            $table->text('description');
             $table->integer('quantity');
             $table->string('image');
             $table->foreignId('admin_id')->constrained('admins')->onDelete('cascade');
@@ -34,11 +34,11 @@ class ProductCreateTable extends Migration
      */
     public function down()
     {
-       Schema::table('products', function (Blueprint $table) {
-          $table->dropForeign(['category_id']);
-          $table->dropForeign(['admin_id']);
-          $table->dropColumn(['category_id', 'admin_id']);
-       });
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropForeign(['admin_id']);
+            $table->dropColumn(['category_id', 'admin_id']);
+        });
         Schema::dropIfExists('products');
     }
 }

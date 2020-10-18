@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -46,10 +45,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        
+
         'admin' => [
-        'driver' => 'session',
-        'provider' => 'admins',
+            'driver' => 'session',
+            'provider' => 'admins',
         ],
     ],
 
@@ -79,7 +78,7 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
-         ],
+        ],
     ],
 
     /*
@@ -104,7 +103,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        
+
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
@@ -125,5 +124,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

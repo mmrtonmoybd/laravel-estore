@@ -1,15 +1,22 @@
 <?php
+/*
+Author: Moshiur Rahman Tonmoy
+Facebook: https://www.facebook.com/mmrtonmoy
+GitHub: https://www.github.com/mmrtonmoybd
+About: I am a php, laravel, codeigniter developer.
+*/
 
 namespace App;
 
+use Actuallymab\LaravelComment\CanComment;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Actuallymab\LaravelComment\CanComment;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, CanComment;
+    use Notifiable;
+    use CanComment;
 
     /**
      * The attributes that are mass assignable.
@@ -37,8 +44,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
-    public function userInfo() {
+
+    public function userInfo()
+    {
         return $this->hasOne('App\UserInfo', 'user_id', 'id');
     }
 }

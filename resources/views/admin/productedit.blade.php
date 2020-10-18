@@ -29,11 +29,11 @@
                 @csrf
 				<div class="form-group">
                     <label for="exampleInputEmail1">Product Title</label>
-                    <input class="form-control @error('title') is-invalid @enderror" id="exampleInputTitle" type="text" aria-describedby="TitleHelp" placeholder="Enter Title" name="title" required value="{{ $product->title }}">
+                    <input class="form-control @error('title') is-invalid @enderror" id="exampleInputTitle" type="text" aria-describedby="TitleHelp" placeholder="Enter Title" name="title" required value="{{ old('title') ? old('title') : $product->title }}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputqty1">Product Quantity</label>
-                    <input class="form-control @error('quantity') is-invalid @enderror" id="exampleInputQty1" type="number" placeholder="Quantity" name="quantity" required value="{{ $product->quantity }}">
+                    <input class="form-control @error('quantity') is-invalid @enderror" id="exampleInputQty1" type="number" placeholder="Quantity" name="quantity" required value="{{ old('quantity') ? old('quantity') : $product->quantity }}">
                   </div>
                   <div class="form-group">
                     <label for="exampleSelect1">Product Category</label>
@@ -45,7 +45,14 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleTextarea">Product Description</label>
-                    <textarea class="form-control @error('info') is-invalid @enderror" id="exampleTextarea" rows="3" name="info" required>{{ $product->description }}</textarea>
+                    <textarea class="form-control @error('info') is-invalid @enderror" id="summernote" rows="5" name="info">{{ old('info') ? old('info') : $product->description }}</textarea>
+           <script>
+                          new SimpleMDE({
+		element: document.getElementById("summernote"),
+		spellChecker: false,
+	});
+
+           </script>
                   </div>
                <div class="form-group">
                     <label for="exampleInputqty1">Product Color</label>
