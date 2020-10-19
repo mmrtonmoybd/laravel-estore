@@ -13,7 +13,13 @@ class Index extends Controller
     // All post are index in index method.
     public function index()
     {
-        $products = Product::orderBy('id', 'desc')->limit(config('settings.max_latest_item'))->get();
+        SEO::setTitle(\App\Setting::getValue('home_title'));
+        SEO::setDescription(\App\Setting::getValue('home_info'));
+        SEO::opengraph()->setUrl(url(''));
+        SEO::setCanonical(url(''));
+        SEO::opengraph()->addProperty('type', 'page');
+
+        $products = Product::orderBy('id', 'desc')->limit(\App\Setting::getValue('item_per_column'))->get();
 
         return view('index', [
             'products' => $products,
@@ -35,7 +41,7 @@ class Index extends Controller
         SEO::opengraph()->addProperty('type', 'products');
         //SEOTools::twitter()->setSite('@LuizVinicius73');
         return view('products.recent', [
-            'products' => Product::orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
+            'products' => Product::orderBy('id', 'desc')->paginate(\App\Setting::getValue('item_per_page')),
             'categories' => $this->getCategories(),
         ]);
     }

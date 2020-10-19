@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Page;
 use Illuminate\Http\Request;
+use SEO;
 
 class PageController extends Controller
 {
@@ -22,7 +23,7 @@ class PageController extends Controller
     public function index()
     {
         return view('admin.page', [
-            'pages' => Page::paginate(config('settings.max_item_per_page')),
+            'pages' => Page::paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 
@@ -62,6 +63,12 @@ class PageController extends Controller
      */
     public function show(Page $id)
     {
+        SEO::setTitle($id->title);
+        SEO::setDescription(substr($id->content, 0, 170));
+        SEO::opengraph()->setUrl(url('page/'.$id->id));
+        SEO::setCanonical(url('page/'.$id->id));
+        SEO::opengraph()->addProperty('type', 'page');
+
         return view('page', [
             'page' => $id,
         ]);

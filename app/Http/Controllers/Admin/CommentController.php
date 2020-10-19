@@ -19,7 +19,7 @@ class CommentController extends Controller
     public function index()
     {
         return view('admin.comments', [
-            'comments' => Comment::latest()->paginate(config('settings.max_item_per_page')),
+            'comments' => Comment::latest()->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

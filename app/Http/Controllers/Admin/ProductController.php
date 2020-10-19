@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.products', [
-            'products' => Product::orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
+            'products' => Product::orderBy('id', 'desc')->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

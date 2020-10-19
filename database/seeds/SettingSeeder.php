@@ -56,15 +56,5 @@ class SettingSeeder extends Seeder
             'name' => 'home_info',
             'value' => 'home description',
         ]);
-
-        Setting::create([
-            'name' => 'google_key',
-            'value' => 'JVJjckkkckfkkdk8884848jcjjc',
-        ]);
-
-        Setting::create([
-            'name' => 'bing_key',
-            'value' => 'ifjjgkvkvkk77668984',
-        ]);
     }
 }

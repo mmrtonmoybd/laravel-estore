@@ -28,7 +28,7 @@ class OrderInfo extends Controller
         SEO::setCanonical(url('/users/orders/'));
         SEO::opengraph()->addProperty('type', 'orders');
         //SEOTools::twitter()->setSite('@LuizVinicius73');
-        $payments = Payment::where('user_id', Auth::guard()->user()->id)->latest()->paginate(config('settings.max_item_per_page'));
+        $payments = Payment::where('user_id', Auth::guard()->user()->id)->latest()->paginate(\App\Setting::getValue('item_per_page'));
         //dd($payments); successfull
         return view('auth.payments', [
             'payments' => $payments,

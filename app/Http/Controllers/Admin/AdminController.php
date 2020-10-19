@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.admins', [
-            'admins' => Admin::paginate(config('settings.max_item_per_page')),
+            'admins' => Admin::paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

@@ -23,7 +23,7 @@ class SearchController extends Controller
             'search' => 'required|string|regex:/[A-Za-z0-9 ]$/i',
         ]);
 
-        $products = Product::where('title', 'LIKE', '%'.$request->search.'%')->latest()->paginate(config('settings.max_item_per_page'));
+        $products = Product::where('title', 'LIKE', '%'.$request->search.'%')->latest()->paginate(\App\Setting::getValue('item_per_page'));
         if (count($products) < 1) {
             abort(404);
         }

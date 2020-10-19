@@ -51,5 +51,9 @@
             <li><a class="treeview-item" href="{{ route('admin.user.add') }}"><i class="icon fa fa-circle-o"></i> User Add</a></li>
           </ul>
         </li>
+        @can ('isAdmin')
+        <li><a class="app-menu__item @if (Route::currentRouteName() == 'admin.setting.list') {{ 'active' }} @endif" href="{{ route('admin.setting.list') }}"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Settings</span></a>
+        </li>
+        @endcan
       </ul>
     </aside>

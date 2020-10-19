@@ -17,7 +17,7 @@ class PaymentController extends Controller
     public function index()
     {
         return view('admin.payments', [
-            'payments' => Payment::latest()->paginate(config('settings.max_item_per_page')),
+            'payments' => Payment::latest()->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

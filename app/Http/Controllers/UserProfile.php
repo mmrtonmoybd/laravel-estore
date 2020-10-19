@@ -29,6 +29,7 @@ class UserProfile extends Controller
         SEO::opengraph()->addProperty('type', 'profile');
         //SEOTools::twitter()->setSite('@LuizVinicius73');
         SEO::jsonLd()->addImage(asset($id->userInfo->image));
+        SEO::opengraph()->addImage(asset($id->userInfo->image));
 
         return view('auth.profile', [
             'profile' => $id,

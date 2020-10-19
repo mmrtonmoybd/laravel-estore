@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function index()
     {
         return view('admin.orders', [
-            'orders' => Order::latest()->paginate(config('settings.max_item_per_page')),
+            'orders' => Order::latest()->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('admin.category', [
-            'categorys' => Categorie::paginate(config('settings.max_item_per_page')),
+            'categorys' => Categorie::paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

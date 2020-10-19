@@ -24,7 +24,7 @@ class CategoryProducts extends Controller
         SEO::opengraph()->addProperty('type', 'products');
         //SEOTools::twitter()->setSite('@LuizVinicius73');
         return view('products.category', [
-            'products' => $id->product()->orderBy('id', 'desc')->paginate(config('settings.max_item_per_page')),
+            'products' => $id->product()->orderBy('id', 'desc')->paginate(\App\Setting::getValue('item_per_page')),
             'category' => $id,
             'categories' => $this->getCategories(),
         ]);

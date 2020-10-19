@@ -72,15 +72,7 @@
                     <input class="form-control @error('vat') is-invalid @enderror" id="exampleInputName" type="number" aria-describedby="NameHelp" placeholder="Enter VAT" name="vat" required value="{{ old('vat') ? old('vat') : $vat }}">
                   </div>
                   
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Google Meta Key</label>
-                    <input class="form-control @error('google') is-invalid @enderror" id="exampleInputName" type="text" aria-describedby="NameHelp" placeholder="Enter Key" name="google" required value="{{ old('google') ? old('google') : $google }}">
-                  </div>
                   
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Bing Meta Key</label>
-                    <input class="form-control @error('bing') is-invalid @enderror" id="exampleInputName" type="text" aria-describedby="NameHelp" placeholder="Enter Bing Key" name="bing" required value="{{ old('bing') ? old('bing') : $bing }}">
-                  </div>
                 
 					  <div class="tile-footer">
               <button class="btn btn-primary" type="submit">Submit</button>
