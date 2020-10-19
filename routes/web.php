@@ -26,6 +26,9 @@ Route::group(['middleware' => 'HtmlMinifire'], function () {
     Route::post('/cart/remove/', 'CartController@removeProduct')->name('cart.remove');
     Route::post('/cart/clear/', 'CartController@cartClear')->name('cart.clear');
 
+    // page route
+    Route::get('page/{id}', 'Admin\PageController@show')->name('page.show');
+
     Route::get('test/', 'Test@test');
     // User route
     require 'users.php';

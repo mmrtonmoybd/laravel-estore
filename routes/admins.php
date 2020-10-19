@@ -90,6 +90,14 @@ Route::group([
             Route::get('ratings/', 'Admin\RatingController@index')->name('admin.rating.list');
             Route::get('rating/{id}', 'Admin\RatingController@delete')->name('admin.rating.delete');
             // Rating Route
+            // Page Route
+            Route::get('pages/', 'Admin\PageController@index')->name('admin.page.list');
+            Route::get('pages/add/', 'Admin\PageController@create')->name('admin.page.add');
+            Route::post('pages/add/', 'Admin\PageController@store');
+            Route::get('pages/update/{id}', 'Admin\PageController@edit')->name('admin.page.update');
+            Route::post('pages/update/{id}', 'Admin\PageController@update');
+            Route::get('pages/delete/{id}', 'Admin\PageController@destroy')->name('admin.page.delete');
+            // Page Route
         });
         // end Super Admin Permission
     });

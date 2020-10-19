@@ -11,14 +11,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/main.css') }}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	@if (Route::currentRouteName() == 'admin.product.add' || Route::currentRouteName() == 'admin.product.update') 
+	@if (Route::currentRouteName() == 'admin.product.add' || Route::currentRouteName() == 'admin.product.update' || Route::currentRouteName() == 'admin.page.add' || Route::currentRouteName() == 'admin.page.update') 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 	@endif
   </head>
   <body class="app sidebar-mini">
     @include('admin.partials.header')
-@include('admin.partials.sidebar')
+    @include('admin.partials.sidebar')
 <main class="app-content">
 @yield('content')
 </main>
