@@ -35,7 +35,7 @@ return [
             'url' => false, // Set null for using Url::current(), set false to total remove
             'type' => false,
             'site_name' => env('APP_NAME', 'Moshiur'),
-            'images' => [asset('image.png')],
+            'images' => [env('APP_URL').'/home/image.jpg'],
         ],
     ],
     'twitter' => [
@@ -52,7 +52,7 @@ return [
             'description' => 'Make your life eazy. Buy best product with us.', // set false to total remove
             'url' => false, // Set null for using Url::current(), set false to total remove
             'type' => 'WebPage',
-            'images' => [],
+            'images' => [env('APP_URL').'/home/image.jpg'],
         ],
     ],
 ];
