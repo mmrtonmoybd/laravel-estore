@@ -19,6 +19,7 @@ class ProductSingle extends Controller
         SEO::opengraph()->addProperty('type', 'articles');
         //SEOTools::twitter()->setSite('@LuizVinicius73');
         SEO::jsonLd()->addImage(asset($id->image));
+        SEO::opengraph()->addImage(asset($id->image));
 
         if (is_object($this->getRelatedProducts($id->category_id, $id->id))) {
             $related = true;

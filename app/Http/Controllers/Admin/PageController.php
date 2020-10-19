@@ -74,6 +74,9 @@ class PageController extends Controller
      */
     public function edit(Page $id)
     {
+        return view('admin.pageupdate', [
+            'page' => $id,
+        ]);
     }
 
     /**

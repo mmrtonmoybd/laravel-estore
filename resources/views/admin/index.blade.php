@@ -28,6 +28,14 @@
             </div>
           </div>
         </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small primary coloured-icon"><i class="icon fa fa-file-text-o fa-3x"></i>
+            <div class="info">
+              <h4>Pages</h4>
+              <p><b>{{ $pages }}</b></p>
+            </div>
+          </div>
+        </div>
         @endcan
         <div class="col-md-6 col-lg-3">
           <div class="widget-small warning coloured-icon"><i class="icon fa fa-product-hunt fa-3x"></i>

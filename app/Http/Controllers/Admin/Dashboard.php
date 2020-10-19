@@ -12,6 +12,7 @@ use App\Admin;
 use App\Categorie;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Page;
 use App\Payment;
 use App\Product;
 use App\Rating;
@@ -29,6 +30,7 @@ class Dashboard extends Controller
         $orders = Order::sum('quantity');
         $rating = Rating::sum('rating');
         $category = Categorie::count();
+        $page = Page::count();
 
         return view('admin.index', [
             'admins' => $admins,
@@ -39,6 +41,7 @@ class Dashboard extends Controller
             'sells' => $orders,
             'rating' => $rating,
             'category' => $category,
+            'pages' => $page,
         ]);
     }
 }

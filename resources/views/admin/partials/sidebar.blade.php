@@ -17,6 +17,14 @@
         </li>
 		<li><a class="app-menu__item @if (Route::currentRouteName() == 'admin.comment.list' || Route::currentRouteName() == 'admin.comment.add' || Route::currentRouteName() == 'admin.comment.update' || Route::currentRouteName() == 'admin.reply.add') {{ 'active' }} @endif" href="{{ route('admin.comment.list') }}"><i class="app-menu__icon fa fa-comment"></i><span class="app-menu__label">Comments</span></a>
         </li>
+        @can ('isAdmin')
+        <li class="treeview"><a class="app-menu__item @if (Route::currentRouteName() == 'admin.page.list' || Route::currentRouteName() == 'admin.page.add' || Route::currentRouteName() == 'admin.page.update') {{ 'active' }} @endif" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text-o"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{{ route('admin.page.list') }}"><i class="icon fa fa-circle-o"></i> Page Lists</a></li>
+            <li><a class="treeview-item" href="{{ route('admin.page.add') }}"><i class="icon fa fa-circle-o"></i> Page Add</a></li>
+          </ul>
+        </li>
+		@endcan
         <li class="treeview"><a class="app-menu__item @if (Route::currentRouteName() == 'admin.product.list' || Route::currentRouteName() == 'admin.product.add' || Route::currentRouteName() == 'admin.product.update') {{ 'active' }} @endif" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-product-hunt"></i><span class="app-menu__label">Products</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{{ route('admin.product.list') }}"><i class="icon fa fa-circle-o"></i> Product Lists</a></li>

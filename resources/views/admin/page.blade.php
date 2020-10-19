@@ -46,7 +46,7 @@
                       <td>{{ $page->title }}</td>
                       <td>{{ $page->updated_at }}</td>
                       <td>{{ $page->created_at }}</td>
-					  <td><div class="btn-group"><a class="btn btn-primary" href='{{ url("")}}'><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href=""><i class="fa fa-lg fa-trash"></i></a></div></td>
+					  <td><div class="btn-group"><a class="btn btn-primary" href='{{ route("page.show", $page->id) }}'><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.page.update', $page->id) }}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.page.delete', $page->id) }}"><i class="fa fa-lg fa-trash"></i></a></div></td>
                     </tr>
                     @endforeach
                   </tbody>
