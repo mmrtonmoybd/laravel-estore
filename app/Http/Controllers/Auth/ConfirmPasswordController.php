@@ -37,7 +37,7 @@ class ConfirmPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        SEO::setTitle("User Confirm Password");
+        SEO::setTitle('User Confirm Password');
         SEO::opengraph()->setUrl(route('password.confirm'));
         SEO::setCanonical(route('password.confirm'));
         SEO::opengraph()->addProperty('type', 'page');

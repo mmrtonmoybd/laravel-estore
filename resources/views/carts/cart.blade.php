@@ -54,9 +54,9 @@
                                 <b><a href='{{ url("product/{$item->id}") }}'>{{ $item->name }}</a></b><br>
                                 <b>Color:</b>  {{ $item->attributes->color }}<br>
                                 <b>Size:</b>  {{ $item->attributes->size }}<br>
-                                <b>Price: </b>${{ $item->price }}<br>
-                        {{--<b>Sub Total: </b>${{ $item->getPriceSum() }}<br>--}}
-								<b>With Discount: </b>${{ $item->getPriceSumWithConditions() }}
+                                <b>Price: </b>{{ \App\Setting::getValue('currency_icon') }}{{ $item->price }}<br>
+                        
+								<b>With Discount: </b>{{ \App\Setting::getValue('currency_icon') }}{{ $item->getPriceSumWithConditions() }}
                             </p>
                         </div>
                         <div class="col-lg-4">
@@ -116,7 +116,7 @@
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-							<b>Total: </b>${{ \Cart::getTotal() }}</li>
+							<b>Total: </b>{{ \App\Setting::getValue('currency_icon') }}{{ \Cart::getTotal() }}</li>
                         </ul>
                     </div>
                     <br><a href="{{ url('/') }}" class="btn btn-dark">Continue Shopping</a>

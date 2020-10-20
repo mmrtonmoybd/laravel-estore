@@ -72,7 +72,7 @@
           <div class="widget-small danger coloured-icon"><i class="icon fa fa-money fa-3x"></i>
             <div class="info">
               <h4>Incomes</h4>
-              <p><b>${{ $incomes }}</b></p>
+              <p><b>{{ \App\Setting::getValue('currency_icon') }}{{ $incomes }}</b></p>
             </div>
           </div>
         </div>

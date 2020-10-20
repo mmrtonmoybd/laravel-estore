@@ -28,9 +28,10 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-    
-    public function __construct() {
-    	SEO::setTitle("User Reset Password");
+
+    public function __construct()
+    {
+        SEO::setTitle('User Reset Password');
         SEO::opengraph()->setUrl(route('password.reset'));
         SEO::setCanonical(route('password.reset'));
         SEO::opengraph()->addProperty('type', 'page');

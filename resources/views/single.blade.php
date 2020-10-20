@@ -17,9 +17,9 @@
                 $calculate = $price - $calculate;
                 @endphp
                 <h4>@if ($calculate == 0) 
-                ${{ $price }}
+                {{ \App\Setting::getValue('currency_icon') }}{{ $price }}
                 @else 
-                <del>${{ $price }}</del>  ${{ $calculate }}
+                <del>{{ \App\Setting::getValue('currency_icon') }}{{ $price }}</del>  {{ \App\Setting::getValue('currency_icon') }}{{ $calculate }}
                 @endif</h4>
                 @foreach($errors->all() as $error)
        <div class="alert alert-danger alert-dismissible fade show" role="alert">

@@ -20,9 +20,10 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
-    
-    public function __construct() {
-    	SEO::setTitle("User Forgot Password");
+
+    public function __construct()
+    {
+        SEO::setTitle('User Forgot Password');
         SEO::opengraph()->setUrl(route('password.request'));
         SEO::setCanonical(route('password.request'));
         SEO::opengraph()->addProperty('type', 'page');

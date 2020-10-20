@@ -39,7 +39,7 @@ class VerificationController extends Controller
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
-        SEO::setTitle("User Email Verify");
+        SEO::setTitle('User Email Verify');
         SEO::opengraph()->setUrl(route('verification.notice'));
         SEO::setCanonical(route('verification.notice'));
         SEO::opengraph()->addProperty('type', 'page');

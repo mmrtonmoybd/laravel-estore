@@ -55,7 +55,7 @@
                       <td>{{ $product->id }}</td>
                       <td>{{ $product->title }}</td>      
                       <td>{{ $product->category->name }}</td>
-                      <td>${{ $product->price }}</td>
+                      <td>{{ \App\Setting::getValue('currency_icon') }}{{ $product->price }}</td>
                       <td>{{ $product->discounds }}</td>
                       <td>{{ $product->visitsForever() }}</td>
      @if ($product->quantity < 1)                 <td class="btn btn-danger">{{ $product->quantity }} </td>

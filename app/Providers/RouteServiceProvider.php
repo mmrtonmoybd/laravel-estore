@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
+     * The path to the "home" route for your application.
+     *
+     * @var string
+     */
+    public const HOME = '/';
+    public const ADMIN = '/admins';
+    /**
      * This namespace is applied to your controller routes.
      *
      * In addition, it is set as the URL generator's root namespace.
@@ -15,14 +22,6 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
-
-    /**
-     * The path to the "home" route for your application.
-     *
-     * @var string
-     */
-    public const HOME = '/';
-    public const ADMIN = '/admins';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -45,8 +44,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
     }
 
     /**
@@ -60,7 +57,8 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
+            ->group(base_path('routes/web.php'))
+        ;
     }
 
     /**
@@ -75,6 +73,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::prefix('api')
             ->middleware('api')
             ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+            ->group(base_path('routes/api.php'))
+        ;
     }
 }

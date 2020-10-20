@@ -39,7 +39,7 @@ $info = Auth::guard()->user()->userInfo()->first();
 </tr>
 <tr>
 <th>Payment Amount:</th>
-<td>${{ $payment->amount }}</td>
+<td>{{ \App\Setting::getValue('currency_icon') }}{{ $payment->amount }}</td>
 </tr>
 <tr>
 <th>Payment Date:</th>
@@ -82,7 +82,7 @@ $total = $price - $calculation;
 @endphp
 <td>{{ $products[$i]->title }}</td>
 <td>{{ $order->quantity }}</td>
-<td>${{ $total }}</td>
+<td>{{ \App\Setting::getValue('currency_icon') }}{{ $total }}</td>
 <td>{{ $order->size }}</td>
 <td>{{ $order->color }}</td>
 <td>{{ $order->status }}</td>

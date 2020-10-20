@@ -53,7 +53,7 @@
                       <td>{{ $payment->address }}</td>
                       <td>{{ $payment->mobile }}</td>
                       <td>{{ $payment->user->email }}</td>
-                      <td>${{ $payment->amount }}</td>
+                      <td>{{ \App\Setting::getValue('currency_icon') }}{{ $payment->amount }}</td>
                       <td>{{ $payment->user_id }}</td>
                       <td>{{ $payment->updated_at }}</td>
                       <td>{{ $payment->created_at }}</td>
