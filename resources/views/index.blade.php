@@ -4,7 +4,9 @@
 @includeWhen($catebool,'partials.categorylist', ['categories' => $categories])
 </div>
 <div class="row">
-
+<div class="page-header">
+  <a href="{{ url('latest/products') }}"><h2>Latest Products</h2></a>
+</div>
 @foreach ($products as $product) 
 
           <div class="col-lg-4 col-md-6 mb-4">

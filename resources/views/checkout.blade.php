@@ -18,7 +18,7 @@
         @endforeach
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-danger">
-            <h6 class="my-0">VAT({{ config('settings.vat') . '%' }})</h6>
+            <h6 class="my-0">VAT({{ \App\Setting::getValue('vat') . '%' }})</h6>
           </div>
           <span class="text-danger">${{ $totalvat }}</span>
         </li>

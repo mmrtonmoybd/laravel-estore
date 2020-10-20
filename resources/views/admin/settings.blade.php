@@ -66,6 +66,11 @@
                     <label for="exampleInputEmail1">Stripe Currency</label>
                     <input class="form-control @error('currency') is-invalid @enderror" id="exampleInputName" type="text" aria-describedby="NameHelp" placeholder="Enter Stripe Currency" name="currency" required value="{{ old('currency') ? old('currency') : $currency }}">
                   </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Currency Icon</label>
+                    <input class="form-control @error('currency_icon') is-invalid @enderror" id="exampleInputName" type="text" aria-describedby="NameHelp" placeholder="Enter Currency Icon" name="currency_icon" required value="{{ old('currency_icon') ? old('currency_icon') : $currency_icon }}">
+                  </div>
                   
                   <div class="form-group">
                     <label for="exampleInputEmail1">VAT(%)</label>

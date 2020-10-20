@@ -12,6 +12,7 @@ use App\Events\PaymentSuccess;
 use App\Order;
 use App\Payment;
 use App\Product;
+use App\Setting;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,14 +55,13 @@ class Checkout extends Controller
 
         try {
             // Use Stripe's library to make requests...
-            $stripe = new StripeClient(config('settings.stripe_publishable'));
+            $stripe = new StripeClient(Setting::getValue('stripe_public'));
             $token = $stripe->tokens->create([
                 'card' => [
                     'number' => $request->input('cardnumber'),
                     'exp_month' => $request->input('expmonth'),
                     'exp_year' => $request->input('expyear'),
                     'cvc' => $request->input('cvv'),
-                    // 'email' => 'rmedha037@gmail.com',
                     'address_country' => 'Bangladesh',
                     'address_line1' => $request->input('address'),
                 ], ]);
@@ -69,10 +69,10 @@ class Checkout extends Controller
             //dd($token);
 
             $omnipay = Omnipay::create('Stripe');
-            $omnipay->setApiKey(config('settings.stripe_secret'));
+            $omnipay->setApiKey(Setting::getValue('stripe_secret'));
             $response = $omnipay->purchase([
                 'amount' => $this->getTotalWithVat(Cart::getTotal()),
-                'currency' => config('settings.stripe_currency'),
+                'currency' => Setting::getValue('currency'),
                 'token' => $token->id,
             ])->send();
 
@@ -130,8 +130,6 @@ class Checkout extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
-
-        //print_r($request->all());
     }
 
     private function setVat($value)
@@ -143,7 +141,7 @@ class Checkout extends Controller
 
     private function getTotalWithVat($value)
     {
-        $vat = config('settings.vat');
+        $vat = Setting::getValue('vat');
         $calculation = $value * $vat / 100;
         $this->setVat($calculation);
         $calculation = $value + $calculation;

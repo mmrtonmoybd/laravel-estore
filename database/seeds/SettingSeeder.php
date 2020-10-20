@@ -56,5 +56,15 @@ class SettingSeeder extends Seeder
             'name' => 'home_info',
             'value' => 'home description',
         ]);
+
+        Setting::create([
+            'name' => 'home_image',
+            'value' => 'home.jpg',
+        ]);
+
+        Setting::create([
+            'name' => 'currency_icon',
+            'value' => '$',
+        ]);
     }
 }

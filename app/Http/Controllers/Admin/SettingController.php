@@ -25,6 +25,7 @@ class SettingController extends Controller
             'vat' => Setting::getValue('vat'),
             'item' => Setting::getValue('item_per_page'),
             'column' => Setting::getValue('item_per_column'),
+            'currency_icon' => Setting::getValue('currency_icon'),
         ]);
     }
 
@@ -38,6 +39,7 @@ class SettingController extends Controller
             'secret' => 'required|string|max:255',
             'public' => 'required|string|max:255',
             'currency' => 'required|string|max:5',
+            'currency_icon' => 'required|string|max:1',
         ]);
 
         Setting::putValue('home_title', $request->input('title'));
@@ -48,6 +50,7 @@ class SettingController extends Controller
         Setting::putValue('stripe_public', $request->input('public'));
         Setting::putValue('currency', $request->input('currency'));
         Setting::putValue('vat', $request->input('vat'));
+        Setting::putValue('currency_icon', $request->input('currency_icon'));
 
         return redirect()->route('admin.setting.list')->with('success', 'Settings is updated!');
     }
