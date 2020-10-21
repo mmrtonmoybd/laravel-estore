@@ -23,7 +23,20 @@ class SearchController extends Controller
             'search' => 'required|string|regex:/[A-Za-z0-9 ]$/i',
         ]);
 
-        $products = Product::where('title', 'LIKE', '%'.$request->search.'%')->latest()->paginate(\App\Setting::getValue('item_per_page'));
+        $column = 'id';
+        $order = 'desc';
+        if ('older' == $request->order) {
+            $column = 'id';
+            $order = 'asc';
+        } elseif ('low' == $request->order) {
+            $column = 'price';
+            $order = 'asc';
+        } elseif ('high' == $request->order) {
+            $column = 'price';
+            $order = 'desc';
+        }
+
+        $products = Product::where('title', 'LIKE', '%'.$request->search.'%')->orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page'));
         if (count($products) < 1) {
             abort(404);
         }

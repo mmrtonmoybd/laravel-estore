@@ -11,6 +11,17 @@
 @include('partials.categorylist')
 </div>
 <div class="row">
+  <div class="form-group">
+      <label for="order">Order By</label>
+      <div class="">
+        <select class="form-control">
+          <option onClick="window.location = '{{ url("all/products") }}'">Latest(Default)</option>
+          <option onClick="window.location = '{{ url("all/products?order=older") }}'">Oldest</option>
+          <option onClick="window.location = '{{ url("all/products?order=low") }}'">Low => High</option>
+          <option onClick="window.location = '{{ url("all/products?order=high") }}'">High => Low</option>
+        </select> 
+      </div>
+    </div>
 
 @foreach ($products as $product) 
 

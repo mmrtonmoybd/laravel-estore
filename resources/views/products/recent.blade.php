@@ -3,13 +3,24 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-    <li class="breadcrumb-item"><a href='{{ url("latest/products") }}'>Latest Products</a></li>
+    <li class="breadcrumb-item"><a href='{{ url("all/products") }}'>All Products</a></li>
   </ol>
 </nav>
 <div class="row">
 @include('partials.categorylist')
 </div>
 <div class="row">
+    <div class="form-group">
+      <label for="order">Order By</label>
+      <div class="">
+        <select class="form-control">
+          <option onClick="window.location = '{{ url("all/products") }}'">Latest(Default)</option>
+          <option onClick="window.location = '{{ url("all/products?order=older") }}'">Oldest</option>
+          <option onClick="window.location = '{{ url("all/products?order=low") }}'">Low => High</option>
+          <option onClick="window.location = '{{ url("all/products?order=high") }}'">High => Low</option>
+        </select> 
+      </div>
+    </div>
 
 @foreach ($products as $product) 
 

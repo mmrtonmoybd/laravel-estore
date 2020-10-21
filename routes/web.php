@@ -16,7 +16,7 @@ Route::group(['middleware' => 'HtmlMinifire'], function () {
     Route::get('/', 'Index@index');
     Route::get('/product/{id}', 'ProductSingle@index');
     Route::get('/category/{id}', 'CategoryProducts@index');
-    Route::get('/latest/products/', 'Index@recent');
+    Route::get('/all/products/', 'Index@recent');
     Route::get('product/search/', 'SearchController@index');
 
     // cart route start

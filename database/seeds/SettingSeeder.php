@@ -57,7 +57,7 @@ class SettingSeeder extends Seeder
 
         Setting::create([
             'name' => 'home_image',
-            'value' => 'home.jpg',
+            'value' => 'home/home.jpg',
         ]);
 
         Setting::create([

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Traits\ProductShow;
-use SEO;
 use Illuminate\Http\Request;
+use SEO;
 
 class Index extends Controller
 {
@@ -36,26 +36,25 @@ class Index extends Controller
     //recent post
     public function recent(Request $request)
     {
-
-        SEO::setTitle('Recent Products');
-        SEO::opengraph()->setUrl(url('/latest/products'));
-        SEO::setCanonical(url('/latest/products'));
+        SEO::setTitle('All Products');
+        SEO::opengraph()->setUrl(url('/all/products'));
+        SEO::setCanonical(url('/all/products'));
         SEO::opengraph()->addProperty('type', 'products');
-        //SEOTools::twitter()->setSite('@LuizVinicius73');
         $column = 'id';
-        $order  = 'desc';
-        if ($request->order == 'older') {
+        $order = 'desc';
+        if ('older' == $request->order) {
             $column = 'id';
             $order = 'asc';
-        } elseif ($request->order == 'low') {
+        } elseif ('low' == $request->order) {
             $column = 'price';
             $order = 'asc';
-        } elseif ($request->order == 'high') {
+        } elseif ('high' == $request->order) {
             $column = 'price';
             $order = 'desc';
         }
+
         return view('products.recent', [
-            'products' => Product::orderBy('id', 'desc')->paginate(\App\Setting::getValue('item_per_page')),
+            'products' => Product::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
             'categories' => $this->getCategories(),
         ]);
     }

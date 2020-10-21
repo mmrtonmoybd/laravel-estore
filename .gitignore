@@ -3,6 +3,14 @@
 /public/storage
 /public/avaters
 /public/products
+/public/admin
+/public/frontend
+/public/js
+/public/css
+/public/*.xml
+/public/mix-manifest.json
+/public/home
+/public/vendor
 /storage/*.key
 /vendor
 .env
@@ -13,11 +21,3 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .idea
-/public/admin
-/public/frontend
-/public/products
-/public/avaters
-/public/js
-/public/css
-/public/*.xml
-/public/mix-manifest.json

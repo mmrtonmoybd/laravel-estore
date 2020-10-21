@@ -26,6 +26,7 @@ class SettingController extends Controller
             'item' => Setting::getValue('item_per_page'),
             'column' => Setting::getValue('item_per_column'),
             'currency_icon' => Setting::getValue('currency_icon'),
+            'home_img' => Setting::getValue('home_image'),
         ]);
     }
 
@@ -40,6 +41,7 @@ class SettingController extends Controller
             'public' => 'required|string|max:255',
             'currency' => 'required|string|max:5',
             'currency_icon' => 'required|string|max:1',
+            'home_img' => 'image|mimes:jpeg,jpg|max:1024|dimensions:max_width=1200,max_height=630',
         ]);
 
         Setting::putValue('home_title', $request->input('title'));
@@ -51,6 +53,15 @@ class SettingController extends Controller
         Setting::putValue('currency', $request->input('currency'));
         Setting::putValue('vat', $request->input('vat'));
         Setting::putValue('currency_icon', $request->input('currency_icon'));
+
+        if ($request->hasFile('home_img') && $request->file('home_img')->isValid()) {
+            $path = $request->file('home_img')->storeAs(
+                'home',
+                'home.jpg'
+            );
+
+            Setting::putValue('home_image', $path);
+        }
 
         return redirect()->route('admin.setting.list')->with('success', 'Settings is updated!');
     }

@@ -5,7 +5,7 @@
 </div>
 <div class="row">
 <div class="page-header">
-  <a href="{{ url('latest/products') }}"><h2>Latest Products</h2></a>
+  <a href="{{ url('all/products') }}"><h2>All Products</h2></a>
 </div>
 @foreach ($products as $product) 
 

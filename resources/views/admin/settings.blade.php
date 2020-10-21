@@ -32,16 +32,21 @@
                     </button>
                 </div>
             @endif
-                <form action="{{ route('admin.setting.list') }}" method="POST">
+                <form action="{{ route('admin.setting.list') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 				<div class="form-group">
-                    <label for="exampleInputEmail1">Home(SEO) Title</label>
+                    <label for="exampleInputEmail1">Home Title(SEO)</label>
                     <input class="form-control @error('title') is-invalid @enderror" id="exampleInputName" type="text" aria-describedby="NameHelp" placeholder="Enter Title" name="title" required value="{{ old('title') ? old('title') : $title }}">
                   </div>
                   <div class="form-group">
-                    <label for="exampleTextarea">Home(SEO) Description</label>
+                    <label for="exampleTextarea">Home Description(SEO)</label>
                     <textarea class="form-control @error('info') is-invalid @enderror" id="exampleTextarea" rows="3" name="info" required>{{ old('info') ? old('info') : $info }}</textarea>
                   </div>
+                  <div class="form-group">
+    <label for="exampleInputImage">Home Image(SEO)</label>
+    <input type="file" class="form-control @error('home_img') is-invalid @enderror" id="exampleInputImage" aria-describedby="imageHelp" placeholder="Home Image" name="home_img">
+  
+  </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Item Per Page</label>
                     <input class="form-control @error('page') is-invalid @enderror" id="exampleInputName" type="number" aria-describedby="NameHelp" placeholder="Enter Item Per Page" name="item" required value="{{ old('page') ? old('page') : $item }}">
