@@ -164,7 +164,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         willvincent\Rateable\RateableServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        //ConsoleTVs\Charts\ChartsServiceProvider::class,
         // Application Service Providers...
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
@@ -224,6 +224,6 @@ return [
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        //'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ],
 ];
