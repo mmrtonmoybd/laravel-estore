@@ -29,7 +29,29 @@
         @endif
 		
               <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
+                <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="dataTables_length" id="sampleTable_length">
+                <label>Order By: 
+                  <select name="sampleTable_length" aria-controls="sampleTable" class="form-control form-control-sm">
+                    <option onClick="window.location = '{{ route("admin.product.list") }}'">Latest(Default)</option>
+                    <option onClick="window.location = '{{ route("admin.product.list") }}?order=older'">Oldest</option>
+                    <option onClick="window.location = '{{ route("admin.product.list") }}?order=low'">Price Low => High</option>
+                    <option onClick="window.location = '{{ route("admin.product.list") }}?order=high'">Price High => Low</option>
+                    <option onClick="window.location = '{{ route("admin.product.list") }}?order=dlow'">Discounds Low => High</option>
+                    <option onClick="window.location = '{{ route("admin.product.list") }}?order=dhigh'">Discounds High => Low</option>
+                    <option onClick="window.location = '{{ route("admin.product.list") }}?order=qlow'">Quantity Low => High</option>
+                    <option onClick="window.location = '{{ route("admin.product.list") }}?order=qhigh'">Quantity High => Low</option>
+                  </select></label>
+                  </div>
+                </div>
+<div class="col-sm-12 col-md-6">
+  <div id="sampleTable_filter" class="dataTables_filter">
+    <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="sampleTable"></label>
+  </div>
+</div>
+                </div>
+                  <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                   <thead>
                   <tr>
                       <th>ID</th>
