@@ -15,10 +15,38 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+		$request->validate([
+	   'order' => 'string|regex:/[A-Za-z0-9 ]$/i',
+	   ]);
+		$column = 'id';
+        $order = 'desc';
+        if ('older' == $request->order) {
+            $column = 'id';
+            $order = 'asc';
+        } elseif ('low' == $request->order) {
+            $column = 'price';
+            $order = 'asc';
+        } elseif ('high' == $request->order) {
+            $column = 'price';
+            $order = 'desc';
+        } elseif ('dhigh' == $request->order) {
+			$column = 'discounds';
+            $order = 'desc';
+		} elseif ('dlow' == $request->order) {
+            $column = 'discounds';
+            $order = 'asc';
+        } elseif ('qhigh' == $request->order) {
+			$column = 'quantity';
+            $order = 'desc';
+		} elseif ('qlow' == $request->order) {
+            $column = 'quantity';
+            $order = 'asc';
+        }
+		
         return view('admin.products', [
-            'products' => Product::orderBy('id', 'desc')->paginate(\App\Setting::getValue('item_per_page')),
+            'products' => Product::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

@@ -45,7 +45,9 @@
                   <div class="form-group">
     <label for="exampleInputImage">Home Image(SEO)</label>
     <input type="file" class="form-control @error('home_img') is-invalid @enderror" id="exampleInputImage" aria-describedby="imageHelp" placeholder="Home Image" name="home_img">
-  
+ @if (file_exists(public_path($home_img)))
+	 <img src="{{ asset($home_img) }}" class="img-fluid" alt="Responsive image">
+ @endif
   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Item Per Page</label>
