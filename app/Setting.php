@@ -11,6 +11,7 @@ namespace App;
 use Illuminate\Contracts\Encryption\DecryptException;
 //use App\Traits\CryptTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;
 
 class Setting extends Model
@@ -32,9 +33,29 @@ class Setting extends Model
         }
     }
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($instance) {
+            // update cache content
+            Cache::put('setting.'.$instance->name, $instance);
+        });
+
+        static::deleting(function ($instance) {
+            // delete post cache
+            Cache::forget('name.'.$instance->name);
+        });
+    }
+
     public static function getValue($name)
     {
-        $get = Setting::where('name', $name)->first();
+        if (!Cache::has('setting.'.$name)) {
+            $get = Setting::where('name', $name)->first();
+            Cache::put('setting.'.$name, $get);
+        } else {
+            $get = Cache::get('setting.'.$name);
+        }
 
         return $get->value;
     }

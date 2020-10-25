@@ -10,8 +10,6 @@ class SendPaymentSuccessMail
 {
     /**
      * Create the event listener.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -19,8 +17,6 @@ class SendPaymentSuccessMail
 
     /**
      * Handle the event.
-     *
-     * @return void
      */
     public function handle(PaymentSuccess $event)
     {

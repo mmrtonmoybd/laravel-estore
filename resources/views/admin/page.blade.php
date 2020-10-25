@@ -29,7 +29,18 @@
         @endif
 		
               <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
+                <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="dataTables_length" id="sampleTable_length">
+                <label>Order By: 
+                  <select name="sampleTable_length" aria-controls="sampleTable" class="form-control form-control-sm">
+                    <option onClick="window.location = '{{ route("admin.page.list") }}'">Latest(Default)</option>
+                    <option onClick="window.location = '{{ route("admin.page.list") }}?order=older'">Oldest</option>
+                  </select></label>
+                  </div>
+                </div>
+                </div>
+                  <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                   <thead>
                   <tr>
                       <th>ID</th>

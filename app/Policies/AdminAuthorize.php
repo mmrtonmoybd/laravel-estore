@@ -17,8 +17,6 @@ class AdminAuthorize
 
     /**
      * Create a new policy instance.
-     *
-     * @return void
      */
     public function __construct()
     {

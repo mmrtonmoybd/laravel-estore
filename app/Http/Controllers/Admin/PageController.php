@@ -20,10 +20,20 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->validate([
+            'order' => 'string|regex:/[A-Za-z0-9 ]$/i',
+        ]);
+        $column = 'id';
+        $order = 'desc';
+        if ('older' == $request->order) {
+            $column = 'id';
+            $order = 'asc';
+        }
+
         return view('admin.page', [
-            'pages' => Page::paginate(\App\Setting::getValue('item_per_page')),
+            'pages' => Page::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

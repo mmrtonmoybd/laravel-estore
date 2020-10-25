@@ -15,8 +15,6 @@ class AdminResetPassword extends ResetPassword
      * Create a new notification instance.
      *
      * @param mixed $token
-     *
-     * @return void
      */
     // public static $createUrlCallback;
     //public static $toMailCallback;

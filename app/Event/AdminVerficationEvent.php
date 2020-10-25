@@ -15,8 +15,6 @@ class AdminVerficationEvent
 
     /**
      * Create a new event instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -25,7 +23,7 @@ class AdminVerficationEvent
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return array|\Illuminate\Broadcasting\Channel
      */
     public function broadcastOn()
     {

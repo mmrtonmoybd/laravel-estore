@@ -16,10 +16,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $request->validate([
+            'order' => 'string|regex:/[A-Za-z0-9 ]$/i',
+        ]);
+        $column = 'id';
+        $order = 'desc';
+        if ('older' == $request->order) {
+            $column = 'id';
+            $order = 'asc';
+        }
+
         return view('admin.comments', [
-            'comments' => Comment::latest()->paginate(\App\Setting::getValue('item_per_page')),
+            'comments' => Comment::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

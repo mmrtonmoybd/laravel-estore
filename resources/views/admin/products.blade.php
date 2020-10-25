@@ -45,11 +45,6 @@
                   </select></label>
                   </div>
                 </div>
-<div class="col-sm-12 col-md-6">
-  <div id="sampleTable_filter" class="dataTables_filter">
-    <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="sampleTable"></label>
-  </div>
-</div>
                 </div>
                   <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                   <thead>

@@ -8,8 +8,6 @@ class LogVerifiedUser
 {
     /**
      * Create the event listener.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -17,8 +15,6 @@ class LogVerifiedUser
 
     /**
      * Handle the event.
-     *
-     * @return void
      */
     public function handle(Verified $event)
     {

@@ -14,10 +14,20 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $request->validate([
+            'order' => 'string|regex:/[A-Za-z0-9 ]$/i',
+        ]);
+        $column = 'id';
+        $order = 'desc';
+        if ('older' == $request->order) {
+            $column = 'id';
+            $order = 'asc';
+        }
+
         return view('admin.orders', [
-            'orders' => Order::latest()->paginate(\App\Setting::getValue('item_per_page')),
+            'orders' => Order::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

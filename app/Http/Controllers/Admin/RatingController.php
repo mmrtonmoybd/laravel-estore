@@ -10,13 +10,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Rating;
+use Illuminate\Http\Request;
 
 class RatingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $request->validate([
+            'order' => 'string|regex:/[A-Za-z0-9 ]$/i',
+        ]);
+        $column = 'id';
+        $order = 'desc';
+        if ('older' == $request->order) {
+            $column = 'id';
+            $order = 'asc';
+        }
+
         return view('admin.rating', [
-            'rates' => Rating::latest()->paginate(\App\Setting::getValue('item_per_page')),
+            'rates' => Rating::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

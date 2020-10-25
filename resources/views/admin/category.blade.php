@@ -29,7 +29,20 @@
         @endif
 		
               <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
+                <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="dataTables_length" id="sampleTable_length">
+                <label>Order By: 
+                  <select name="sampleTable_length" aria-controls="sampleTable" class="form-control form-control-sm">
+                    <option onClick="window.location = '{{ route("admin.category.list") }}'">Latest(Default)</option>
+                    <option onClick="window.location = '{{ route("admin.category.list") }}?order=older'">Oldest</option>
+                    <option onClick="window.location = '{{ route("admin.category.list") }}?order=low'">Products Low => High</option>
+                    <option onClick="window.location = '{{ route("admin.category.list") }}?order=high'">Products High => Low</option>
+                  </select></label>
+                  </div>
+                </div>
+                </div>
+                <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                   <thead>
                   <tr>
                       <th>ID</th>

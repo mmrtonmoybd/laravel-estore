@@ -14,10 +14,23 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $column = 'id';
+        $order = 'desc';
+        if ('older' == $request->order) {
+            $column = 'id';
+            $order = 'asc';
+        } elseif ('low' == $request->order) {
+            $column = 'amount';
+            $order = 'asc';
+        } elseif ('high' == $request->order) {
+            $column = 'amount';
+            $order = 'desc';
+        }
+
         return view('admin.payments', [
-            'payments' => Payment::latest()->paginate(\App\Setting::getValue('item_per_page')),
+            'payments' => Payment::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
         ]);
     }
 

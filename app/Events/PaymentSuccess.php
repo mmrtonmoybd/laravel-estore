@@ -17,8 +17,6 @@ class PaymentSuccess
 
     /**
      * Create a new event instance.
-     *
-     * @return void
      */
     public $user;
     public $payment;
@@ -32,7 +30,7 @@ class PaymentSuccess
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return array|\Illuminate\Broadcasting\Channel
      */
     public function broadcastOn()
     {

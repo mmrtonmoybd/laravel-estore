@@ -17,10 +17,10 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-		$request->validate([
-	   'order' => 'string|regex:/[A-Za-z0-9 ]$/i',
-	   ]);
-		$column = 'id';
+        $request->validate([
+            'order' => 'string|regex:/[A-Za-z0-9 ]$/i',
+        ]);
+        $column = 'id';
         $order = 'desc';
         if ('older' == $request->order) {
             $column = 'id';
@@ -32,19 +32,19 @@ class ProductController extends Controller
             $column = 'price';
             $order = 'desc';
         } elseif ('dhigh' == $request->order) {
-			$column = 'discounds';
+            $column = 'discounds';
             $order = 'desc';
-		} elseif ('dlow' == $request->order) {
+        } elseif ('dlow' == $request->order) {
             $column = 'discounds';
             $order = 'asc';
         } elseif ('qhigh' == $request->order) {
-			$column = 'quantity';
+            $column = 'quantity';
             $order = 'desc';
-		} elseif ('qlow' == $request->order) {
+        } elseif ('qlow' == $request->order) {
             $column = 'quantity';
             $order = 'asc';
         }
-		
+
         return view('admin.products', [
             'products' => Product::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
         ]);

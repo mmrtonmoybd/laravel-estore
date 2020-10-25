@@ -14,8 +14,6 @@ class SendSuccessPayment extends Mailable
 
     /**
      * Create a new message instance.
-     *
-     * @return void
      */
     public $payment;
 
