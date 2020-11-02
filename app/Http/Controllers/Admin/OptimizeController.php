@@ -15,7 +15,7 @@ class OptimizeController extends Controller
 {
     public function index()
     {
-        //re
+        return view('admin.optimize');
     }
 
     public function optimize()
@@ -23,6 +23,8 @@ class OptimizeController extends Controller
         Artisan::call('optimize');
         Artisan::call('view:cache');
         Artisan::call('event:cache');
+
+        return redirect()->route('admin.optimize.index')->with('successo', 'Your application is optimized!');
     }
 
     public function clearoptimize()
@@ -30,5 +32,7 @@ class OptimizeController extends Controller
         Artisan::call('optimize:clear');
         Artisan::call('view:clear');
         Artisan::call('event:clear');
+
+        return redirect()->route('admin.optimize.index')->with('successoc', 'Your application is optimiz is cleared!');
     }
 }

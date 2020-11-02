@@ -52,7 +52,11 @@
           </ul>
         </li>
         @can ('isAdmin')
-        <li><a class="app-menu__item @if (Route::currentRouteName() == 'admin.setting.list') {{ 'active' }} @endif" href="{{ route('admin.setting.list') }}"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Settings</span></a>
+        <li class="treeview"><a class="app-menu__item @if (Route::currentRouteName() == 'admin.setting.list' || Route::currentRouteName() == 'admin.optimize.index') {{ 'active' }} @endif" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Settings</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{{ route('admin.setting.list') }}"><i class="icon fa fa-circle-o"></i> Settings</a></li>
+            <li><a class="treeview-item" href="{{ route('admin.optimize.index') }}"><i class="icon fa fa-circle-o"></i> Optimize</a></li>
+          </ul>
         </li>
         @endcan
       </ul>

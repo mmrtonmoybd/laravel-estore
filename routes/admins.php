@@ -98,6 +98,11 @@ Route::group([
             Route::post('pages/update/{id}', 'Admin\PageController@update');
             Route::get('pages/delete/{id}', 'Admin\PageController@destroy')->name('admin.page.delete');
             // Page Route
+            // Optimize Route
+            Route::get('optimize/', 'Admin\OptimizeController@index')->name('admin.optimize.index');
+            Route::get('optimize/add/', 'Admin\OptimizeController@optimize')->name('admin.optimize.add');
+            Route::get('optimize/cleared/', 'Admin\OptimizeController@clearoptimize')->name('admin.optimize.clear');
+            // Optimize Route
         });
         // end Super Admin Permission
     });
