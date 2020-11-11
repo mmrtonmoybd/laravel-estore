@@ -6306,21 +6306,21 @@
         },
         {
             "name": "willvincent/laravel-rateable",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willvincent/laravel-rateable.git",
-                "reference": "10496ae647a8ae37896787f18a95845b8d310a20"
+                "reference": "f6b3440dbf4b791b235ea4e4bd3fa7f87fed236e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/10496ae647a8ae37896787f18a95845b8d310a20",
-                "reference": "10496ae647a8ae37896787f18a95845b8d310a20",
+                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/f6b3440dbf4b791b235ea4e4bd3fa7f87fed236e",
+                "reference": "f6b3440dbf4b791b235ea4e4bd3fa7f87fed236e",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^6.0|^7.0",
-                "illuminate/support": "^6.0|^7.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
                 "php": ">=7.2"
             },
             "require-dev": {
@@ -6364,7 +6364,7 @@
                 "rateable",
                 "vote"
             ],
-            "time": "2020-07-04T16:01:42+00:00"
+            "time": "2020-11-10T20:18:05+00:00"
         }
     ],
     "packages-dev": [
