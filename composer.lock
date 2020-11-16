@@ -1560,22 +1560,23 @@
         },
         {
             "name": "illuminatech/url-trailing-slash",
-            "version": "1.1.6",
+            "version": "1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminatech/url-trailing-slash.git",
-                "reference": "a39350021ee7447228e139473a022c3f0881bc37"
+                "reference": "a26511c2ee9d2f377b6d47a1e5cbec0aa10510c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/a39350021ee7447228e139473a022c3f0881bc37",
-                "reference": "a39350021ee7447228e139473a022c3f0881bc37",
+                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/a26511c2ee9d2f377b6d47a1e5cbec0aa10510c6",
+                "reference": "a26511c2ee9d2f377b6d47a1e5cbec0aa10510c6",
                 "shasum": ""
             },
             "require": {
                 "illuminate/routing": "^6.0 || ^7.7.0 || ^8.0"
             },
             "require-dev": {
+                "illuminate/config": "*",
                 "illuminate/events": "*",
                 "phpunit/phpunit": "^8.0 || ^9.3"
             },
@@ -1619,7 +1620,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-09-09T13:29:04+00:00"
+            "time": "2020-11-13T15:01:27+00:00"
         },
         {
             "name": "laravel-validation-rules/credit-card",
