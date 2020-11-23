@@ -23,7 +23,7 @@
           <span class="text-danger">{{ \App\Setting::getValue('currency_icon') }}{{ $totalvat }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
+          <span>Total (\App\Setting::getValue('currency'))</span>
           <strong>{{ \App\Setting::getValue('currency_icon') }}{{ $total }}</strong>
         </li>
       </ul>
@@ -70,18 +70,18 @@
               <i class="fa fa-cc-discover" style="color:orange;"></i>
             </div>
             <label for="ccnum">Credit or Debit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111 2222 3333 4444" class="form-control @error('cardnumber') is-invalid @enderror" value={{ old('cardnumber') }}>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111 2222 3333 4444" class="form-control @error('cardnumber') is-invalid @enderror" value="{{ old('cardnumber') }}" required>
             <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="{{ date('m') }}" class="form-control @error('expmonth') is-invalid @enderror" value="{{ old('expmonth') }}">
+            <input type="text" id="expmonth" name="expmonth" placeholder="{{ date('m') }}" class="form-control @error('expmonth') is-invalid @enderror" value="{{ old('expmonth') }}" required>
 
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="{{ date('Y') }}" class="form-control @error('expyear') is-invalid @enderror" value="{{ old('expyear') }}">
+                <input type="text" id="expyear" name="expyear" placeholder="{{ date('Y') }}" class="form-control @error('expyear') is-invalid @enderror" value="{{ old('expyear') }}" required>
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352" class="form-control @error('cvv') is-invalid @enderror" value="{{ old('cvv') }}">
+                <input type="text" id="cvv" name="cvv" placeholder="352" class="form-control @error('cvv') is-invalid @enderror" value="{{ old('cvv') }}" required>
               </div>
             </div>
           </div>

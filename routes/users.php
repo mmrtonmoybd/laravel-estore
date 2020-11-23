@@ -43,7 +43,7 @@ Route::group([
         Route::get('checkout/', 'Checkout@index')->name('checkout');
         Route::post('checkout/', 'Checkout@checkout');
 
-        Route::get('orders/{id}', 'OrderInfo@orders');
+        Route::get('orders/{id}', 'OrderInfo@orders')->name('users.order');
 
         Route::post('rating/', 'RatingController@store')->name('rating');
     });

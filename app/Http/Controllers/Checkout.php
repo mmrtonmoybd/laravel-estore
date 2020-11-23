@@ -93,6 +93,7 @@ class Checkout extends Controller
                         'amount' => $this->getTotalWithVat(Cart::getTotal()),
                         'address' => $request->input('address'),
                         'user_id' => Auth::guard()->user()->id,
+                        'payment_type' => 'checking',
                     ]);
 
                     foreach (Cart::getContent() as $item) {
