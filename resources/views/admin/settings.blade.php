@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i>Settings</h1>
+          <h1><i class="fa fa-cogs"></i> Settings</h1>
           <p>Settings For {{ config('app.name') }}</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -87,7 +87,7 @@
                   
                 
 					  <div class="tile-footer">
-              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-primary" type="submit">Save</button>
             </div>
                 </form>
               </div>

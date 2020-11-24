@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-dashboard"></i> </h1>
+          <h1><i class="fa fa-dashboard"></i> Optimize</h1>
           <p>Optimize {{ config('app.name') }}</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">

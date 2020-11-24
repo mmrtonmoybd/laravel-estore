@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i>Orders</h1>
+          <h1><i class="fa fa-first-order"></i> Orders</h1>
           <p>Display All Orders</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">

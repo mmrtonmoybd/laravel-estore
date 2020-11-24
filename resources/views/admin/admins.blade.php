@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i>Admins</h1>
+          <h1><i class="fa fa-users"></i> Admins</h1>
           <p>Display All Admins</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">
@@ -16,7 +16,7 @@
           <div class="tile">
           <div class="tile-title-w-btn">
               <h3 class="title">All Admins</h3>
-              <p><a class="btn btn-primary icon-btn" href="{{ route('admin.admin.add') }}"><i class="fa fa-plus"></i>Add Admin</a></p>
+              <p><a class="btn btn-primary icon-btn" href="{{ route('admin.admin.add') }}"><i class="fa fa-plus"></i> Create Admin</a></p>
               </div>
             <div class="tile-body">
             @if(session()->has('success'))

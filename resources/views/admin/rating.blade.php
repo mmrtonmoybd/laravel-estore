@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i>Ratings</h1>
+          <h1><i class="fa fa-star"></i> Ratings</h1>
           <p>Display All Rating</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">

@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i>Category Update</h1>
+          <h1><i class="fa fa-edit"></i> Category Update</h1>
           <p>Category Updating To {{ config('app.name') }}</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -37,7 +37,7 @@
                   </div>
                 
 					  <div class="tile-footer">
-              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-primary" type="submit">Update</button>
             </div>
                 </form>
               </div>

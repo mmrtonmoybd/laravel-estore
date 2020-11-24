@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i>Payments</h1>
+          <h1><i class="fa fa-credit-card"></i> Payments</h1>
           <p>Display All Payments</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">

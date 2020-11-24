@@ -2,13 +2,13 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i>Category Add</h1>
+          <h1><i class="fa fa-plus"></i> Create Category</h1>
           <p>Category Adding To {{ config('app.name') }}</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
           <li class="breadcrumb-item">Categories</li>
-          <li class="breadcrumb-item"><a href="{{ route('admin.category.add') }}">Category add</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('admin.category.add') }}">Create Category</a></li>
         </ul>
       </div>
 	  
@@ -37,7 +37,7 @@
                   </div>
                 
 					  <div class="tile-footer">
-              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-primary" type="submit">Save</button>
             </div>
                 </form>
               </div>

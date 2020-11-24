@@ -2,13 +2,13 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i>Product Add</h1>
+          <h1><i class="fa fa-edit"></i> Create Product</h1>
           <p>Product Adding To {{ config('app.name') }}</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="fa fa-home fa-lg"></i></a></li>
           <li class="breadcrumb-item">Products</li>
-          <li class="breadcrumb-item"><a href="{{ route('admin.product.add') }}">Product add</a></li>
+          <li class="breadcrumb-item"><a href="{{ route('admin.product.add') }}">Create Product</a></li>
         </ul>
       </div>
 	  
@@ -77,7 +77,7 @@
                         <div class="input-group-append"><span class="input-group-text">.00</span></div>
                       </div>
 					  <div class="tile-footer">
-              <button class="btn btn-primary" type="submit">Submit</button>
+              <button class="btn btn-primary" type="submit">Save</button>
             </div>
                 </form>
               </div>

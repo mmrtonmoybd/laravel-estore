@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i>Comments</h1>
+          <h1><i class="fa fa-comment"></i> Comments</h1>
           <p>Display All Comments</p>
         </div>
         <ul class="app-breadcrumb breadcrumb side">

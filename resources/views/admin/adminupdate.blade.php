@@ -2,7 +2,7 @@
 @section('content')
 <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i>Admin Update</h1>
+          <h1><i class="fa fa-edit"></i> Admin Update</h1>
           <p>Admin Update To {{ config('app.name') }}</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
