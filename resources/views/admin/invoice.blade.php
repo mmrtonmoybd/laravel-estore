@@ -155,7 +155,7 @@
                 </td>
                 
                 <td>
-				{{ \App\Setting::getValue('currency_icon') }}{{ $payment->amount }}
+				{{ \App\Models\Setting::getValue('currency_icon') }}{{ $payment->amount }}
                 </td>
             </tr>
 			<tr class="details">
@@ -164,7 +164,7 @@
                 </td>
                 
                 <td>
-				{{ \App\Setting::getValue('currency_icon') }}{{ $payment->payment_id }}
+				{{ \App\Models\Setting::getValue('currency_icon') }}{{ $payment->payment_id }}
                 </td>
             </tr>
             
@@ -209,8 +209,8 @@ $total = $price - $calculation;
 <td>{{ $order->quantity }}</td>
 <td>{{ $order->size }}</td>
 <td>{{ $order->color }}</td>
-<td>{{ \App\Setting::getValue('currency_icon') }}{{ $calculation }}</td>
-<td>{{ \App\Setting::getValue('currency_icon') }}{{ $total }}</td>
+<td>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $calculation }}</td>
+<td>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $total }}</td>
             </tr>
 			@endforeach
             
@@ -218,7 +218,7 @@ $total = $price - $calculation;
                 <td></td>
                 
                 <td>
-                   Total: {{ \App\Setting::getValue('currency_icon') }}{{ $payment->amount }}
+                   Total: {{ \App\Models\Setting::getValue('currency_icon') }}{{ $payment->amount }}
                 </td>
             </tr>
         </table>

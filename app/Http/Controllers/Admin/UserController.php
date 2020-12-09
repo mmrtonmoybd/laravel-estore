@@ -9,8 +9,8 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
-use App\UserInfo;
+use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,7 +29,7 @@ class UserController extends Controller
         }
 
         return view('admin.users', [
-            'users' => User::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'users' => User::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

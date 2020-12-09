@@ -2,7 +2,7 @@
 
 namespace App\Carts;
 
-use App\CartStorage;
+use App\Models\CartStorage;
 use Darryldecode\Cart\CartCollection;
 
 class CartDB

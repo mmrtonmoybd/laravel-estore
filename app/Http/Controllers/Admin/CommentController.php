@@ -8,9 +8,9 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers\Admin;
 
-use App\Comment;
+use App\Models\Comment;
 use App\Http\Controllers\Controller;
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +29,7 @@ class CommentController extends Controller
         }
 
         return view('admin.comments', [
-            'comments' => Comment::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'comments' => Comment::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

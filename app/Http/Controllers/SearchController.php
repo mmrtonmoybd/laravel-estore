@@ -8,7 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
 use App\Traits\ProductShow;
 use Illuminate\Http\Request;
 use SEO;
@@ -36,7 +36,7 @@ class SearchController extends Controller
             $order = 'desc';
         }
 
-        $products = Product::where('title', 'LIKE', '%'.$request->search.'%')->orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page'));
+        $products = Product::where('title', 'LIKE', '%'.$request->search.'%')->orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page'));
         if (count($products) < 1) {
             abort(404);
         }

@@ -9,7 +9,7 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Payment;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -30,7 +30,7 @@ class PaymentController extends Controller
         }
 
         return view('admin.payments', [
-            'payments' => Payment::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'payments' => Payment::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

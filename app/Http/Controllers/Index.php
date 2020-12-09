@@ -8,7 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
 use App\Traits\ProductShow;
 use Illuminate\Http\Request;
 use SEO;
@@ -20,13 +20,13 @@ class Index extends Controller
     // All post are index in index method.
     public function index()
     {
-        SEO::setTitle(\App\Setting::getValue('home_title'));
-        SEO::setDescription(\App\Setting::getValue('home_info'));
+        SEO::setTitle(\App\Models\Setting::getValue('home_title'));
+        SEO::setDescription(\App\Models\Setting::getValue('home_info'));
         SEO::opengraph()->setUrl(url(''));
         SEO::setCanonical(url(''));
         SEO::opengraph()->addProperty('type', 'page');
 
-        $products = Product::orderBy('id', 'desc')->limit(\App\Setting::getValue('item_per_column'))->get();
+        $products = Product::orderBy('id', 'desc')->limit(\App\Models\Setting::getValue('item_per_column'))->get();
 
         return view('index', [
             'products' => $products,
@@ -60,7 +60,7 @@ class Index extends Controller
         }
 
         return view('products.recent', [
-            'products' => Product::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'products' => Product::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
             'categories' => $this->getCategories(),
         ]);
     }

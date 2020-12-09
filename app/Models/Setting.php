@@ -6,10 +6,9 @@ GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Contracts\Encryption\DecryptException;
-//use App\Traits\CryptTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Crypt;

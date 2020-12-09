@@ -9,10 +9,10 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers;
 
 use App\Events\PaymentSuccess;
-use App\Order;
-use App\Payment;
-use App\Product;
-use App\Setting;
+use App\Models\Order;
+use App\Models\Payment;
+use App\Models\Product;
+use App\Models\Setting;
 use Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

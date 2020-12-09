@@ -6,7 +6,7 @@ GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

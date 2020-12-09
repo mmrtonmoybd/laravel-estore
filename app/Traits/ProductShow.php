@@ -2,8 +2,8 @@
 
 namespace App\Traits;
 
-use App\Categorie as Category;
-use App\Product as ProductModel;
+use App\Models\Categorie as Category;
+use App\Models\Product as ProductModel;
 
 trait ProductShow
 {

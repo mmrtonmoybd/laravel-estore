@@ -38,9 +38,9 @@
                 $calculate = $price - $calculate;
                 @endphp
                 <h5>@if ($calculate == 0) 
-                {{ \App\Setting::getValue('currency_icon') }}{{ $price }}
+                {{ \App\Models\Setting::getValue('currency_icon') }}{{ $price }}
                 @else 
-                <del>{{ \App\Setting::getValue('currency_icon') }}{{ $price }}</del>  {{ \App\Setting::getValue('currency_icon') }}{{ $calculate }}
+                <del>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $price }}</del>  {{ \App\Models\Setting::getValue('currency_icon') }}{{ $calculate }}
                 @endif</h5>
               </div>
               <div class="card-footer">

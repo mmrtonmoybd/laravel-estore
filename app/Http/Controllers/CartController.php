@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CartRequest;
-use App\Product;
+use App\Models\Product;
 use Darryldecode\Cart\CartCondition;
 use Illuminate\Http\Request;
 use SEO;
+use Cart;
 
 class CartController extends Controller
 {
@@ -18,7 +19,7 @@ class CartController extends Controller
         SEO::opengraph()->addProperty('type', 'page');
 
         return view('carts.cart', [
-            'cartCollection' => \Cart::getContent(),
+            'cartCollection' => Cart::getContent(),
         ]);
     }
 
@@ -34,7 +35,7 @@ class CartController extends Controller
             'value' => "-{$product->discounds}%",
         ]);
 
-        \Cart::add([
+        Cart::add([
             'id' => $product->id,
             'name' => $product->title,
             'price' => $product->price,
@@ -56,7 +57,7 @@ class CartController extends Controller
         $request->validate([
             'id' => 'required|numeric|exists:products,id',
         ]);
-        \Cart::remove($request->input('id'));
+        Cart::remove($request->input('id'));
 
         return redirect()->route('cart.index')->with('success', 'Item has been removed!');
     }
@@ -69,7 +70,7 @@ class CartController extends Controller
         SEO::opengraph()->setUrl(url('/cart/update/'));
         SEO::setCanonical(url('/cart/update/'));
         SEO::opengraph()->addProperty('type', 'page');
-        \Cart::update($request->input('id'), [
+        Cart::update($request->input('id'), [
             'quantity' => [
                 'relative' => false,
                 'value' => $request->input('quantity'),
@@ -85,7 +86,7 @@ class CartController extends Controller
 
     public function cartClear()
     {
-        \Cart::clear();
+        Cart::clear();
 
         return redirect()->route('cart.index')->with('success', 'Cart has been cleared!');
     }

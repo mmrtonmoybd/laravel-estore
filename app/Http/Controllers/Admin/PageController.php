@@ -9,7 +9,7 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Page;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use SEO;
 
@@ -33,7 +33,7 @@ class PageController extends Controller
         }
 
         return view('admin.page', [
-            'pages' => Page::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'pages' => Page::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

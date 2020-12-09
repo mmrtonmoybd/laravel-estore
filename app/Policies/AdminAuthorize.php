@@ -8,7 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Policies;
 
-use App\Admin;
+use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AdminAuthorize

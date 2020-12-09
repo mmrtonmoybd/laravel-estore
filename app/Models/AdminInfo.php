@@ -6,11 +6,11 @@ GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserInfo extends Model
+class AdminInfo extends Model
 {
-    protected $fillable = ['address', 'mobile', 'ip', 'user_id'];
+    protected $fillable = ['address', 'mobile', 'ip', 'admin_id'];
 }

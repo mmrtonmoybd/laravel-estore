@@ -8,7 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers\Admin;
 
-use App\AdminInfo;
+use App\Models\AdminInfo;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;

@@ -8,7 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers\Admin;
 
-use App\Categorie;
+use App\Models\Categorie;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -33,7 +33,7 @@ class CategoryController extends Controller
         }
 
         return view('admin.category', [
-            'categorys' => Categorie::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'categorys' => Categorie::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

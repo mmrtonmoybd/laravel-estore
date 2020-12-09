@@ -8,8 +8,8 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\UserInfo;
+use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use SEO;

@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
-use App\Payment;
-use App\User;
+use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;

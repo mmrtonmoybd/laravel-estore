@@ -9,8 +9,8 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers;
 
 use App;
-use App\Categorie;
-use App\Product;
+use App\Models\Categorie;
+use App\Models\Product;
 use Carbon\Carbon;
 use URL;
 

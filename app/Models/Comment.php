@@ -6,9 +6,9 @@ GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
 
-namespace App;
+namespace App\Models;
 
-use Actuallymab\LaravelComment\Models\Comment as LaravelComment;
+use Mmrtonmoybd\Comment\Models\Comment as LaravelComment;
 
 class Comment extends LaravelComment
 {
@@ -16,16 +16,16 @@ class Comment extends LaravelComment
 
     public static function reply(int $comID)
     {
-        return Comment::where('commentable_id', $comID)->where('commentable_type', 'App\Comment')->get();
+        return Comment::where('commentable_id', $comID)->where('commentable_type', 'App\Models\Comment')->get();
     }
 
     public static function user(int $id)
     {
-        return \App\User::find($id);
+        return \App\Models\User::find($id);
     }
 
     public static function adminCom(int $id)
     {
-        return \App\Admin::find($id);
+        return \App\Models\Admin::find($id);
     }
 }

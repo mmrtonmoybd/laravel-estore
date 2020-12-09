@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Comment;
+use App\Models\Comment;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,10 +14,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
-        'App\Payment' => 'App\Policies\CheckUserAuthorize',
-        'App\User' => 'App\Policies\UserAuthorize',
-        'App\Admin' => 'App\Policies\AdminAuthorize',
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Models\Payment' => 'App\Policies\CheckUserAuthorize',
+        'App\Models\User' => 'App\Policies\UserAuthorize',
+        'App\Models\Admin' => 'App\Policies\AdminAuthorize',
     ];
 
     /**
@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isAction', function ($user, $id) {
             $comment = Comment::find($id);
             //dd($user);
-            return $comment->commented_id == $user->id && 'App\User' == $comment->commented_type;
+            return $comment->commented_id == $user->id && 'App\Models\User' == $comment->commented_type;
         });
     }
 }

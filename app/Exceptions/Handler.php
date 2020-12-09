@@ -13,6 +13,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
+        //
     ];
 
     /**
@@ -26,26 +27,14 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Report or log an exception.
+     * Register the exception handling callbacks for the application.
      *
-     * @throws \Exception
+     * @return void
      */
-    public function report(Throwable $exception)
+    public function register()
     {
-        parent::report($exception);
-    }
-
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @throws \Throwable
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function render($request, Throwable $exception)
-    {
-        return parent::render($request, $exception);
+        $this->reportable(function (Throwable $e) {
+            //
+        });
     }
 }
