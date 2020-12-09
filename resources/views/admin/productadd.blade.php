@@ -72,7 +72,7 @@
                     <div class="form-group">
                       <label class="sr-only" for="exampleInputAmount">Product Price (in dollars)</label>
                       <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text">{{ \App\Setting::getValue('currency_icon') }}</span></div>
+                        <div class="input-group-prepend"><span class="input-group-text">{{ \App\Models\Setting::getValue('currency_icon') }}</span></div>
                         <input class="form-control @error('price') is-invalid @enderror" id="exampleInputAmount" type="number" placeholder="Amount" name="price" required value="{{ old('price') }}">
                         <div class="input-group-append"><span class="input-group-text">.00</span></div>
                       </div>

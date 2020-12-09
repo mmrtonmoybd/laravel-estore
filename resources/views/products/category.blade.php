@@ -41,7 +41,7 @@
                 <h5>@if ($calculate == 0) 
                 ${{ $price }}
                 @else 
-                <del>{{ \App\Setting::getValue('currency_icon') }}{{ $price }}</del>  ${{ $calculate }}
+                <del>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $price }}</del>  ${{ $calculate }}
                 @endif</h5>
               </div>
               <div class="card-footer">

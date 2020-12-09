@@ -6,11 +6,18 @@ GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Visit extends Model
+class Categorie extends Model
 {
-    protected $fillable = ['ip', 'date', 'visitable_id', 'visitable_type'];
+    protected $guarded = [
+        'products',
+    ];
+
+    public function product()
+    {
+        return $this->hasMany('App\Models\Product', 'category_id');
+    }
 }

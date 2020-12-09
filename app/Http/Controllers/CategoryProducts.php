@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Categorie;
+use App\Models\Categorie;
 use App\Traits\ProductShow;
 use Illuminate\Http\Request;
 use SEO;
@@ -39,7 +39,7 @@ class CategoryProducts extends Controller
         }
 
         return view('products.category', [
-            'products' => $id->product()->orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'products' => $id->product()->orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
             'category' => $id,
             'categories' => $this->getCategories(),
         ]);

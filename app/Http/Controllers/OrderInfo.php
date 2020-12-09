@@ -8,8 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers;
 
-use App\Payment;
-//use App\Order
+use App\Models\Payment;
 
 use Illuminate\Support\Facades\Auth;
 use SEO;
@@ -28,8 +27,8 @@ class OrderInfo extends Controller
         SEO::setCanonical(url('/users/orders/'));
         SEO::opengraph()->addProperty('type', 'orders');
         //SEOTools::twitter()->setSite('@LuizVinicius73');
-        $payments = Payment::where('user_id', Auth::guard()->user()->id)->latest()->paginate(\App\Setting::getValue('item_per_page'));
-        //dd($payments); successfull
+        $payments = Payment::where('user_id', Auth::guard()->user()->id)->latest()->paginate(\App\Models\Setting::getValue('item_per_page'));
+        
         return view('auth.payments', [
             'payments' => $payments,
         ]);
@@ -46,15 +45,11 @@ class OrderInfo extends Controller
         //SEOTools::twitter()->setSite('@LuizVinicius73');
         $orders = $id->orders()->get();
         $product = $id->product()->get();
-        //dd($order); successfull
-        //$product = $id->product(1);
-        //dd($product); successfull
+        
         return view('auth.orders', [
             'payment' => $id,
             'orders' => $orders,
             'products' => $product,
         ]);
-        //dd($id->product()->get());
-        //dd($id->product()->get()); many to many relation is successfull
     }
 }

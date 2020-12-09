@@ -9,7 +9,7 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Rating;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
@@ -27,7 +27,7 @@ class RatingController extends Controller
         }
 
         return view('admin.rating', [
-            'rates' => Rating::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'rates' => Rating::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

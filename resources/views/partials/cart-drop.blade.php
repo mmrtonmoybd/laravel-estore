@@ -12,7 +12,7 @@
                     <br><small>Qty: {{ $item->quantity }}</small>
                 </div>
                 <div class="col-lg-3">
-                    <p>{{ \App\Setting::getValue('currency_icon') }}{{ $item->getPriceSumWithConditions() }}</p>
+                    <p>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $item->getPriceSumWithConditions() }}</p>
                 </div>
                 <hr>
             </div>
@@ -22,7 +22,7 @@
     <li class="list-group-item">
         <div class="row">
             <div class="col-lg-10">
-                <b>Total: </b>{{ \App\Setting::getValue('currency_icon') }}{{ \Cart::getTotal() }}
+                <b>Total: </b>{{ \App\Models\Setting::getValue('currency_icon') }}{{ \Cart::getTotal() }}
             </div>
             <div class="col-lg-2">
 			<form action="{{ route('cart.clear') }}" method="POST">

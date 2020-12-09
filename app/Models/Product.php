@@ -8,8 +8,8 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App;
 
-use Actuallymab\LaravelComment\Contracts\Commentable;
-use Actuallymab\LaravelComment\HasComments;
+use Mmrtonmoybd\Comment\Contracts\Commentable;
+use Mmrtonmoybd\Comment\HasComments;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
@@ -31,27 +31,27 @@ class Product extends Model implements Commentable
 
     public function category()
     {
-        return $this->belongsTo('App\Categorie', 'category_id', 'id');
+        return $this->belongsTo('App\Models\Categorie', 'category_id', 'id');
     }
 
     public function admin()
     {
-        return $this->belongsTo('App\Admin');
+        return $this->belongsTo('App\Models\Admin');
     }
 
     public static function order(int $id)
     {
-        return \App\Order::where('product_id', $id)->sum('quantity');
+        return \App\Models\Order::where('product_id', $id)->sum('quantity');
     }
 
     public function user(int $id)
     {
-        return \App\User::find($id);
+        return \App\Models\User::find($id);
     }
 
     public function adminCom(int $id)
     {
-        return \App\Admin::find($id);
+        return \App\Models\Admin::find($id);
     }
 
     // markdown affect view
@@ -72,7 +72,7 @@ class Product extends Model implements Commentable
 
     public function orderr()
     {
-        return $this->hasMany('App\Order');
+        return $this->hasMany('App\Models\Order');
     }
 
     /**

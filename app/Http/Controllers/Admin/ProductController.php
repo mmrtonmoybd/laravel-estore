@@ -8,9 +8,9 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers\Admin;
 
-use App\Categorie;
+use App\Models\Categorie;
 use App\Http\Controllers\Controller;
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -46,7 +46,7 @@ class ProductController extends Controller
         }
 
         return view('admin.products', [
-            'products' => Product::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'products' => Product::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

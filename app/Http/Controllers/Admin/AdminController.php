@@ -8,8 +8,8 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin;
-use App\AdminInfo;
+use App\Models\Admin;
+use App\Models\AdminInfo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +35,7 @@ class AdminController extends Controller
         }
 
         return view('admin.admins', [
-            'admins' => Admin::orderBy($column, $order)->paginate(\App\Setting::getValue('item_per_page')),
+            'admins' => Admin::orderBy($column, $order)->paginate(\App\Models\Setting::getValue('item_per_page')),
         ]);
     }
 

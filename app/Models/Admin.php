@@ -1,19 +1,14 @@
 <?php
-/*
-Author: Moshiur Rahman Tonmoy
-Facebook: https://www.facebook.com/mmrtonmoy
-GitHub: https://www.github.com/mmrtonmoybd
-About: I am a php, laravel, codeigniter developer.
-*/
 
-namespace App;
+namespace App\Models;
 
-use Actuallymab\LaravelComment\CanComment;
+use Mmrtonmoybd\Comment\CanComment;
+use App\Notifications\AdminResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class Admin extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use CanComment;
@@ -24,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'isAdmin',
     ];
 
     /**
@@ -36,6 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+    //protected $guarded = ['isAdmin'];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -43,10 +40,16 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'isAdmin' => 'boolean',
     ];
 
-    public function userInfo()
+    public function sendPasswordResetNotification($token)
     {
-        return $this->hasOne('App\UserInfo', 'user_id', 'id');
+        $this->notify(new AdminResetPassword($token));
+    }
+
+    public function adminInfo()
+    {
+        return $this->hasOne('App\\Models\AdminInfo', 'admin_id', 'id');
     }
 }

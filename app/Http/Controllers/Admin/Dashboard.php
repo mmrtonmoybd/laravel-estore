@@ -8,15 +8,15 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin;
-use App\Categorie;
-use App\Http\Controllers\Controller;
-use App\Order;
-use App\Page;
-use App\Payment;
-use App\Product;
-use App\Rating;
-use App\User;
+use App\Models\Admin;
+use App\Models\Categorie;
+use App\Models\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Models\Page;
+use App\Models\Payment;
+use App\Models\Product;
+use App\Models\Rating;
+use App\Models\User;
 
 class Dashboard extends Controller
 {

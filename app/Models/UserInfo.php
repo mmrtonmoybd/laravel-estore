@@ -6,10 +6,11 @@ GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
 
-namespace App;
+namespace App\Models;
 
-use willvincent\Rateable\Rating as RatingParent;
+use Illuminate\Database\Eloquent\Model;
 
-class Rating extends RatingParent
+class UserInfo extends Model
 {
+    protected $fillable = ['address', 'mobile', 'ip', 'user_id'];
 }

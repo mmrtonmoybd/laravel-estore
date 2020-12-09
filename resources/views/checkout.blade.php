@@ -13,18 +13,18 @@
             <h6 class="my-0">{{ $item->name }}</h6>
           </div>
           <small>Qty: {{ $item->quantity }}</small>
-          <span class="text-muted">{{ \App\Setting::getValue('currency_icon') }}{{ $item->getPriceSumWithConditions() }}</span>
+          <span class="text-muted">{{ \App\Models\Setting::getValue('currency_icon') }}{{ $item->getPriceSumWithConditions() }}</span>
         </li>
         @endforeach
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-danger">
             <h6 class="my-0">VAT({{ \App\Setting::getValue('vat') . '%' }})</h6>
           </div>
-          <span class="text-danger">{{ \App\Setting::getValue('currency_icon') }}{{ $totalvat }}</span>
+          <span class="text-danger">{{ \App\Models\Setting::getValue('currency_icon') }}{{ $totalvat }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total (\App\Setting::getValue('currency'))</span>
-          <strong>{{ \App\Setting::getValue('currency_icon') }}{{ $total }}</strong>
+          <span>Total (\App\Models\Setting::getValue('currency'))</span>
+          <strong>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $total }}</strong>
         </li>
       </ul>
     </div>

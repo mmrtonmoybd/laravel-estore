@@ -8,7 +8,7 @@ About: I am a php, laravel, codeigniter developer.
 
 namespace App\Http\Requests;
 
-use App\Product;
+use App\Models\Product;
 use App\Traits\CryptTrait;
 use Illuminate\Foundation\Http\FormRequest;
 
