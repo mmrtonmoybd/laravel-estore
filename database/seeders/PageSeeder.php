@@ -5,7 +5,8 @@ Facebook: https://www.facebook.com/mmrtonmoy
 GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
-use App\Page;
+namespace Database\Seeders;
+use App\Models\Page;
 use Illuminate\Database\Seeder;
 
 class PageSeeder extends Seeder

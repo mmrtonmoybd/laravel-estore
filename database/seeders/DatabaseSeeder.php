@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
@@ -17,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminInfoSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(PageSeeder::class);
+
+
     }
 }

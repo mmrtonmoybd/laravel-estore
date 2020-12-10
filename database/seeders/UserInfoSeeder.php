@@ -5,13 +5,12 @@ Facebook: https://www.facebook.com/mmrtonmoy
 GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
-use App\User;
-use Carbon\Carbon;
+namespace Database\Seeders;
+use App\Models\UserInfo;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
-class UserSeeder extends Seeder
+class UserInfoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,11 +18,11 @@ class UserSeeder extends Seeder
     public function run()
     {
         $fake = Faker::create();
-        $user = new User();
-        $user->name = $fake->name;
-        $user->email = 'moshiur@user.com';
-        $user->password = Hash::make('12345678');
-        $user->email_verified_at = Carbon::now()->toDateTimeString();
-        $user->save();
+        $userinfo = new UserInfo();
+        $userinfo->address = $fake->address;
+        $userinfo->mobile = $fake->e164PhoneNumber;
+        $userinfo->ip = '127.0.0.1';
+        $userinfo->user_id = 1;
+        $userinfo->save();
     }
 }

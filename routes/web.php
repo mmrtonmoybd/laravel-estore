@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,27 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware' => 'HtmlMinifire'], function () {
-    Route::get('/', 'Index@index');
-    Route::get('/product/{id}', 'ProductSingle@index');
-    Route::get('/category/{id}', 'CategoryProducts@index');
-    Route::get('/all/products/', 'Index@recent');
-    Route::get('product/search/', 'SearchController@index');
+    Route::get('/', 'App\Http\Controllers\Index@index');
+    Route::get('/product/{id}', 'App\Http\Controllers\ProductSingle@index');
+    Route::get('/category/{id}', 'App\Http\Controllers\CategoryProducts@index');
+    Route::get('/all/products/', 'App\Http\Controllers\Index@recent');
+    Route::get('product/search/', 'App\Http\Controllers\SearchController@index');
 
     // cart route start
-    Route::get('/cart/', 'CartController@index')->name('cart.index');
-    Route::post('/cart/add/', 'CartController@addProduct')->name('cart.store');
-    Route::post('/cart/update/', 'CartController@updateProduct')->name('cart.update');
-    Route::post('/cart/remove/', 'CartController@removeProduct')->name('cart.remove');
-    Route::post('/cart/clear/', 'CartController@cartClear')->name('cart.clear');
+    Route::get('/cart/', 'App\Http\Controllers\CartController@index')->name('cart.index');
+    Route::post('/cart/add/', 'App\Http\Controllers\CartController@addProduct')->name('cart.store');
+    Route::post('/cart/update/', 'App\Http\Controllers\CartController@updateProduct')->name('cart.update');
+    Route::post('/cart/remove/', 'App\Http\Controllers\CartController@removeProduct')->name('cart.remove');
+    Route::post('/cart/clear/', 'App\Http\Controllers\CartController@cartClear')->name('cart.clear');
 
     // page route
-    Route::get('page/{id}', 'Admin\PageController@show')->name('page.show');
+    Route::get('page/{id}', 'App\Http\Controllers\Admin\PageController@show')->name('page.show');
 
-    Route::get('test/', 'Test@test');
+    Route::get('test/', 'App\Http\Controllers\Test@test');
     // User route
     require 'users.php';
     // Admin route
     require 'admins.php';
 });
 // Sitemap route
-Route::get('sitemap.xml', 'Sitemap@sitemap');
+Route::get('sitemap.xml', 'App\Http\Controllers\Sitemap@sitemap');
