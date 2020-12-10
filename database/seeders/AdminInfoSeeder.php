@@ -5,7 +5,10 @@ Facebook: https://www.facebook.com/mmrtonmoy
 GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
-use App\AdminInfo;
+
+namespace Database\Seeders;
+
+use App\Models\AdminInfo;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 

@@ -12,14 +12,14 @@ trait ProductShow
         return ProductModel::where([
             ['discounds', '>=', 1],
             ['quantity', '>=', 1],
-        ])->orderBy('discounds', 'desc')->limit(\App\Setting::getValue('item_per_column'))->get();
+        ])->orderBy('discounds', 'desc')->limit(\App\Models\Setting::getValue('item_per_column'))->get();
     }
 
     // @param $category_id = product category id
     private function getRelatedProducts(int $category_id, $id = 1)
     {
         //dd($id);
-        return ProductModel::where('category_id', $category_id)->where('id', '!=', $id)->orderBy('id', 'desc')->limit(\App\Setting::getValue('item_per_column'))->get();
+        return ProductModel::where('category_id', $category_id)->where('id', '!=', $id)->orderBy('id', 'desc')->limit(\App\Models\Setting::getValue('item_per_column'))->get();
     }
 
     private function getCategories()
@@ -29,6 +29,6 @@ trait ProductShow
 
     private function getMostViewsProduct()
     {
-        return ProductModel::popularAllTime()->limit(\App\Setting::getValue('item_per_column'))->get();
+        return ProductModel::popularAllTime()->limit(\App\Models\Setting::getValue('item_per_column'))->get();
     }
 }

@@ -5,7 +5,9 @@ Facebook: https://www.facebook.com/mmrtonmoy
 GitHub: https://www.github.com/mmrtonmoybd
 About: I am a php, laravel, codeigniter developer.
 */
-use App\Setting;
+
+namespace Database\Seeders;
+use App\Models\Setting;
 use Illuminate\Database\Seeder;
 
 class SettingSeeder extends Seeder

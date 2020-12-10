@@ -1,6 +1,7 @@
 <?php
+namespace Database\Seeders;
 
-use App\Admin;
+use App\Models\Admin;
 use Carbon\Carbon;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
