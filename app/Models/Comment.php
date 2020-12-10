@@ -16,7 +16,7 @@ class Comment extends LaravelComment
 
     public static function reply(int $comID)
     {
-        return Comment::where('commentable_id', $comID)->where('commentable_type', 'App\Models\Comment')->get();
+        return Comment::where('commentable_id', $comID)->where('commentable_type', 'App\Comment')->get();
     }
 
     public static function user(int $id)

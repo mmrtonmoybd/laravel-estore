@@ -59,7 +59,7 @@
                       <td>{{ $comment->commentable_id }}</td>       
                       <td>@if ($comment->commentable_type == 'App\Comment') {{ "Reply" }} @else {{ "Comment" }} @endif</td>
                       <td>{{ $comment->comment }}</td>
-                      <td>@if ($comment->commented_type == 'App\Admin') {{ \App\Comment::adminCom($comment->commented_id)->name . "Admin"}} @else {{ \App\Comment::user($comment->commented_id)->name }} @endif</td>
+                      <td>@if ($comment->commented_type == 'App\Models\Admin') {{ \App\Models\Comment::adminCom($comment->commented_id)->name . "Admin"}} @else {{ \App\Models\Comment::user($comment->commented_id)->name }} @endif</td>
                       <td>{{ $comment->updated_at }}</td>
                       <td>{{ $comment->created_at }}</td>
 					  <td><div class="btn-group">@if ($comment->commentable_type != 'App\Comment')<a class="btn btn-primary" href='{{ url("product/{$comment->commentable_id}")}}'><i class="fa fa-lg fa-eye"></i></a>@endif<a class="btn btn-primary" href="{{ route('admin.comment.update', ['id' => $comment->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.comment.delete', ['id' => $comment->id])}}"><i class="fa fa-lg fa-trash"></i></a></div></td>

@@ -56,7 +56,7 @@
                                 <b>Size:</b>  {{ $item->attributes->size }}<br>
                                 <b>Price: </b>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $item->price }}<br>
                         
-								<b>With Discount: </b>{{ \App\ModelsSetting::getValue('currency_icon') }}{{ $item->getPriceSumWithConditions() }}
+								<b>With Discount: </b>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $item->getPriceSumWithConditions() }}
                             </p>
                         </div>
                         <div class="col-lg-4">
