@@ -12,7 +12,7 @@ Route::group([
     Route::post('password/reset/', 'App\Http\Controllers\Admin\ResetPasswordController@reset')->name('admin.reset.update');
 
     //Auth middleware group route
-    Route::group(['middleware' => 'App\Http\Controllers\adminAuth:admin'], function () {
+    Route::group(['middleware' => 'adminAuth:admin'], function () {
         Route::get('/', 'App\Http\Controllers\Admin\Dashboard@index')->name('admin.dashboard');
 
         Route::get('logout/', 'App\Http\Controllers\Admin\LoginController@logout')->name('admin.logout');
@@ -59,7 +59,7 @@ Route::group([
         Route::post('comments/update/{id}', 'App\Http\Controllers\App\Http\Controllers\Admin\CommentController@update');
         Route::get('comments/delete/{id}', 'App\Http\Controllers\Admin\CommentController@delete')->name('admin.comment.delete');
         Route::post('comments/add', 'App\Http\Controllers\Admin\CommentController@store')->name('admin.comment.add');
-        Route::post('comments/reply/add/', 'App\Http\Controllers\App\Http\Controllers\Admin\CommentController@reply')->name('admin.reply.add');
+        Route::post('comments/reply/add/', 'App\Http\Controllers\Admin\CommentController@reply')->name('admin.reply.add');
         // Comment Route
         // Profile Route
         Route::get('profile/{id}', 'App\Http\Controllers\Admin\ProfileController@index')->name('admin.profile');

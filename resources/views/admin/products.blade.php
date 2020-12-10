@@ -86,7 +86,7 @@
      <td>{{ $product->color }}</td>
      <td>{{ $product->size }}</td>
                       <td>{{ $product->admin->name }}</td>
-                      <td>{{ \App\Product::order($product->id) }}</td>
+                      <td>{{ \App\Models\Product::order($product->id) }}</td>
                       <td>{{ $product->updated_at }}</td>
                       <td>{{ $product->created_at }}</td>
 					  <td><div class="btn-group"><a class="btn btn-primary" href='{{ url("/product/{$product->id}") }}'><i class="fa fa-lg fa-eye"></i></a><a class="btn btn-primary" href="{{ route('admin.product.update', ['id' => $product->id])}}"><i class="fa fa-lg fa-edit"></i></a><a class="btn btn-primary" href="{{ route('admin.product.delete', ['id' => $product->id ]) }}"><i class="fa fa-lg fa-trash"></i></a></div></td>

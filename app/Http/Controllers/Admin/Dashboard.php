@@ -10,7 +10,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
 use App\Models\Categorie;
-use App\Models\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Page;
 use App\Models\Payment;

@@ -130,7 +130,7 @@
 				<div id="div-comment-10" class="comment-body">
 				<div class="comment-author vcard">
 				@php
-			if ($comment->commented_type == "App\Admin") {
+			if ($comment->commented_type == "App\Models\Admin") {
 				$user = $product->adminCom($comment->commented_id);
 				$image = $user->adminInfo->image;
 			} else {
@@ -138,7 +138,7 @@
 				$image = $user->userInfo->image;
 			}
 			@endphp
-			<img alt='' src='{{ asset($image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"> {{ $user->name }} @if ($comment->commented_type == "App\Admin") (Admin) @endif</cite> <span class="says">says:</span>		</div>
+			<img alt='' src='{{ asset($image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn"> {{ $user->name }} @if ($comment->commented_type == "App\Models\Admin") (Admin) @endif</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
 			{{ $comment->created_at }}
@@ -160,13 +160,13 @@
 @endif
 		
 		@php
-		$replys = \App\Comment::reply($comment->id);
+		$replys = \App\Models\Comment::reply($comment->id);
 		@endphp
 		@if (count($replys) > 0)
 		<ul class="children">
 		@foreach ($replys as $reply )
 		@php
-			if ($reply->commented_type == "App\Admin") {
+			if ($reply->commented_type == "App\Models\Admin") {
 				$user = $product->adminCom($reply->commented_id);
 				$image = $user->adminInfo->image;
 			} else {
@@ -177,7 +177,7 @@
 		<li class="comment byuser comment-author-admi2019 odd alt depth-2" id="comment-11">
 				<div id="div-comment-11" class="comment-body">
 				<div class="comment-author vcard">
-			<img alt='' src='{{ asset($image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn">{{ $user->name }}    @if ($reply->commented_type == "App\Admin") (Admin) @endif</cite> <span class="says">replis:</span>		</div>
+			<img alt='' src='{{ asset($image) }}' class='avatar avatar-32 photo' height='32' width='32' />			<cite class="fn">{{ $user->name }}    @if ($reply->commented_type == "App\Models\Admin") (Admin) @endif</cite> <span class="says">replis:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
 			{{ $reply->created_at }}
