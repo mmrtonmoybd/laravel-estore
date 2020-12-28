@@ -34,16 +34,19 @@ $info = Auth::guard()->user()->userInfo()->first();
 <td>{{ $info->ip }}</td>
 </tr>
 <tr>
-<th>Payment Id:</th>
-<td>{{ $payment->payment_id }}</td>
+<th>Payment Transaction:</th>
+<td>{{ $payment->transaction }}</td>
 </tr>
 <tr>
 <th>Payment Amount:</th>
-<td>{{ \App\Setting::getValue('currency_icon') }}{{ $payment->amount }}</td>
+<td>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $payment->amount }}</td>
 </tr>
 <tr>
+@php
+$date = \Carbon\Carbon::parse($payment->created_at);
+@endphp
 <th>Payment Date:</th>
-<td>{{ $payment->created_at }}</td>
+<td>{{ $date->isoFormat('MMM Do YY') }}</td>
 </tr>
 <tr>
 <th>Order Shiping:</th>
@@ -82,7 +85,7 @@ $total = $price - $calculation;
 @endphp
 <td>{{ $products[$i]->title }}</td>
 <td>{{ $order->quantity }}</td>
-<td>{{ \App\Setting::getValue('currency_icon') }}{{ $total }}</td>
+<td>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $total }}</td>
 <td>{{ $order->size }}</td>
 <td>{{ $order->color }}</td>
 <td>{{ $order->status }}</td>

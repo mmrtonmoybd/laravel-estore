@@ -18,12 +18,12 @@
         @endforeach
         <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-danger">
-            <h6 class="my-0">VAT({{ \App\Setting::getValue('vat') . '%' }})</h6>
+            <h6 class="my-0">VAT({{ \App\Models\Setting::getValue('vat') . '%' }})</h6>
           </div>
           <span class="text-danger">{{ \App\Models\Setting::getValue('currency_icon') }}{{ $totalvat }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total (\App\Models\Setting::getValue('currency'))</span>
+          <span>Total ({{ \App\Models\Setting::getValue('currency') }})</span>
           <strong>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $total }}</strong>
         </li>
       </ul>
