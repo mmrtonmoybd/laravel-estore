@@ -8,20 +8,20 @@ Route::group([
     Route::get('password/reset/', 'App\Http\Controllers\Admin\Auth\ForgotPasswordController@create')->middleware('guest')->name('admin.reset');
     Route::post('password/reset/email/', 'App\Http\Controllers\Admin\Auth\ForgotPasswordController@store')->middleware('guest')->name('admin.email');
 
-    Route::get('password/reset/{token}', 'App\Http\Controllers\Admin\Auth\ResetPasswordController@create')->middleware('guest')->name('admin.password.reset');
+    Route::get('password/reset/{token}/', 'App\Http\Controllers\Admin\Auth\ResetPasswordController@create')->middleware('guest')->name('admin.password.reset');
     Route::post('password/reset/', 'App\Http\Controllers\Admin\Auth\ResetPasswordController@store')->middleware('guest')->name('admin.reset.update');
 
     //Auth middleware group route
     Route::group(['middleware' => 'adminAuth:admin'], function () {
      
-        Route::get('/verify-email', 'App\Http\Controllers\Admin\Auth\EmailVerificationPromptController@__invoke')
+        Route::get('verify-email/', 'App\Http\Controllers\Admin\Auth\EmailVerificationPromptController@__invoke')
         ->name('admin.verification.notice');
 
-        Route::get('/verify-email/{id}/{hash}', 'App\Http\Controllers\Admin\Auth\VerifyEmailController@__invoke')
+        Route::get('verify-email/{id}/{hash}/', 'App\Http\Controllers\Admin\Auth\VerifyEmailController@__invoke')
                 ->middleware(['signed', 'throttle:6,1'])
                 ->name('admin.verification.verify');
 
-        Route::post('/email/verification-notification', 'App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController@store')
+        Route::post('email/verification-notification/', 'App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController@store')
                 ->middleware(['throttle:6,1'])
                 ->name('admin.verification.resend');
        Route::get('logout/', 'App\Http\Controllers\Admin\Auth\LoginController@destroy')->name('admin.logout');
@@ -29,10 +29,10 @@ Route::group([
         Route::group(['middleware' => 'adminVerified'], function () {
         Route::get('/', 'App\Http\Controllers\Admin\Dashboard@index')->name('admin.dashboard');
         
-        Route::get('/confirm-password', 'App\Http\Controllers\Admin\Auth\ConfirmablePasswordController@show')
+        Route::get('confirm-password/', 'App\Http\Controllers\Admin\Auth\ConfirmablePasswordController@show')
                 ->name('admin.password.confirm');
 
-       Route::post('/confirm-password', 'App\Http\Controllers\Admin\Auth\ConfirmablePasswordController@store');
+       Route::post('confirm-password/', 'App\Http\Controllers\Admin\Auth\ConfirmablePasswordController@store');
         
 
         // Product Route
@@ -91,7 +91,7 @@ Route::group([
 
         //Super Admin Permission
 
-        Route::group(['middleware' => 'can:isAdmin', 'password.confirm:admin.password.confirm'], function () {
+        Route::group(['middleware' => ['can:isAdmin', 'password.confirm:admin.password.confirm']], function () {
             // Admin Route
             Route::get('admins/', 'App\Http\Controllers\Admin\AdminController@index')->name('admin.admin.list');
             Route::get('admins/update/{id}', 'App\Http\Controllers\Admin\AdminController@edit')->name('admin.admin.update');

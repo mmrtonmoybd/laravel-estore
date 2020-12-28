@@ -210,8 +210,8 @@ $total = $price - $calculation;
 @endphp
 <td>{{ $products[$i]->title }}</td>
 <td>{{ $order->quantity }}</td>
-<td>{{ $order->size }}</td>
 <td>{{ $order->color }}</td>
+<td>{{ $order->size }}</td>
 <td>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $calculation }}</td>
 <td>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $total }}</td>
             </tr>
