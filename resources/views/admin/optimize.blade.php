@@ -37,7 +37,7 @@
         @endif
             <div class="tile-body"><p>Optimize clear {{ config('app.name') }}, Optimize clear can slow down your application.
                 All are optimize(router, config, view, cache, event and many..) cleared!.</p>
-                <a href="{{ route('admin.optimize.clear') }}"><button class="btn btn-danger" type="button">Optimize</button></a>
+                <a href="{{ route('admin.optimize.clear') }}"><button class="btn btn-danger" type="button">Optimize cleared</button></a>
             </div>
           </div>
         </div>

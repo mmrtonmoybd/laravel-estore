@@ -1,4 +1,4 @@
-const mix = require("laravel-mix");
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -18,3 +18,4 @@ mix.js("resources/js/app.js", "public/js").sass(
 mix.copyDirectory("resources/frontend", "public/frontend");
 mix.copyDirectory("resources/admin", "public/admin");
 mix.copyDirectory("resources/vendor", "public/vendor");
+

@@ -24,6 +24,11 @@
         <form class="login-form" action="{{ route('admin.login') }}" method="POST">
         @csrf
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+          @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
           <div class="form-group">
             <label class="control-label" for="email">E-MAIL</label>
             <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

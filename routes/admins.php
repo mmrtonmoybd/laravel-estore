@@ -3,19 +3,37 @@
 Route::group([
     'prefix' => 'admins',
 ], function () {
-    Route::get('login/', 'App\Http\Controllers\Admin\LoginController@showLoginForm')->name('admin.login');
-    Route::post('login/', 'App\Http\Controllers\Admin\LoginController@login');
-    Route::get('password/reset/', 'App\Http\Controllers\Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.reset');
-    Route::post('password/reset/email/', 'App\Http\Controllers\Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.email');
+    Route::get('login/', 'App\Http\Controllers\Admin\Auth\LoginController@create')->middleware('guest:admin')->name('admin.login');
+    Route::post('login/', 'App\Http\Controllers\Admin\Auth\LoginController@store')->middleware('guest:admin');
+    Route::get('password/reset/', 'App\Http\Controllers\Admin\Auth\ForgotPasswordController@create')->middleware('guest')->name('admin.reset');
+    Route::post('password/reset/email/', 'App\Http\Controllers\Admin\Auth\ForgotPasswordController@store')->middleware('guest')->name('admin.email');
 
-    Route::get('password/reset/{token}', 'App\Http\Controllers\Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
-    Route::post('password/reset/', 'App\Http\Controllers\Admin\ResetPasswordController@reset')->name('admin.reset.update');
+    Route::get('password/reset/{token}', 'App\Http\Controllers\Admin\Auth\ResetPasswordController@create')->middleware('guest')->name('admin.password.reset');
+    Route::post('password/reset/', 'App\Http\Controllers\Admin\Auth\ResetPasswordController@store')->middleware('guest')->name('admin.reset.update');
 
     //Auth middleware group route
     Route::group(['middleware' => 'adminAuth:admin'], function () {
-        Route::get('/', 'App\Http\Controllers\Admin\Dashboard@index')->name('admin.dashboard');
+     
+        Route::get('/verify-email', 'App\Http\Controllers\Admin\Auth\EmailVerificationPromptController@__invoke')
+        ->name('admin.verification.notice');
 
-        Route::get('logout/', 'App\Http\Controllers\Admin\LoginController@logout')->name('admin.logout');
+        Route::get('/verify-email/{id}/{hash}', 'App\Http\Controllers\Admin\Auth\VerifyEmailController@__invoke')
+                ->middleware(['signed', 'throttle:6,1'])
+                ->name('admin.verification.verify');
+
+        Route::post('/email/verification-notification', 'App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController@store')
+                ->middleware(['throttle:6,1'])
+                ->name('admin.verification.resend');
+       Route::get('logout/', 'App\Http\Controllers\Admin\Auth\LoginController@destroy')->name('admin.logout');
+
+        Route::group(['middleware' => 'adminVerified'], function () {
+        Route::get('/', 'App\Http\Controllers\Admin\Dashboard@index')->name('admin.dashboard');
+        
+        Route::get('/confirm-password', 'App\Http\Controllers\Admin\Auth\ConfirmablePasswordController@show')
+                ->name('admin.password.confirm');
+
+       Route::post('/confirm-password', 'App\Http\Controllers\Admin\Auth\ConfirmablePasswordController@store');
+        
 
         // Product Route
         Route::get('products/', 'App\Http\Controllers\Admin\ProductController@index')->name('admin.product.list');
@@ -23,7 +41,7 @@ Route::group([
         Route::post('products/add/', 'App\Http\Controllers\Admin\ProductController@store');
         Route::get('products/update/{id}', 'App\Http\Controllers\Admin\ProductController@showForm')->name('admin.product.update');
         Route::post('products/update/{id}', 'App\Http\Controllers\Admin\ProductController@update');
-        Route::get('products/delete/{id}', 'App\Http\Controllers\Admin\ProductController@delete')->name('admin.product.delete');
+        Route::get('products/delete/{id}', 'App\Http\Controllers\Admin\ProductController@delete')->middleware('password.confirm:admin.password.confirm')->name('admin.product.delete');
         // Product Route
         // Category Route
         Route::get('categories/', 'App\Http\Controllers\Admin\CategoryController@index')->name('admin.category.list');
@@ -31,13 +49,13 @@ Route::group([
         Route::post('categories/add/', 'App\Http\Controllers\Admin\CategoryController@store');
         Route::get('categories/update/{id}', 'App\Http\Controllers\Admin\CategoryController@updateForm')->name('admin.category.update');
         Route::post('categories/update/{id}', 'App\Http\Controllers\Admin\CategoryController@update');
-        Route::get('categories/delete/{id}', 'App\Http\Controllers\Admin\CategoryController@delete')->name('admin.category.delete');
+        Route::get('categories/delete/{id}', 'App\Http\Controllers\Admin\CategoryController@delete')->middleware('password.confirm:admin.password.confirm')->name('admin.category.delete');
         // Category Route
         // Payment Route
         Route::get('payments/', 'App\Http\Controllers\Admin\PaymentController@index')->name('admin.payment.list');
         Route::get('payments/update/{id}', 'App\Http\Controllers\Admin\PaymentController@showForm')->name('admin.payment.update');
         Route::post('payments/update/{id}', 'App\Http\Controllers\Admin\PaymentController@update');
-        Route::get('payments/delete/{id}', 'App\Http\Controllers\Admin\PaymentController@delete')->name('admin.payment.delete');
+        Route::get('payments/delete/{id}', 'App\Http\Controllers\Admin\PaymentController@delete')->middleware('password.confirm:admin.password.confirm')->name('admin.payment.delete');
         // Payment Route
         // User Route
         Route::get('users/', 'App\Http\Controllers\Admin\UserController@index')->name('admin.user.list');
@@ -51,7 +69,7 @@ Route::group([
         Route::get('orders/', 'App\Http\Controllers\Admin\OrderController@index')->name('admin.order.list');
         Route::get('orders/update/{id}', 'App\Http\Controllers\Admin\OrderController@showForm')->name('admin.order.update');
         Route::post('orders/update/{id}', 'App\Http\Controllers\Admin\OrderController@update');
-        Route::get('orders/delete/{id}', 'App\Http\Controllers\Admin\OrderController@delete')->name('admin.order.delete');
+        Route::get('orders/delete/{id}', 'App\Http\Controllers\Admin\OrderController@delete')->middleware('password.confirm:admin.password.confirm')->name('admin.order.delete');
         // Order Route
         // Comment Route
         Route::get('comments/', 'App\Http\Controllers\Admin\CommentController@index')->name('admin.comment.list');
@@ -63,8 +81,8 @@ Route::group([
         // Comment Route
         // Profile Route
         Route::get('profile/{id}', 'App\Http\Controllers\Admin\ProfileController@index')->name('admin.profile');
-        Route::get('profile/update/{id}', 'App\Http\Controllers\Admin\ProfileController@showForm')->name('admin.profile.update');
-        Route::post('profile/update/{id}', 'App\Http\Controllers\Admin\ProfileController@update');
+        Route::get('profile/update/{id}', 'App\Http\Controllers\Admin\ProfileController@showForm')->middleware('password.confirm:admin.password.confirm')->name('admin.profile.update');
+        Route::post('profile/update/{id}', 'App\Http\Controllers\Admin\ProfileController@update')->middleware('password.confirm:admin.password.confirm');
         // Profile Route
         // Invoice Route
         Route::get('invoice/{id}', 'App\Http\Controllers\Admin\Invoice@stream')->name('admin.invoice.view');
@@ -73,7 +91,7 @@ Route::group([
 
         //Super Admin Permission
 
-        Route::group(['middleware' => 'can:isAdmin'], function () {
+        Route::group(['middleware' => 'can:isAdmin', 'password.confirm:admin.password.confirm'], function () {
             // Admin Route
             Route::get('admins/', 'App\Http\Controllers\Admin\AdminController@index')->name('admin.admin.list');
             Route::get('admins/update/{id}', 'App\Http\Controllers\Admin\AdminController@edit')->name('admin.admin.update');
@@ -105,6 +123,9 @@ Route::group([
             // Optimize Route
         });
         // end Super Admin Permission
+        });
+
+        
     });
     // end Admin Auth
 });

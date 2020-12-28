@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -59,6 +60,8 @@ class UserController extends Controller
             'user_id' => $user->id,
             'ip' => '127.0.0.1',
         ]);
+
+        event(new Registered($user));
 
         return redirect()->route('admin.user.list')->with('success', 'User is created!');
     }

@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin;
 use App\Models\AdminInfo;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,6 +79,8 @@ class AdminController extends Controller
             'admin_id' => $admin->id,
             'ip' => '127.0.0.1',
         ]);
+
+        event(new Registered($admin));
 
         return redirect()->route('admin.admin.list')->with('success', 'Admin is created!');
     }

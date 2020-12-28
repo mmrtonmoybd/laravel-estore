@@ -9,6 +9,7 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 
 class HtmlMifier
 {
@@ -43,7 +44,9 @@ class HtmlMifier
             ' <',
         ];
 
-        //return preg_replace($search, $replace, $input);
-        return $input;
+        if (App::environment(['local', 'staging'])) {
+            return $input;
+        }
+        return preg_replace($search, $replace, $input);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Mmrtonmoybd\Comment\CanComment;
 use App\Notifications\AdminResetPassword;
+use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -51,5 +52,10 @@ class Admin extends Authenticatable implements MustVerifyEmail
     public function adminInfo()
     {
         return $this->hasOne('App\\Models\AdminInfo', 'admin_id', 'id');
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail);
     }
 }

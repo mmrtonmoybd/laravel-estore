@@ -3,6 +3,7 @@
 Route::group([
     'prefix' => 'users',
 ], function () {
+    /*
     Route::get('login/', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
     Route::post('login/', 'App\Http\Controllers\Auth\LoginController@login');
 
@@ -23,10 +24,14 @@ Route::group([
     Route::get('email/verify/{id}/{hash}', 'App\Http\Controllers\Auth\VerificationController@verify')->name('verification.verify');
     Route::post('email/resend/', 'App\Http\Controllers\Auth\VerificationController@resend')->name('verification.resend');
 
+    */
+
+    require __DIR__.'/auth.php';
+
     Route::get('profile/{id}', 'App\Http\Controllers\UserProfile@index');
 
     Route::group([
-        'middleware' => 'auth',
+        'middleware' => ['auth', 'verified'],
     ], function () {
         Route::get('profile/update/{id}', 'App\Http\Controllers\UserProfile@showInForm')->name('profile.update');
         Route::post('profile/update/{id}', 'App\Http\Controllers\UserProfile@update');
@@ -40,8 +45,8 @@ Route::group([
 
         Route::get('orders/', 'App\Http\Controllers\OrderInfo@index');
 
-        Route::get('checkout/', 'App\Http\Controllers\Checkout@index')->name('checkout');
-        Route::post('checkout/', 'App\Http\Controllers\Checkout@checkout');
+        Route::get('checkout/', 'App\Http\Controllers\Checkout@index')->middleware('throttle:3,1')->name('checkout');
+        Route::post('checkout/', 'App\Http\Controllers\Checkout@checkout')->middleware('throttle:3,1');
 
         Route::get('orders/{id}', 'App\Http\Controllers\OrderInfo@orders')->name('users.order');
 
