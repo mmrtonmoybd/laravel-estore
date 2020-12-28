@@ -23,8 +23,8 @@
           <span class="text-danger">{{ \App\Models\Setting::getValue('currency_icon') }}{{ $totalvat }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span>Total {{ (\App\Models\Setting::getValue('currency')) }}</span>
-          <strong>{{ \App\Models\Setting::getValue('currency_icon') }} {{ $total }}</strong>
+          <span>Total ({{ \App\Models\Setting::getValue('currency') }})</span>
+          <strong>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $total }}</strong>
         </li>
       </ul>
     </div>

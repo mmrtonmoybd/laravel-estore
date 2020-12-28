@@ -111,7 +111,10 @@
                             
                             <td>
                                 Invoice #: {{ $payment->id }}<br>
-                                Created: {{ $payment->created_at }}
+                                @php
+$date = \Carbon\Carbon::parse($payment->created_at);
+@endphp
+                                Created: {{ $date->isoFormat('MMM Do YY') }}
                             </td>
                         </tr>
                     </table>
@@ -160,11 +163,11 @@
             </tr>
 			<tr class="details">
                 <td>
-                    Payment ID
+                    Payment Transaction
                 </td>
                 
                 <td>
-				{{ \App\Models\Setting::getValue('currency_icon') }}{{ $payment->payment_id }}
+				{{ \App\Models\Setting::getValue('currency_icon') }}{{ $payment->transaction }}
                 </td>
             </tr>
             
