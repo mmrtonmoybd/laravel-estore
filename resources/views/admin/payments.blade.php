@@ -46,6 +46,7 @@
                   <tr>
                       <th>ID</th>
                       <th>Payment ID</th>
+                      <th>Payment Transaction</th>
                       <th>Buyer Name</th>
                       <th>Shipping Address</th>
                       <th>Shipping Mobile</th>
@@ -62,6 +63,7 @@
                   <tr>
                       <td>{{ $payment->id }}</td>
                       <td>{{ $payment->payment_id }}</td> 
+                      <td>{{ $payment->transaction }}</td>
                       <td>{{ $payment->user->name }}</td>  
                       <td>{{ $payment->address }}</td>
                       <td>{{ $payment->mobile }}</td>
