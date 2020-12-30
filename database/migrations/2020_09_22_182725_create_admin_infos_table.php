@@ -33,6 +33,10 @@ class CreateAdminInfosTable extends Migration
      */
     public function down()
     {
+        Schema::table('admin_infos', function (Blueprint $table) {
+            $table->dropForeign(['admin_id']);
+            $table->dropColumn(['admin_id']);
+        });
         Schema::dropIfExists('admin_infos');
     }
 }
