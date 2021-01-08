@@ -27,6 +27,16 @@
           <strong>{{ \App\Models\Setting::getValue('currency_icon') }}{{ $total }}</strong>
         </li>
       </ul>
+      <form class="card p-2" action="{{ route('promo') }}" method="POST">
+        @csrf
+            <div class="form-group">
+              <input type="text" class="form-control @error('code') 
+    is-invalid 
+    @enderror" placeholder="Promo code" name="code">
+              
+</div>
+                <button type="submit" class="btn btn-secondary">Redeem</button>
+          </form>
     </div>
     
     
@@ -41,6 +51,14 @@
        {{ session()->get('error') }}
        </div>
        @endif
+       @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session()->get('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+        @endif
 	  
           <form id="payment-form" action="{{ route('checkout') }}" method="POST">
          @csrf

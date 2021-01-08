@@ -48,6 +48,9 @@
                             <li class="nav-item">
             <a class="nav-link" href="{{ url('/users/orders') }}">Orders Info</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href='{{ route("user.vauchars") }}'>Vauchars</a>
+          </li>
                         @endguest
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>

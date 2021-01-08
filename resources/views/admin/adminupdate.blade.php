@@ -52,8 +52,8 @@
                   <div class="form-group">
                     <label for="exampleSelect1">Admin Permission</label>
                     <select class="form-control @error('status') is-invalid @enderror" id="exampleSelect1" name="status" required>
-                      <option value="0">Normal Admin</option>
-                      <option value="1">Super Admin</option>
+                      <option value="0" @if ($admin->isAdmin == 0) selected @endif>Normal Admin</option>
+                      <option value="1" @if ($admin->isAdmin == 1) selected @endif>Super Admin</option>
                     </select>
                     </div>
                   <div class="form-group">

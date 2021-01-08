@@ -9,6 +9,8 @@ About: I am a php, laravel, codeigniter developer.
 namespace App\Http\Controllers;
 
 use App\Traits\ProductShow;
+use Cart;
+use Darryldecode\Cart\Cart as CartC;
 
 /**
  * @internal
@@ -20,6 +22,7 @@ class Test extends Controller
 
     public function test()
     {
-        dd($this->getMostSellProduct());
+        $cartConditions = Cart::getConditions();
+       echo $cartConditions;
     }
 }

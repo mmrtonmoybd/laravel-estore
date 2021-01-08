@@ -43,6 +43,15 @@ Route::group([
         Route::post('products/update/{id}', 'App\Http\Controllers\Admin\ProductController@update');
         Route::get('products/delete/{id}', 'App\Http\Controllers\Admin\ProductController@delete')->middleware('password.confirm:admin.password.confirm')->name('admin.product.delete');
         // Product Route
+
+        //vauchar Route
+        Route::get('vauchars/', 'App\Http\Controllers\Admin\AdminVauchar@index')->name('admin.vauchar.list');
+        Route::get('vauchars/add/', 'App\Http\Controllers\Admin\AdminVauchar@add')->name('admin.vauchar.add');
+        Route::post('vauchars/add/', 'App\Http\Controllers\Admin\AdminVauchar@create');
+        Route::get('vauchars/edit/{id}', 'App\Http\Controllers\Admin\AdminVauchar@show')->name('admin.vauchar.update');
+        Route::post('vauchars/edit/{id}', 'App\Http\Controllers\Admin\AdminVauchar@edit');
+        Route::get('vauchars/delete/{id}', 'App\Http\Controllers\Admin\AdminVauchar@delete')->name('admin.vauchar.delete');
+        //vauchar Route
         // Category Route
         Route::get('categories/', 'App\Http\Controllers\Admin\CategoryController@index')->name('admin.category.list');
         Route::get('categories/add/', 'App\Http\Controllers\Admin\CategoryController@showForm')->name('admin.category.add');

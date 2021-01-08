@@ -31,8 +31,8 @@
                   <div class="form-group">
                     <label for="exampleSelect1">Order Status</label>
                     <select class="form-control @error('status') is-invalid @enderror" id="exampleSelect1" name="status" required>
-                      <option value="complete">Complete</option>
-                      <option value="pending">Pending</option>
+                      <option value="complete" @if ($order->status == 'complete') selected @endif>Complete</option>
+                      <option value="pending" @if ($order->status == 'pending') selected @endif>Pending</option>
                     </select>
                   </div>
                  

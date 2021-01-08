@@ -51,6 +51,12 @@
             <li><a class="treeview-item" href="{{ route('admin.user.add') }}"><i class="icon fa fa-circle-o"></i> User Add</a></li>
           </ul>
         </li>
+        <li class="treeview"><a class="app-menu__item @if (Route::currentRouteName() == 'admin.vauchar.list' || Route::currentRouteName() == 'admin.vauchar.add' || Route::currentRouteName() == 'admin.vauchar.update') {{ 'active' }} @endif" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-percent"></i><span class="app-menu__label">Vauchars</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item" href="{{ route('admin.user.list') }}"><i class="icon fa fa-circle-o"></i> User Lists</a></li>
+            <li><a class="treeview-item" href="{{ route('admin.user.add') }}"><i class="icon fa fa-circle-o"></i> User Add</a></li>
+          </ul>
+        </li>
         @can ('isAdmin')
         <li class="treeview"><a class="app-menu__item @if (Route::currentRouteName() == 'admin.setting.list' || Route::currentRouteName() == 'admin.optimize.index') {{ 'active' }} @endif" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cogs"></i><span class="app-menu__label">Settings</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">

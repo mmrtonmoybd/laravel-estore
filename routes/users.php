@@ -45,11 +45,16 @@ Route::group([
 
         Route::get('orders/', 'App\Http\Controllers\OrderInfo@index');
 
-        Route::get('checkout/', 'App\Http\Controllers\Checkout@index')->middleware('throttle:3,1')->name('checkout');
-        Route::post('checkout/', 'App\Http\Controllers\Checkout@checkout')->middleware('throttle:3,1');
+        Route::get('checkout/', 'App\Http\Controllers\Checkout@index')->middleware('throttle:300,1')->name('checkout');
+        Route::post('checkout/', 'App\Http\Controllers\Checkout@checkout')->middleware('throttle:300,1');
+
+        Route::post('promo/', 'App\Http\Controllers\CartController@promo')->name('promo');
+        //Route::post('promo/', 'App\Http\Controllers\CartController@promo');
 
         Route::get('orders/{id}', 'App\Http\Controllers\OrderInfo@orders')->name('users.order');
 
         Route::post('rating/', 'App\Http\Controllers\RatingController@store')->name('rating');
+
+        Route::get('vauchars', 'App\Http\Controllers\CartController@uvauchar')->name('user.vauchars');
     });
 });
