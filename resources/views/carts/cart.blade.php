@@ -75,7 +75,7 @@
                     @endphp
                     
                     @foreach ($colors as $color)
-                      <option value="{{ $color }}">{{ $color }}</option>
+                      <option value="{{ $color }}" @if ($color == $item->attributes->color) selected @endif>{{ $color }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -87,7 +87,7 @@
                     @endphp
                     
                     @foreach ($sizes as $size)
-                      <option value="{{ $size }}">{{ $size }}</option>
+                      <option value="{{ $size }}" @if ($size == $item->attributes->size) selected @endif>{{ $size }}</option>
                       @endforeach
                     </select>
                   </div>                  
