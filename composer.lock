@@ -3678,16 +3678,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.2.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "7231612a5221f5524d3575bebdce20eeef8547a1"
+                "reference": "fe665a03df4f056aa65af552a96e1976df8c8dae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/7231612a5221f5524d3575bebdce20eeef8547a1",
-                "reference": "7231612a5221f5524d3575bebdce20eeef8547a1",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/fe665a03df4f056aa65af552a96e1976df8c8dae",
+                "reference": "fe665a03df4f056aa65af552a96e1976df8c8dae",
                 "shasum": ""
             },
             "require": {
@@ -3759,7 +3759,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.2.0"
+                "source": "https://github.com/ramsey/uuid/tree/4.2.1"
             },
             "funding": [
                 {
@@ -3771,7 +3771,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-06T22:30:43+00:00"
+            "time": "2021-08-11T01:06:55+00:00"
         },
         {
             "name": "sabberworm/php-css-parser",
@@ -3824,16 +3824,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.92.0",
+            "version": "v7.93.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "4b549e6f7d3e7ffd877547a0f1e8bd01c363e268"
+                "reference": "c739cf6841bb3498e23bd52ecfadfcb21c521a14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/4b549e6f7d3e7ffd877547a0f1e8bd01c363e268",
-                "reference": "4b549e6f7d3e7ffd877547a0f1e8bd01c363e268",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c739cf6841bb3498e23bd52ecfadfcb21c521a14",
+                "reference": "c739cf6841bb3498e23bd52ecfadfcb21c521a14",
                 "shasum": ""
             },
             "require": {
@@ -3879,9 +3879,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.92.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.93.0"
             },
-            "time": "2021-07-28T17:38:57+00:00"
+            "time": "2021-08-11T18:48:54+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
