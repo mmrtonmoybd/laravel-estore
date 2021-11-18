@@ -1829,16 +1829,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.71.0",
+            "version": "v8.72.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d822426d75ecf8e8ccd3ccd404db7202d1a9875e"
+                "reference": "5168f8589195a5f48b9c41ad2eec77a6c15f14f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d822426d75ecf8e8ccd3ccd404db7202d1a9875e",
-                "reference": "d822426d75ecf8e8ccd3ccd404db7202d1a9875e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5168f8589195a5f48b9c41ad2eec77a6c15f14f3",
+                "reference": "5168f8589195a5f48b9c41ad2eec77a6c15f14f3",
                 "shasum": ""
             },
             "require": {
@@ -1997,7 +1997,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-11-16T15:00:50+00:00"
+            "time": "2021-11-17T15:15:08+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -3968,16 +3968,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.101.0",
+            "version": "v7.102.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "392d387c61a72a4629a92fa93a4bc44318089224"
+                "reference": "7c612a45fd6661e35ff255c722f5d529b98e811f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/392d387c61a72a4629a92fa93a4bc44318089224",
-                "reference": "392d387c61a72a4629a92fa93a4bc44318089224",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/7c612a45fd6661e35ff255c722f5d529b98e811f",
+                "reference": "7c612a45fd6661e35ff255c722f5d529b98e811f",
                 "shasum": ""
             },
             "require": {
@@ -4023,9 +4023,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.101.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.102.0"
             },
-            "time": "2021-11-16T16:07:54+00:00"
+            "time": "2021-11-17T20:13:35+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
