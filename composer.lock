@@ -1832,16 +1832,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.76.1",
+            "version": "v8.76.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "83fe447ae964dc5f1f829d25fa2f6042d9099834"
+                "reference": "c67acfdc968f487b6235435080eef62a7e2ed055"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/83fe447ae964dc5f1f829d25fa2f6042d9099834",
-                "reference": "83fe447ae964dc5f1f829d25fa2f6042d9099834",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c67acfdc968f487b6235435080eef62a7e2ed055",
+                "reference": "c67acfdc968f487b6235435080eef62a7e2ed055",
                 "shasum": ""
             },
             "require": {
@@ -2000,7 +2000,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-12-14T16:21:19+00:00"
+            "time": "2021-12-15T14:02:14+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -6604,16 +6604,16 @@
         },
         {
             "name": "willvincent/laravel-rateable",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willvincent/laravel-rateable.git",
-                "reference": "f6b3440dbf4b791b235ea4e4bd3fa7f87fed236e"
+                "reference": "cf53a9463a8ec50b5478aca617feee01735a7943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/f6b3440dbf4b791b235ea4e4bd3fa7f87fed236e",
-                "reference": "f6b3440dbf4b791b235ea4e4bd3fa7f87fed236e",
+                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/cf53a9463a8ec50b5478aca617feee01735a7943",
+                "reference": "cf53a9463a8ec50b5478aca617feee01735a7943",
                 "shasum": ""
             },
             "require": {
@@ -6664,9 +6664,15 @@
             ],
             "support": {
                 "issues": "https://github.com/willvincent/laravel-rateable/issues",
-                "source": "https://github.com/willvincent/laravel-rateable/tree/2.3.0"
+                "source": "https://github.com/willvincent/laravel-rateable/tree/2.4.0"
             },
-            "time": "2020-11-10T20:18:05+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/willvincent",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-16T00:06:17+00:00"
         }
     ],
     "packages-dev": [
