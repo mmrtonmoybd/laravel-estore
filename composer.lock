@@ -6620,16 +6620,16 @@
         },
         {
             "name": "willvincent/laravel-rateable",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/willvincent/laravel-rateable.git",
-                "reference": "cf53a9463a8ec50b5478aca617feee01735a7943"
+                "reference": "3da4ed0d4d6a6bd7fce782939d69631347728671"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/cf53a9463a8ec50b5478aca617feee01735a7943",
-                "reference": "cf53a9463a8ec50b5478aca617feee01735a7943",
+                "url": "https://api.github.com/repos/willvincent/laravel-rateable/zipball/3da4ed0d4d6a6bd7fce782939d69631347728671",
+                "reference": "3da4ed0d4d6a6bd7fce782939d69631347728671",
                 "shasum": ""
             },
             "require": {
@@ -6680,7 +6680,7 @@
             ],
             "support": {
                 "issues": "https://github.com/willvincent/laravel-rateable/issues",
-                "source": "https://github.com/willvincent/laravel-rateable/tree/2.4.0"
+                "source": "https://github.com/willvincent/laravel-rateable/tree/2.4.1"
             },
             "funding": [
                 {
@@ -6688,7 +6688,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-16T00:06:17+00:00"
+            "time": "2022-01-10T21:25:00+00:00"
         }
     ],
     "packages-dev": [
@@ -7273,16 +7273,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v5.10.0",
+            "version": "v5.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "3004cfa49c022183395eabc6d0e5207dfe498d00"
+                "reference": "8b610eef8582ccdc05d8f2ab23305e2d37049461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/3004cfa49c022183395eabc6d0e5207dfe498d00",
-                "reference": "3004cfa49c022183395eabc6d0e5207dfe498d00",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/8b610eef8582ccdc05d8f2ab23305e2d37049461",
+                "reference": "8b610eef8582ccdc05d8f2ab23305e2d37049461",
                 "shasum": ""
             },
             "require": {
@@ -7344,7 +7344,7 @@
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
                     "type": "custom"
                 },
                 {
@@ -7356,7 +7356,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-09-20T15:06:32+00:00"
+            "time": "2022-01-10T16:22:52+00:00"
         },
         {
             "name": "phar-io/manifest",
