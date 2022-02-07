@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": "^7.3|^8.0",
-        "artesaos/seotools": "^0.19.1",
+        "artesaos/seotools": "^0.21.0",
         "barryvdh/laravel-dompdf": "^0.9.0",
         "darryldecode/cart": "^4.2",
         "doctrine/dbal": "^3.0",
