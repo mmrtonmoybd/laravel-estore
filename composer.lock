@@ -1633,20 +1633,20 @@
         },
         {
             "name": "illuminatech/url-trailing-slash",
-            "version": "1.1.7",
+            "version": "1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminatech/url-trailing-slash.git",
-                "reference": "a26511c2ee9d2f377b6d47a1e5cbec0aa10510c6"
+                "reference": "afc25bc02830d0ca56031967bc07eb4d2efcf3c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/a26511c2ee9d2f377b6d47a1e5cbec0aa10510c6",
-                "reference": "a26511c2ee9d2f377b6d47a1e5cbec0aa10510c6",
+                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/afc25bc02830d0ca56031967bc07eb4d2efcf3c0",
+                "reference": "afc25bc02830d0ca56031967bc07eb4d2efcf3c0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/routing": "^6.0 || ^7.7.0 || ^8.0"
+                "illuminate/routing": "^6.0 || ^7.7.0 || ^8.0 || ^9.0"
             },
             "require-dev": {
                 "illuminate/config": "*",
@@ -1698,7 +1698,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-11-13T15:01:27+00:00"
+            "time": "2022-02-09T14:25:31+00:00"
         },
         {
             "name": "laravel/breeze",
@@ -6803,12 +6803,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Facade\\Ignition\\": "src"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Facade\\Ignition\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
