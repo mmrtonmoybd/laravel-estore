@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5584f1bd499599fd9e4101ccdaf5882",
+    "content-hash": "6d8b3fb9610c053e3a7ea153b5c4e644",
     "packages": [
         {
             "name": "artesaos/seotools",
@@ -3952,16 +3952,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.128.0",
+            "version": "v8.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e"
+                "reference": "07e92daf7bc4635f34542966bddaf48c2777d48d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c704949c49b72985c76cc61063aa26fefbd2724e",
-                "reference": "c704949c49b72985c76cc61063aa26fefbd2724e",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/07e92daf7bc4635f34542966bddaf48c2777d48d",
+                "reference": "07e92daf7bc4635f34542966bddaf48c2777d48d",
                 "shasum": ""
             },
             "require": {
@@ -4006,9 +4006,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.128.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v8.7.0"
             },
-            "time": "2022-05-05T17:18:02+00:00"
+            "time": "2022-06-17T19:22:08+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
