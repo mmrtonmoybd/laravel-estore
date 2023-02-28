@@ -1631,25 +1631,25 @@
         },
         {
             "name": "illuminatech/url-trailing-slash",
-            "version": "1.1.8",
+            "version": "1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminatech/url-trailing-slash.git",
-                "reference": "afc25bc02830d0ca56031967bc07eb4d2efcf3c0"
+                "reference": "46e2184b26871af63ccc5b0ada34fea98ae63d6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/afc25bc02830d0ca56031967bc07eb4d2efcf3c0",
-                "reference": "afc25bc02830d0ca56031967bc07eb4d2efcf3c0",
+                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/46e2184b26871af63ccc5b0ada34fea98ae63d6a",
+                "reference": "46e2184b26871af63ccc5b0ada34fea98ae63d6a",
                 "shasum": ""
             },
             "require": {
-                "illuminate/routing": "^6.0 || ^7.7.0 || ^8.0 || ^9.0"
+                "illuminate/routing": "^6.0 || ^7.7.0 || ^8.0 || ^9.0 || ^10.0"
             },
             "require-dev": {
                 "illuminate/config": "*",
                 "illuminate/events": "*",
-                "phpunit/phpunit": "^8.0 || ^9.3"
+                "phpunit/phpunit": "^8.0 || ^9.3 || ^10.0.7"
             },
             "type": "library",
             "extra": {
@@ -1696,7 +1696,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-02-09T14:25:31+00:00"
+            "time": "2023-02-27T09:28:34+00:00"
         },
         {
             "name": "laravel/breeze",
@@ -7755,16 +7755,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.6.3",
+            "version": "9.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e7b1615e3e887d6c719121c6d4a44b0ab9645555"
+                "reference": "9125ee085b6d95e78277dc07aa1f46f9e0607b8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e7b1615e3e887d6c719121c6d4a44b0ab9645555",
-                "reference": "e7b1615e3e887d6c719121c6d4a44b0ab9645555",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/9125ee085b6d95e78277dc07aa1f46f9e0607b8d",
+                "reference": "9125ee085b6d95e78277dc07aa1f46f9e0607b8d",
                 "shasum": ""
             },
             "require": {
@@ -7837,7 +7837,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.3"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.4"
             },
             "funding": [
                 {
@@ -7853,7 +7853,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-04T13:37:15+00:00"
+            "time": "2023-02-27T13:06:37+00:00"
         },
         {
             "name": "sebastian/cli-parser",
