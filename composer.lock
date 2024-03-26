@@ -1698,25 +1698,25 @@
         },
         {
             "name": "illuminatech/url-trailing-slash",
-            "version": "1.1.10",
+            "version": "1.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminatech/url-trailing-slash.git",
-                "reference": "a8c19d2ea55138f8402ed24c5cad3428505f15a4"
+                "reference": "a0052d01db177a7810f7c64dedbc4305995710d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/a8c19d2ea55138f8402ed24c5cad3428505f15a4",
-                "reference": "a8c19d2ea55138f8402ed24c5cad3428505f15a4",
+                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/a0052d01db177a7810f7c64dedbc4305995710d2",
+                "reference": "a0052d01db177a7810f7c64dedbc4305995710d2",
                 "shasum": ""
             },
             "require": {
-                "illuminate/routing": "^6.0 || ^7.7.0 || ^8.0 || ^9.0 || ^10.0"
+                "illuminate/routing": "^6.0 || ^7.7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0"
             },
             "require-dev": {
                 "illuminate/config": "*",
                 "illuminate/events": "*",
-                "phpunit/phpunit": "^8.0 || ^9.3 || ^10.0.7"
+                "phpunit/phpunit": "^8.0 || ^9.3 || ^10.5"
             },
             "type": "library",
             "extra": {
@@ -1763,7 +1763,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-06-23T14:21:48+00:00"
+            "time": "2024-03-25T10:52:21+00:00"
         },
         {
             "name": "laravel/breeze",
