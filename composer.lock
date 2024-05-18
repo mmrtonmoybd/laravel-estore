@@ -1698,16 +1698,16 @@
         },
         {
             "name": "illuminatech/url-trailing-slash",
-            "version": "1.1.11",
+            "version": "1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminatech/url-trailing-slash.git",
-                "reference": "a0052d01db177a7810f7c64dedbc4305995710d2"
+                "reference": "eb8b07946a87f3f04931e8314982b4868dab66dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/a0052d01db177a7810f7c64dedbc4305995710d2",
-                "reference": "a0052d01db177a7810f7c64dedbc4305995710d2",
+                "url": "https://api.github.com/repos/illuminatech/url-trailing-slash/zipball/eb8b07946a87f3f04931e8314982b4868dab66dc",
+                "reference": "eb8b07946a87f3f04931e8314982b4868dab66dc",
                 "shasum": ""
             },
             "require": {
@@ -1763,7 +1763,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-03-25T10:52:21+00:00"
+            "time": "2024-05-17T14:42:50+00:00"
         },
         {
             "name": "laravel/breeze",
